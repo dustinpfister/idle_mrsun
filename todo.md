@@ -11,9 +11,9 @@
 ## () r89 - Starting From Electionjs Project Example, node folder
 * (done) start with the source code from r88 of the MrSun Electionjs prototype
 * (done) rename /html/index.html to /html/index_election.js and make the needed change in /main.js
+* (done) start a new index.html that will be for the browser version
 * () start a node/server folder as I would like to work on making a 'browser' version of the game
 * () README file for node/server
-* () start a new index.html that will be for the browser version
 
 
 <!-- PROTOTYPE -->
