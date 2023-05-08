@@ -64,12 +64,11 @@ const state_land = {
         ctx.fillStyle = 'black';
         ctx.fillRect(0,0, canvas.width, canvas.height);
         // the sprite object for land state
+
         section.sprite_land.update();
         utils.drawSprite(section.sprite_land, ctx, canvas);
-        // render blocks
-        //ctx.globalAlpha = 1;
         utils.drawLandSection(sm, ctx, canvas, section, data);
-        //ctx.globalAlpha = 1;
+
         // buttons
         utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_next, sm.ctx, sm.canvas);
