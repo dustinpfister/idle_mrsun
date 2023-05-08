@@ -2,18 +2,22 @@
 
 <!-- FINAL GAME -->
 
-## () r91 - 
+## () rx - Using lzString for image data
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
 
-## () r90 - Displaying upgrade Costs
+## () rx - Displaying upgrade Costs
 * () I should just display what the cost is on a block by block basis
 
-## () r89 - Starting From Electionjs Project Example, node folder
+## () r90 - mrsun-platform-browser
+* () start a mrsun-platform-browser folder for the browser version of the PLATFROM API
+* () just use local storage
+
+## ( done 05/07/2023 ) r89 - node folder, browser version started
 * (done) start with the source code from r88 of the MrSun Electionjs prototype
 * (done) rename /html/index.html to /html/index_election.js and make the needed change in /main.js
 * (done) start a new index.html that will be for the browser version
-* () start a node/server folder as I would like to work on making a 'browser' version of the game
-* () README file for node/server
+* (done) start a node/server folder as I would like to work on making a 'browser' version of the game
+* (done) README file for node/server
 
 
 <!-- PROTOTYPE -->

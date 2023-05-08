@@ -81,8 +81,6 @@
 * () have a onTransitionOut type hook
 * () have a renderTransition method that will be used in place for render when transitions are active
 
-
-
 <!-------- ----------
  OBJECT2D class
 ---------- ---------->
@@ -97,20 +95,6 @@
 
 ## () - rx - object2d-buttons.js
 * () have a buttons lib that extends the Object2D class
-
-<!-------- ----------
- BROWSER BUILD
----------- ---------->
-
-## () rx - browser platform file
-* () Start a BROWSER form of the API that I have in preload.js
-* () See if using local storage for this will work fine
-
-## () rx - server script
-* () I would like to have a script that will run a simple static server
-* () have it so that I can call npm run server to start the server
-* () with the server script I am hosting the game over the network on a given port
-* () this should just host the browser build version of the game over the network
 
 <!-------- ----------
  ELECTIONJS BUILD FEATURES
