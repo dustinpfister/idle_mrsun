@@ -10,8 +10,9 @@
 * (done) the getBlockUpgradeInfo helper will return an object that will contain upgrade cost
 * (done) the object can also contain an afford bool that will be true of game.mana > upgrade cost
 * (done) use this new helper method in gameMod.upgradeBlock
-* () use this new helper method a new gameMod.getUpgradeCostGrid method that will return a collection these upgrade cost objects
-* () use new gameMod.getUpgradeCostGrid in rendering of land state
+
+* () I might want to make this getBlockUpgradeInfo a public method
+* () use new gameMod.getBlockUpgradeInfo in rendering of land state
 
 * () only use gameMod.getUpgradeCostGrid when upgrade button is clicked
 * () pull code for utils.drawLandSection into land state if it is only used there

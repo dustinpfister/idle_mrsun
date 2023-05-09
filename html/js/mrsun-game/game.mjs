@@ -88,46 +88,6 @@ const getSunspotWorldValueBase = (world_mana_value) => {
     alpha = alpha > 1 ? 1 : alpha;
     return base_max - (base_max - base_min) * alpha;
 };
-// get upgrade info object
-const getBlockUpgradeInfo = (game, i_section, i_slot, level_delta) => {
-    level_delta = level_delta === undefined ? 1 : level_delta;
-    const section = game.lands.sections[i_section];
-    const slot = section.slots[i_slot];
-    const block = slot.block;
-    // start state of UpGrade info object
-    const ug_info = {
-        block: block,
-        section: section,
-        slot: slot,
-        level_delta: 0,
-        level_current: block.level,
-        level_target: block.level,
-        can_upgrade: false,
-        afford: false,
-        cost: 0
-    };
-    // parse strings like max and mod5
-    if( level_delta === 'max' ){
-        level_delta = block.getMaxLevel(game.mana) - block.level;
-    }
-    if( String(level_delta).match(/mod/)){
-        const m = parseInt(level_delta.split('mod')[1]);
-        level_delta =  Math.round(m - m * ( (block.level / m % m) % 1 ));
-    }
-    // set props for level, cost, boolens
-    ug_info.level_delta = level_delta;
-    ug_info.level_target = block.level + ug_info.level_delta;
-    ug_info.cost_dec = block.getUpgradeCost(block.level, ug_info.level_target);
-    ug_info.cost = ug_info.cost_dec.toNumber();
-    ug_info.cost_str = utils.formatDecimal(ug_info.cost_dec, 4);
-    if(block.type === 'rock' && !slot.locked ){
-        ug_info.can_upgrade = true;
-    }
-    if(block.type === 'rock' && block.level < constant.BLOCK_MAX_LEVEL && game.mana.gte( ug_info.cost_dec ) ){
-        ug_info.afford = true;
-    }
-    return ug_info;
-};
 //-------- ----------
 // PUBLIC API
 //-------- ----------
@@ -354,9 +314,49 @@ gameMod.createBlock = (game, i_section, i_slot, level) => {
     }
     console.log('all slots are locked, there is no blank slots, or there is no mana.');
 };
+// get upgrade info object
+gameMod.getBlockUpgradeInfo = (game, i_section, i_slot, level_delta) => {
+    level_delta = level_delta === undefined ? 1 : level_delta;
+    const section = game.lands.sections[i_section];
+    const slot = section.slots[i_slot];
+    const block = slot.block;
+    // start state of UpGrade info object
+    const ug_info = {
+        block: block,
+        section: section,
+        slot: slot,
+        level_delta: 0,
+        level_current: block.level,
+        level_target: block.level,
+        can_upgrade: false,
+        afford: false,
+        cost: 0
+    };
+    // parse strings like max and mod5
+    if( level_delta === 'max' ){
+        level_delta = block.getMaxLevel(game.mana) - block.level;
+    }
+    if( String(level_delta).match(/mod/)){
+        const m = parseInt(level_delta.split('mod')[1]);
+        level_delta =  Math.round(m - m * ( (block.level / m % m) % 1 ));
+    }
+    // set props for level, cost, boolens
+    ug_info.level_delta = level_delta;
+    ug_info.level_target = block.level + ug_info.level_delta;
+    ug_info.cost_dec = block.getUpgradeCost(block.level, ug_info.level_target);
+    ug_info.cost = ug_info.cost_dec.toNumber();
+    ug_info.cost_str = utils.formatDecimal(ug_info.cost_dec, 4);
+    if(block.type === 'rock' && !slot.locked ){
+        ug_info.can_upgrade = true;
+    }
+    if(block.type === 'rock' && block.level < constant.BLOCK_MAX_LEVEL && game.mana.gte( ug_info.cost_dec ) ){
+        ug_info.afford = true;
+    }
+    return ug_info;
+};
 // upgrade block
 gameMod.upgradeBlock = (game, i_section, i_slot, level_delta) => {
-    const ug_info = getBlockUpgradeInfo(game, i_section, i_slot, level_delta);
+    const ug_info = gameMod.getBlockUpgradeInfo(game, i_section, i_slot, level_delta);
     if( ug_info.afford ){
         manaDebit(game, ug_info.cost_dec );
         ug_info.block.setLevel(ug_info.level_target, 'rock', 1);
