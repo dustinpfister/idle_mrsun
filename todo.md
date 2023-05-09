@@ -7,14 +7,17 @@
 
 ## () rx - Displaying upgrade Costs
 * () I should just display what the cost is on a block by block basis
+* () auto save should happen when using keyboard events to set sun position
 
-## () r90 - mrsun-platform-browser
+
+## ( done 05/09/2023 ) - r90 - mrsun-platform-browser
 * (done) I should be able to start the static server by calling '$ npm run static'
 * (done) update README with install section
 * (done) start a mrsun-platform-browser folder for the browser version of the PLATFROM API
-* () use local storage for auto save and auto load features
+* (done) use local storage for auto load feature
+* (done) use local storage for auto save feature
 
-## ( done 05/07/2023 ) r89 - node folder, browser version started
+## ( done 05/08/2023 ) - r89 - node folder, browser version started
 * (done) start with the source code from r88 of the MrSun Electionjs prototype
 * (done) rename /html/index.html to /html/index_election.js and make the needed change in /main.js
 * (done) start a new index.html that will be for the browser version
