@@ -11,8 +11,8 @@
 ## () r90 - mrsun-platform-browser
 * (done) I should be able to start the static server by calling '$ npm run static'
 * (done) update README with install section
-* () start a mrsun-platform-browser folder for the browser version of the PLATFROM API
-* () just use local storage
+* (done) start a mrsun-platform-browser folder for the browser version of the PLATFROM API
+* () use local storage for auto save and auto load features
 
 ## ( done 05/07/2023 ) r89 - node folder, browser version started
 * (done) start with the source code from r88 of the MrSun Electionjs prototype

@@ -17,7 +17,7 @@ const PLATFORM_NOOP = {};
 // dummy auto load
 PLATFORM_NOOP.auto_load = () => {
   const err = new Error('No auto load feature with this dummy MS API');
-  return Promise.reject(err)
+  return Promise.reject(err);
 };
 PLATFORM_NOOP.auto_save = () => {
     const err = new Error('No auto save feature with this dummy MS API');
