@@ -226,6 +226,7 @@ gameMod.create = (opt) => {
        tick: 0,           // game should update by a main tick count
        tick_last: 0,      // last tick can be subtracted from tick to get a tick delta
        last_update: opt.last_update || new Date(),
+       autosave: true,   // autosave feature on or off
        autosave_ticks: 0 // 1 or more ticks is the number of ticks to the next game save
     };
     game.tick = Math.floor(game.tick_frac);
@@ -390,10 +391,24 @@ gameMod.createSaveString = (game) => {
 };
 // save game method using whatever MS.auto_save is...
 gameMod.saveGame = (game) => {
-    if(game.platform){
+    // if we have a platform object, and autosave is on, then save the game.
+    if(game.platform && game.autosave){
         return game.platform.auto_save( gameMod.createSaveString( game ) );
     }
     return null;
+};
+// clear the game data
+gameMod.clearGame = (game) => {
+    // if we have a platform object, and autosave is on, then save the game.
+    if(game.platform && game.autosave){
+        if(game.platform.clear){
+            game.platform.clear();
+            game.autosave = false;
+            return true;
+        }
+        return false;
+    }
+    return false;
 };
 // parse a save string into an options object
 gameMod.parseSaveString = (text_lz) => {

@@ -36,6 +36,8 @@ PLATFORM.auto_save = (text_lz) => {
        stdio: 'ignore'
     });
 };
+// clear method
+PLATFORM.clear = (text_lz) => {};
 // simple log function (using this to just test out features like visibility change events and so forth might remove )
 PLATFORM.log = (mess) => {
     process.stdout.write( mess.toString() + '\n' );

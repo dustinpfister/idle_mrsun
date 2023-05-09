@@ -32,6 +32,11 @@ PLATFORM_BROWSER.auto_save = (text_lz) => {
     }
 };
 
+// using the removeItem method of local stoarge to clear state
+PLATFORM_BROWSER.clear = () => {
+    localStorage.removeItem(LS_KEY);
+};
+
 PLATFORM_BROWSER.log = (mess) => {
     console.log(mess);
 };

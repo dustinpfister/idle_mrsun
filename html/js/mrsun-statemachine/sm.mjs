@@ -115,6 +115,16 @@ StateMachine.create = (opt_create) => {
         const state = sm.currentState = sm.states[sm.currentStateKey];
         state.start(sm, opt, state.data);
     };
+    
+    sm.clear = () => {
+        if(!sm.game){
+            console.log( 'no game object to clear' );
+            return;
+        }
+        gameMod.clearGame(sm.game);
+        const opt_game = gameMod.parseSaveString(constant.SAVE_STRING);
+        sm.game = gameMod.create(Object.assign(opt_game, { platform: sm.platform }));
+    };
     // APPEND STATE OBJECTS
     sm.states.init = state_init;
     sm.states.world = state_world;

@@ -9,13 +9,17 @@
 * () I should just display what the cost is on a block by block basis
 * () auto save should happen when using keyboard events to set sun position
 
-
 ## ( done 05/09/2023 ) - r90 - mrsun-platform-browser
 * (done) I should be able to start the static server by calling '$ npm run static'
 * (done) update README with install section
 * (done) start a mrsun-platform-browser folder for the browser version of the PLATFROM API
 * (done) use local storage for auto load feature
 * (done) use local storage for auto save feature
+* (done) added an sm.clear method as a way to clear the local storage
+
+
+* () fix bug where mana temp for blocks is going down as they level up when sunspot count is zero
+
 
 ## ( done 05/08/2023 ) - r89 - node folder, browser version started
 * (done) start with the source code from r88 of the MrSun Electionjs prototype
