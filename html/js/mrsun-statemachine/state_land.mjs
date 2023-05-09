@@ -5,6 +5,26 @@ import { Vector2 } from '../vector2/vector2.mjs'
 import { constant } from "../mrsun-constant/constant.mjs"
 
 
+const drawBlockOutline = (ctx, x, y, opt) => {
+    const sx = opt.grid_w / 2 * -1;
+    const sy = opt.grid_h / 2 * -1;
+    ctx.strokeStyle = 'white';
+    ctx.beginPath();
+    ctx.rect(x, y, opt.block_width, opt.block_height);
+    ctx.stroke();
+};
+
+const drawBlockLevelText = (ctx, x, y, block, opt) => {
+    ctx.font = '10px arial';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    if(block.type === 'rock' && opt.block_infodisp){
+        ctx.fillStyle = 'white';
+        ctx.fillText(block.level, x + 5, y + 5);
+    }
+};
+
+// main draw land section helper
 const drawLandSection = (sm, ctx, canvas, section, opt ) => {
     opt = opt || {};
     opt.block_infodisp = opt.block_infodisp || false;
@@ -14,20 +34,21 @@ const drawLandSection = (sm, ctx, canvas, section, opt ) => {
     const sx = opt.grid_w / 2 * -1;
     const sy = opt.grid_h / 2 * -1;
     let i = 0;
-    ctx.font = '10px arial';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
+
     while(i < constant.SLOT_GRID_LEN){
         const bx = i % constant.SLOT_GRID_WIDTH;
         const by = Math.floor(i / constant.SLOT_GRID_WIDTH);
         const i_slot = by * constant.SLOT_GRID_WIDTH + bx;
         const slot = section.slots[i_slot];
         const block = slot.block;
-        ctx.fillStyle = 'cyan';
-        if(!slot.locked){
-            ctx.fillStyle = block.type === 'blank' ? 'black' : 'red';
-        }
+        const x = sx + opt.block_width * bx;
+        const y = sy + opt.block_height * by;
         // render a block
+
+        drawBlockOutline(ctx, x, y, opt);
+        drawBlockLevelText(ctx, x, y, block, opt);
+
+/*
         ctx.strokeStyle = 'white';
         ctx.beginPath();
         const x = sx + opt.block_width * bx;
@@ -35,11 +56,14 @@ const drawLandSection = (sm, ctx, canvas, section, opt ) => {
         ctx.rect(x, y, opt.block_width, opt.block_height);
         //ctx.fill();
         ctx.stroke();
+*/
         // level text
+/*
         if(block.type === 'rock' && opt.block_infodisp){
             ctx.fillStyle = 'white';
             ctx.fillText(block.level, x + 5, y + 5);
         }
+*/
         i += 1;
     }
     ctx.restore();

@@ -10,13 +10,12 @@
 * (done) the getBlockUpgradeInfo helper will return an object that will contain upgrade cost
 * (done) the object can also contain an afford bool that will be true of game.mana > upgrade cost
 * (done) use this new helper method in gameMod.upgradeBlock
+* (done) I might want to make this getBlockUpgradeInfo a public method
+* (done) pull code for utils.drawLandSection into land state if it is only used there
+* (done) break utils.drawLandSection down into a single main method and one or more addtional helper for grid, level, and upgrade cost
 
-* () I might want to make this getBlockUpgradeInfo a public method
 * () use new gameMod.getBlockUpgradeInfo in rendering of land state
 
-* () only use gameMod.getUpgradeCostGrid when upgrade button is clicked
-* () pull code for utils.drawLandSection into land state if it is only used there
-* () break utils.drawLandSection down into a single main method and one or more addtional helper for grid, level, and upgrade cost
 
 * () auto save should happen when using keyboard events to set sun position
 
