@@ -2,10 +2,10 @@
 
 <!-- FINAL GAME -->
 
-## () rx - Using lzString for image data
+## () - rx - Using lzString for image data
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
 
-## () rx - Displaying upgrade Costs
+## () - r91 - Displaying upgrade Costs
 * () I should just display what the cost is on a block by block basis
 * () auto save should happen when using keyboard events to set sun position
 
@@ -17,6 +17,7 @@
 * (done) use local storage for auto save feature
 * (done) added an sm.clear method as a way to clear the local storage
 * (done) fix bug where mana temp for blocks is going down as they level up when sunspot count is zero
+* (done) make sure that the mana value for blank block types is zero
 
 ## ( done 05/08/2023 ) - r89 - node folder, browser version started
 * (done) start with the source code from r88 of the MrSun Electionjs prototype

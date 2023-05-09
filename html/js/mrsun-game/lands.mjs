@@ -161,14 +161,19 @@ class Block {
     }
     // set the mana value object for this block
     setManaValue () {
+        // by default value is just the powers of 10 added up
         const mv_level = utils.addPows(10, this.level - 1);
-        const block = this;
-        this.mana_value = {
+        const obj_value = {
            mv_level: new Decimal(mv_level),
            valueOf: function(){
                return this.mv_level;
             }
         };
+        // if blank the value should be zero
+        if(this.type === 'blank'){
+            obj_value.mv_level = new Decimal(0);
+        }
+        this.mana_value = obj_value;
     }
     // get the upgrade cost AT the given CURRENT block level
     getUpgradeCost (level_current, level_target) {
