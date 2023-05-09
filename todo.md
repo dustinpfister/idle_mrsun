@@ -6,7 +6,17 @@
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
 
 ## () - r91 - Displaying upgrade Costs
-* () I should just display what the cost is on a block by block basis
+* (done) logic in gameMod.upgradeBlock needs to be pulled into a getBlockUpgradeInfo helper
+* () the getBlockUpgradeInfo helper will return an object that will contain upgrade cost
+* () the object can also contain an afford bool that will be true of game.mana > upgrade cost
+* () use this new helper method in gameMod.upgradeBlock
+* () use this new helper method a new gameMod.getUpgradeCostGrid method that will return a collection these upgrade cost objects
+* () use new gameMod.getUpgradeCostGrid in rendering of land state
+
+* () only use gameMod.getUpgradeCostGrid when upgrade button is clicked
+* () pull code for utils.drawLandSection into land state if it is only used there
+* () break utils.drawLandSection down into a single main method and one or more addtional helper for grid, level, and upgrade cost
+
 * () auto save should happen when using keyboard events to set sun position
 
 ## ( done 05/09/2023 ) - r90 - mrsun-platform-browser
