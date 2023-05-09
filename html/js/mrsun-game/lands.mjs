@@ -162,6 +162,7 @@ class Block {
     // set the mana value object for this block
     setManaValue () {
         const mv_level = utils.addPows(10, this.level - 1);
+        const block = this;
         this.mana_value = {
            mv_level: new Decimal(mv_level),
            valueOf: function(){
@@ -190,6 +191,10 @@ class Block {
         const TYPE_DEF = constant.BLOCKS[this.type];
         this.mana_base = TYPE_DEF.mana_base * sunspot_multi * this.level;
         this.mana_temp = Math.pow(TYPE_DEF.mana_temp * sunspot_multi, this.level);
+        // for non blank types I want to make sure mana temp does not go below 1
+        if(this.type != 'blank'){
+            this.mana_temp = this.mana_temp < 1 ? 1 : this.mana_temp;
+        }
     }
     // set the current level of the block, can also change type
     setLevel (level, type, sunspot_multi = 1 ) {

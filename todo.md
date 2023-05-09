@@ -16,10 +16,7 @@
 * (done) use local storage for auto load feature
 * (done) use local storage for auto save feature
 * (done) added an sm.clear method as a way to clear the local storage
-
-
-* () fix bug where mana temp for blocks is going down as they level up when sunspot count is zero
-
+* (done) fix bug where mana temp for blocks is going down as they level up when sunspot count is zero
 
 ## ( done 05/08/2023 ) - r89 - node folder, browser version started
 * (done) start with the source code from r88 of the MrSun Electionjs prototype
