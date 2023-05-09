@@ -3,6 +3,47 @@ import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
 import { constant } from "../mrsun-constant/constant.mjs"
+
+
+const drawLandSection = (sm, ctx, canvas, section, opt ) => {
+    opt = opt || {};
+    opt.block_infodisp = opt.block_infodisp || false;
+    ctx.save();
+    ctx.translate(opt.grid_cx , opt.grid_cy);
+    ctx.rotate(opt.grid_radian);
+    const sx = opt.grid_w / 2 * -1;
+    const sy = opt.grid_h / 2 * -1;
+    let i = 0;
+    ctx.font = '10px arial';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    while(i < constant.SLOT_GRID_LEN){
+        const bx = i % constant.SLOT_GRID_WIDTH;
+        const by = Math.floor(i / constant.SLOT_GRID_WIDTH);
+        const i_slot = by * constant.SLOT_GRID_WIDTH + bx;
+        const slot = section.slots[i_slot];
+        const block = slot.block;
+        ctx.fillStyle = 'cyan';
+        if(!slot.locked){
+            ctx.fillStyle = block.type === 'blank' ? 'black' : 'red';
+        }
+        // render a block
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        const x = sx + opt.block_width * bx;
+        const y = sy + opt.block_height * by;
+        ctx.rect(x, y, opt.block_width, opt.block_height);
+        //ctx.fill();
+        ctx.stroke();
+        // level text
+        if(block.type === 'rock' && opt.block_infodisp){
+            ctx.fillStyle = 'white';
+            ctx.fillText(block.level, x + 5, y + 5);
+        }
+        i += 1;
+    }
+    ctx.restore();
+};
 //-------- ----------
 // STATE OBJECT FOR LAND
 //-------- ----------
@@ -67,7 +108,7 @@ const state_land = {
 
         section.sprite_land.update();
         utils.drawSprite(section.sprite_land, ctx, canvas);
-        utils.drawLandSection(sm, ctx, canvas, section, data);
+        drawLandSection(sm, ctx, canvas, section, data);
 
         // buttons
         utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
