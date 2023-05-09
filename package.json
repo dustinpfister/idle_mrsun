@@ -4,7 +4,8 @@
   "description": "Browser window example",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "static": "nodejs ./nodejs/server-static/index.js"
   },
   "author": "Dustin Pfister",
   "license": "GPL-3.0",
