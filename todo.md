@@ -10,8 +10,7 @@
 
 ## () r90 - mrsun-platform-browser
 * (done) I should be able to start the static server by calling '$ npm run static'
-* () update README with install section
-* () update README with static server section
+* (done) update README with install section
 * () start a mrsun-platform-browser folder for the browser version of the PLATFROM API
 * () just use local storage
 
