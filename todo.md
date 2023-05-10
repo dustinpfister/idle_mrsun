@@ -13,8 +13,7 @@
 * (done) I might want to make this getBlockUpgradeInfo a public method
 * (done) pull code for utils.drawLandSection into land state if it is only used there
 * (done) break utils.drawLandSection down into a single main method and one or more addtional helper for grid, level, and upgrade cost
-
-* () use new gameMod.getBlockUpgradeInfo in rendering of land state
+* (done) use new gameMod.getBlockUpgradeInfo in rendering of land state
 
 
 * () auto save should happen when using keyboard events to set sun position

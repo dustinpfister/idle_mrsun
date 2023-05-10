@@ -3,8 +3,10 @@ import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
 import { constant } from "../mrsun-constant/constant.mjs"
-
-
+//-------- ----------
+// RENDERING HELPERS
+//-------- ----------
+// draw just an outline for a block
 const drawBlockOutline = (ctx, x, y, opt) => {
     const sx = opt.grid_w / 2 * -1;
     const sy = opt.grid_h / 2 * -1;
@@ -13,7 +15,7 @@ const drawBlockOutline = (ctx, x, y, opt) => {
     ctx.rect(x, y, opt.block_width, opt.block_height);
     ctx.stroke();
 };
-
+// draw block level text
 const drawBlockLevelText = (ctx, x, y, block, opt) => {
     ctx.font = '10px arial';
     ctx.textAlign = 'left';
@@ -23,7 +25,24 @@ const drawBlockLevelText = (ctx, x, y, block, opt) => {
         ctx.fillText(block.level, x + 5, y + 5);
     }
 };
-
+// draw level up cost info
+const drawBlockLevelUpInfo = (ctx, x, y, slot, section, sm, opt) => {
+    const block = slot.block;
+    ctx.font = '10px arial';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    if(block.type === 'rock' && opt.block_infodisp){
+        ctx.fillStyle = 'white';
+        const ug_button = sm.states.land.data.button_bm_upgrade;
+        const level_data = ug_button.options[ug_button.i_option];
+        const ug_info = gameMod.getBlockUpgradeInfo(sm.game, section.i, slot.i, level_data);
+        ctx.fillStyle = '0xffffff';
+        if(!ug_info.afford){
+            ctx.fillStyle = '0xff0000';
+        }
+        ctx.fillText(ug_info.cost_str, x + 5, y + 15);
+    }
+};
 // main draw land section helper
 const drawLandSection = (sm, ctx, canvas, section, opt ) => {
     opt = opt || {};
@@ -44,26 +63,11 @@ const drawLandSection = (sm, ctx, canvas, section, opt ) => {
         const x = sx + opt.block_width * bx;
         const y = sy + opt.block_height * by;
         // render a block
-
         drawBlockOutline(ctx, x, y, opt);
         drawBlockLevelText(ctx, x, y, block, opt);
 
-/*
-        ctx.strokeStyle = 'white';
-        ctx.beginPath();
-        const x = sx + opt.block_width * bx;
-        const y = sy + opt.block_height * by;
-        ctx.rect(x, y, opt.block_width, opt.block_height);
-        //ctx.fill();
-        ctx.stroke();
-*/
-        // level text
-/*
-        if(block.type === 'rock' && opt.block_infodisp){
-            ctx.fillStyle = 'white';
-            ctx.fillText(block.level, x + 5, y + 5);
-        }
-*/
+        drawBlockLevelUpInfo(ctx, x, y, slot, section, sm, opt);
+
         i += 1;
     }
     ctx.restore();
@@ -106,6 +110,9 @@ const state_land = {
     // the start hook will be called each time this state is started
     start: (sm, opt, data) => {
         console.log('land state start...');
+
+console.log(sm.states.land);
+
         const lands = sm.game.lands;
         const bt_counts = sm.game.lands.bt_counts;
         utils.button_set(data, 'unlock');
