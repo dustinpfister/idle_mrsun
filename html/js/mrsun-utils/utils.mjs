@@ -105,6 +105,17 @@ utils.drawButton = ( sm, button, ctx, canvas ) => {
     ctx.arc(button.position.x, button.position.y, button.r, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+    // if progress
+    if(button.progress){
+        ctx.strokeStyle = '#00ff00';
+        ctx.lineWidth = 3;
+        const radian_start = Math.PI * 1.5 ;
+        const radian = radian_start + Math.PI * 2 * button.progress;
+        ctx.beginPath();
+        ctx.arc(button.position.x, button.position.y, button.r, radian_start, radian);
+        ctx.fill();
+        ctx.stroke();
+    }
     // desc
     ctx.fillStyle = 'white';
     ctx.font = '12px arial';

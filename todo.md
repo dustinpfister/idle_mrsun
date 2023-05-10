@@ -4,7 +4,12 @@
 
 ## () - rx - Using lzString for image data
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
+
+## () - r91 - supernova progress bar
+* (done) have a super nove progress bar
+* () I would like to have it so that supernove cost needs to be zero to do a super nova
 * () auto save should happen when using keyboard events to set sun position
+* () have a utils.renderBackground method and use that in all states
 
 ## ( done 05/10/2023 ) - r91 - Displaying upgrade Costs
 * (done) logic in gameMod.upgradeBlock needs to be pulled into a getBlockUpgradeInfo helper

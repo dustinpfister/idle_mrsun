@@ -19,7 +19,7 @@ const render_background = (sm, ctx, canvas, data) => {
 const state_supernova = {
     data: {
         button_back : {  desc: 'Back', position: new Vector2(600, 38), r: 32 },
-        button_newgame : {  desc: 'New Game', position: new Vector2(580, 420), r: 40 }
+        button_newgame : {  desc: 'New Game', progress: 0.75, position: new Vector2(60, 420), r: 40 }
     },
     start: (sm, opt) => {},
     update: (sm, secs) => {
@@ -30,6 +30,7 @@ const state_supernova = {
         const snc = gameMod.getSupernovaCost(sm.game);
         // background
         render_background(sm, ctx, canvas, data);
+        // back and new game buttons
         utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_newgame, sm.ctx, sm.canvas);
         // disp

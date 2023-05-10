@@ -3,12 +3,8 @@
 <!-- Plans for 'MrSun idle' -->
 
 <!-------- ----------
- MRSUN-GAME
+ MRSUN-GAME - game.mjs, lands.mjs, sun.mjs
 ---------- ---------->
-
-## () - rx - sunspot upgrades state object
-* () start a sunspot upgrades menu
-* () the first upgrade can be something that lowers the base use to figure sunspots delta world value
 
 ## () - rx - total game ticks
 * () have a grand total game ticks count that will not reset with a super nova event
@@ -27,7 +23,7 @@
 * () a slot object will have a disabled property which means that it can not be used at all
 
 <!-------- ----------
- MRSUN-UTILS/utils.js
+ MRSUN-UTILS - utils.mjs
 ---------- ---------->
 
 ## () - rx - utils format decimal, percision
@@ -39,6 +35,10 @@
  MRSUN-STATEMACHINE
 ---------- ---------->
 
+## () - rx - sunspot upgrades state object
+* () start a sunspot upgrades menu
+* () the first upgrade can be something that lowers the base use to figure sunspots delta world value
+
 ## () - rx - State switcher UI
 * () I would like to have a state switcher UI
 * () I could have a main button that will show or hide the state switcher UI
@@ -49,6 +49,18 @@
 
 ## () - rx - Half max button option
 * () have a half max upgrade button option
+
+## () - rx - Always state objects, State object priority
+* () have always state objects that will always fire each time regardless of what the current state object is
+* () have a new system for the state keys where I can add a number after the key name to define what the priority should be
+* () default priority for state objects can be 2, but can be set to 0 to get them to fire before always\_1
+
+## () - rx - Transition hooks
+* () start transition events that will fire each time the setState method is called
+* () have a onTransitionStart hook
+* () have a onTransitionIn type hook
+* () have a onTransitionOut type hook
+* () have a renderTransition method that will be used in place for render when transitions are active
 
 <!-------- ----------
  RENDERING / GRAPHICS
@@ -66,26 +78,10 @@
 * () I would like to have animated slots
 
 <!-------- ----------
- STATE MACHINE
----------- ---------->
-
-## () - rx - Always state objects, State object priority
-* () have always state objects that will always fire each time regardless of what the current state object is
-* () have a new system for the state keys where I can add a number after the key name to define what the priority should be
-* () default priority for state objects can be 2, but can be set to 0 to get them to fire before always\_1
-
-## () - rx - Transition hooks
-* () start transition events that will fire each time the setState method is called
-* () have a onTransitionStart hook
-* () have a onTransitionIn type hook
-* () have a onTransitionOut type hook
-* () have a renderTransition method that will be used in place for render when transitions are active
-
-<!-------- ----------
  OBJECT2D class
 ---------- ---------->
 
-## () - rx get children feature of Base Object2d class working
+## () - rx - get children feature of Base Object2d class working
 * () I would like to get the add feature of the object2d class working
 
 ## () - rx - object2d-dialog - start a message system
