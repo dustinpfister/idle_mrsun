@@ -14,7 +14,10 @@
 * (done) pull code for utils.drawLandSection into land state if it is only used there
 * (done) break utils.drawLandSection down into a single main method and one or more addtional helper for grid, level, and upgrade cost
 * (done) use new gameMod.getBlockUpgradeInfo in rendering of land state
+* (done) text of upgrade cost should be red if the play can not afford it
 
+* () update gameMod.getBlockUpgradeInfo to parse x1, x2, x5, ect
+* () update code in pointer down event by just passing the current option
 
 * () auto save should happen when using keyboard events to set sun position
 

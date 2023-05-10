@@ -14,10 +14,12 @@ const drawBlockOutline = (ctx, x, y, opt) => {
     ctx.beginPath();
     ctx.rect(x, y, opt.block_width, opt.block_height);
     ctx.stroke();
+    ctx.fillStyle = 'rgba(0,0,0, 0.15)';
+    ctx.fill();
 };
 // draw block level text
 const drawBlockLevelText = (ctx, x, y, block, opt) => {
-    ctx.font = '10px arial';
+    ctx.font = '9px arial';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     if(block.type === 'rock' && opt.block_infodisp){
@@ -28,7 +30,7 @@ const drawBlockLevelText = (ctx, x, y, block, opt) => {
 // draw level up cost info
 const drawBlockLevelUpInfo = (ctx, x, y, slot, section, sm, opt) => {
     const block = slot.block;
-    ctx.font = '10px arial';
+    ctx.font = '9px arial';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     if(block.type === 'rock' && opt.block_infodisp){
@@ -36,11 +38,11 @@ const drawBlockLevelUpInfo = (ctx, x, y, slot, section, sm, opt) => {
         const ug_button = sm.states.land.data.button_bm_upgrade;
         const level_data = ug_button.options[ug_button.i_option];
         const ug_info = gameMod.getBlockUpgradeInfo(sm.game, section.i, slot.i, level_data);
-        ctx.fillStyle = '0xffffff';
+        ctx.fillStyle = '#ffffff';
         if(!ug_info.afford){
-            ctx.fillStyle = '0xff0000';
+            ctx.fillStyle = '#ff0000';
         }
-        ctx.fillText(ug_info.cost_str, x + 5, y + 15);
+        ctx.fillText(ug_info.cost_str, x + 5, y + 16);
     }
 };
 // main draw land section helper
@@ -88,7 +90,7 @@ const state_land = {
         button_bm_create :  {  active: false, desc: 'Create', position: new Vector2(35, 180), r: 25 },
         button_bm_absorb :  {  active: false, desc: 'Absorb', position: new Vector2(35, 235), r: 25 },
         button_bm_upgrade : {  active: false, 
-                               options: ['1x', '2x', '5x', 'mod5', 'max'],
+                               options: ['x1', 'x2', 'x5', 'mod5', 'max'],
                                i_option: 3,
                                desc: 'Upgrade',
                                position: new Vector2(35, 290), r: 25 },
@@ -110,9 +112,6 @@ const state_land = {
     // the start hook will be called each time this state is started
     start: (sm, opt, data) => {
         console.log('land state start...');
-
-console.log(sm.states.land);
-
         const lands = sm.game.lands;
         const bt_counts = sm.game.lands.bt_counts;
         utils.button_set(data, 'unlock');

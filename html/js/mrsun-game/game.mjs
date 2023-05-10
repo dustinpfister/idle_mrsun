@@ -332,9 +332,13 @@ gameMod.getBlockUpgradeInfo = (game, i_section, i_slot, level_delta) => {
         afford: false,
         cost: 0
     };
-    // parse strings like max and mod5
-    if( level_delta === 'max' ){
+    // parse strings like max, 1x, mod5
+    if( level_delta === 'max' ){ // 'max'
         level_delta = block.getMaxLevel(game.mana) - block.level;
+    }
+    if( String(level_delta).match(/^x/)){ // 'x1', 'x2', 'x5', ect
+        const m = parseInt(level_delta.split('x')[1]);
+        level_delta = parseInt(m);
     }
     if( String(level_delta).match(/mod/)){
         const m = parseInt(level_delta.split('mod')[1]);
