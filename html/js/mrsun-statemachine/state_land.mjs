@@ -232,26 +232,9 @@ const state_land = {
                     }
                     if(data.block_mode === 'upgrade'){
                         const button = data.button_bm_upgrade;
-                        if(button.i_option === 0){
-                            console.log('1x upgrade');
-                            gameMod.upgradeBlock(sm.game, sm.landIndex, i, 1);
-                        }
-                        if(button.i_option === 1){
-                            console.log('2x upgrade');
-                            gameMod.upgradeBlock(sm.game, sm.landIndex, i, 2);
-                        }
-                        if(button.i_option === 2){
-                            console.log('5x upgrade');
-                            gameMod.upgradeBlock(sm.game, sm.landIndex, i, 5);
-                        }
-                        if(button.i_option === 3){
-                            console.log('mod5 upgrade');
-                            gameMod.upgradeBlock(sm.game, sm.landIndex, i, 'mod5');
-                        }
-                        if(button.i_option === 4){
-                            console.log('Max Upgrade!');
-                            gameMod.upgradeBlock(sm.game, sm.landIndex, i, 'max');
-                        }
+                        const option_str = button.options[button.i_option];
+                        console.log('trying an ' + option_str + ' upgrade');
+                        gameMod.upgradeBlock(sm.game, sm.landIndex, i, option_str);
                     }
                     if(data.block_mode === 'info'){
                         data.block_info_disp = true;

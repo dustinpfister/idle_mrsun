@@ -4,8 +4,9 @@
 
 ## () - rx - Using lzString for image data
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
+* () auto save should happen when using keyboard events to set sun position
 
-## () - r91 - Displaying upgrade Costs
+## ( done 05/10/2023 ) - r91 - Displaying upgrade Costs
 * (done) logic in gameMod.upgradeBlock needs to be pulled into a getBlockUpgradeInfo helper
 * (done) the getBlockUpgradeInfo helper will return an object that will contain upgrade cost
 * (done) the object can also contain an afford bool that will be true of game.mana > upgrade cost
@@ -15,11 +16,9 @@
 * (done) break utils.drawLandSection down into a single main method and one or more addtional helper for grid, level, and upgrade cost
 * (done) use new gameMod.getBlockUpgradeInfo in rendering of land state
 * (done) text of upgrade cost should be red if the play can not afford it
-
-* () update gameMod.getBlockUpgradeInfo to parse x1, x2, x5, ect
-* () update code in pointer down event by just passing the current option
-
-* () auto save should happen when using keyboard events to set sun position
+* (done) update gameMod.getBlockUpgradeInfo to parse x1, x2, x5, ect
+* (done) update code in pointer down event by just passing the current option
+* (done) with the max upgrade option the cost of current level + 1 should be the cost in the event that not even one level can be upgraded
 
 ## ( done 05/09/2023 ) - r90 - mrsun-platform-browser
 * (done) I should be able to start the static server by calling '$ npm run static'
