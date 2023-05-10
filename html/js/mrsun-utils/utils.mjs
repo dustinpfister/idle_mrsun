@@ -43,6 +43,19 @@ utils.button_check_blockmode = (data, new_block_mode, pos) => {
     });
 };
 //-------- ----------
+// DATES
+//-------- ----------
+utils.formatDate = (date) => {
+
+    date = typeof date === 'string' ? new Date(date) : date;
+
+    const month_str = new Intl.DateTimeFormat('en-US', { month: "long" }).format(date);
+    const date_str = date.getDate();
+    const year_str = date.getFullYear();
+    const time_str = date.getHours() + ':' + date.getMinutes();
+    return month_str + '/' + date_str + '/' + year_str + ' ' + time_str;
+};
+//-------- ----------
 // MATH UTILIES
 //-------- ----------
 utils.logOnce = (function(){

@@ -5,7 +5,7 @@
 ## () - rx - Using lzString for image data
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
 
-## () - r91 - supernova progress bar
+## () - r92 - supernova progress bar
 * (done) have a super nove progress bar
 * (done) I would like to have it so that supernove cost needs to be zero to do a super nova
 * (done) no longer open dev tools by default

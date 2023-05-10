@@ -111,6 +111,7 @@ gameMod.getSupernovaCost = ( game ) => {
     const cost_dec = new Decimal( Math.floor(startcost * ( 1  - a_reduction) ) );
     return {
         startcost: startcost,
+        startcost_dec: new Decimal(startcost),
         a_reduction: a_reduction,
         cost : cost_dec.toNumber(),
         cost_dec: cost_dec
