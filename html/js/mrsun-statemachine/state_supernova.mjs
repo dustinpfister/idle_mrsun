@@ -24,6 +24,9 @@ const state_supernova = {
     start: (sm, opt) => {},
     update: (sm, secs) => {
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
+       // update newe game button progress
+       const snc = gameMod.getSupernovaCost(sm.game);
+       state_supernova.data.button_newgame.progress = (snc.startcost - snc.cost) / snc.startcost;
     },
     render: (sm, ctx, canvas, data) => {
         // super nova cost object
@@ -59,7 +62,7 @@ const state_supernova = {
                 sm.setState('world', {});
             });
             // was supernova button clicked?
-            utils.button_check(data, 'button_newgame', pos, () => {
+            utils.button_check(data, 'button_newgame', pos, (button, data, key, pos) => {
                 const snc = gameMod.getSupernovaCost(sm.game);
                 if( sm.game.mana.gte( snc.cost_dec ) ){
                     const sp = sm.game.sunspots.add(sm.game.sunspots_delta);
