@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "static": "nodejs ./nodejs/server-static/index.js"
+    "static": "node ./nodejs/server-static/index.js"
   },
   "author": "Dustin Pfister",
   "license": "GPL-3.0",
