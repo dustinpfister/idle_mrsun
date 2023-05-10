@@ -7,7 +7,7 @@
 
 ## () - r91 - supernova progress bar
 * (done) have a super nove progress bar
-* () I would like to have it so that supernove cost needs to be zero to do a super nova
+* (done) I would like to have it so that supernove cost needs to be zero to do a super nova
 * () auto save should happen when using keyboard events to set sun position
 * () have a utils.renderBackground method and use that in all states
 

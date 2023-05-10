@@ -26,7 +26,12 @@ const state_supernova = {
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
        // update newe game button progress
        const snc = gameMod.getSupernovaCost(sm.game);
-       state_supernova.data.button_newgame.progress = (snc.startcost - snc.cost) / snc.startcost;
+       const button = state_supernova.data.button_newgame;
+       button.progress = (snc.startcost - snc.cost) / snc.startcost;
+       button.desc = 'Not Ready';
+       if( snc.cost_dec.lte(0) ){
+           button.desc = 'New Game';
+       }
     },
     render: (sm, ctx, canvas, data) => {
         // super nova cost object
@@ -64,7 +69,8 @@ const state_supernova = {
             // was supernova button clicked?
             utils.button_check(data, 'button_newgame', pos, (button, data, key, pos) => {
                 const snc = gameMod.getSupernovaCost(sm.game);
-                if( sm.game.mana.gte( snc.cost_dec ) ){
+                //if( sm.game.mana.gte( snc.cost_dec ) ){
+                if( snc.cost_dec.lte(0) ){
                     const sp = sm.game.sunspots.add(sm.game.sunspots_delta);
                     const start_date = sm.game.start_date;
                     sm.game = gameMod.create({ 
@@ -78,7 +84,7 @@ const state_supernova = {
                     console.log( sm.game.start_date );
                     sm.setState('world', {});
                 }else{
-                    console.log('not enough mana!');
+                    console.log('cost is over 0');
                 }
             });
         }
