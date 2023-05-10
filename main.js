@@ -17,7 +17,7 @@ const createMainWindow = () => {
     // load the html file for the main window
     mainWindow.loadFile('html/index_electron.html');
     // Open the DevTools for debugging
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
     const menu = Menu.buildFromTemplate(MainMenuTemplate);
     mainWindow.setMenu(menu);
     return mainWindow;
