@@ -69,7 +69,7 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle) => {
 const render_section_manadelta = (ctx, section, game) => {
     const fillStyle = '#afafaf';
     const alpha = section.mana_delta.div(game.mana_per_tick).toNumber();
-    let x = Math.round(constant.SLOT_GRID_WIDTH * alpha / 2);
+    let x = Math.ceil(constant.SLOT_GRID_WIDTH * alpha / 2);
     while(x--){
         render_slot_location(ctx, section, 5 + x, -1, fillStyle);
         render_slot_location(ctx, section, 4 - x, -1, fillStyle);
