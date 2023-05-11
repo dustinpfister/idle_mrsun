@@ -104,7 +104,8 @@ const state_world = {
                 sm.setState('supernova', {});
             });
         },
-        onkey: (sm, key, down, e, data) => {
+        onkey: (sm, key, down, e, data) => {},
+        onkeyfirst: (sm, key, down, e, data) => {
             const sun = sm.game.sun;
             if(down){
                 const a_lencurrent = sun.getLengthAlpha();
@@ -125,7 +126,6 @@ const state_world = {
                 }
             }
         },
-        onkeyfirst: (sm, key, down, e, data) => {},
         onkeyrepeat: (sm, key, down, e, data) => {}
     }
 };

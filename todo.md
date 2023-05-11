@@ -15,8 +15,9 @@
 
 ## () - r93 - Land Section mana delta values
 * (done) have section.mana\_delta prop values and update them in gameMod.updateByTickDelta
-* () display what these deltas are in land state
+* (done) display what these deltas are in land state
 * () see about displaying white arcs along with each section in world state
+* (done) on key first events now work they way the should
 
 ## ( done 05/11/2023 ) - r92 - supernova progress bar
 * (done) have a super nove progress bar

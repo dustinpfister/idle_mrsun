@@ -69,7 +69,9 @@ const commonKeyboardAction = (sm, type, e) => {
     if(events.onkey){
         events.onkey(sm, sm.key, sm.keydown, e, sm.currentState.data );
     }
-    
+    if(!sm.keydown){
+        sm.key = '';
+    }
 };
 //-------- ---------
 // PUBLIC API
