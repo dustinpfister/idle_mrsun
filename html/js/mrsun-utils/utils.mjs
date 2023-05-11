@@ -191,6 +191,23 @@ utils.drawCommonDisp = (sm, ctx, canvas) => {
     // tick count
     ctx.fillText('tick: ' + sm.game.tick, 10, 25);
 };
+// draw a section arc
+utils.drawSectionArc = (ctx, slotX, slotY, pos_center, rad_center, rad_delta_texel, radius_texel_delta, texelX, texelY, fillStyle) => {
+    const rad_edge = rad_center - constant.SLOT_RADIAN_DELTA;
+    const rad_slot_start = rad_edge + Math.PI / 180 * ( 30 / 10 * slotX );
+    const rad_start = rad_slot_start + rad_delta_texel * texelX;
+    const rad_end = rad_start + rad_delta_texel;
+    const radius_slot_low = constant.LAND_RADIUS_TOCENTER - constant.LAND_RADIUS + constant.SLOT_RADIUS_DELTA  * slotY;
+    const radius_low = radius_slot_low + radius_texel_delta * texelY;
+    const radius_high = radius_low + radius_texel_delta;
+    // draw arcs
+    ctx.beginPath();
+    ctx.arc(pos_center.x, pos_center.y, radius_low, rad_start, rad_end  );
+    ctx.arc(pos_center.x, pos_center.y, radius_high, rad_end, rad_start, true  );
+    ctx.closePath();
+    ctx.fillStyle = fillStyle
+    ctx.fill();
+};
 //-------- ----------
 // FORMAT DECIMAL TEST
 //-------- ----------

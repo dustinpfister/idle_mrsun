@@ -50,6 +50,14 @@ const render_section_text = (ctx, section) => {
     ctx.fillText(section.temp, section.position.x, section.position.y);
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
+// render the mana delta % arc for a given section
+const render_section_manadelta = (ctx, section) => {
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(section.position.x, section.position.y, 30, section.a - Math.PI * 0.5, section.a + Math.PI * 0.5);
+    ctx.stroke();
+};
 // RENDER DETAIL
 const render_detail = (sm, ctx, canvas, data) => {
     utils.render_background(sm, ctx, canvas, data);
@@ -58,6 +66,7 @@ const render_detail = (sm, ctx, canvas, data) => {
     sm.game.lands.sections.forEach((section, i) => {
         //section.sprite_world.update();
         utils.drawSprite(section.sprite_world, ctx, canvas);
+        render_section_manadelta(ctx, section);
         render_section_text(ctx, section);
     });
     render_display(sm, ctx, canvas, data)
