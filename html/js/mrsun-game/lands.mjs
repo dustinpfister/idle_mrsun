@@ -115,7 +115,7 @@ class SpriteLandSectionWorld extends Sprite {
         }
         const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
         // get a vector2 that is on the edge of the sun area
-        const v1 = new Vector2(64 + Math.cos(radian) * constant.radius_land, 64 + Math.sin(radian) * constant.radius_land );
+        //const v1 = new Vector2(64 + Math.cos(radian) * constant.radius_land, 64 + Math.sin(radian) * constant.radius_land );
         // get a vector2 that is the center location
         const v2 = new Vector2(
             64 + Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 

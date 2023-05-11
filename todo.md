@@ -20,8 +20,9 @@
 * (done) on key first events now work they way the should
 * (done) see about making a new utils render method that works like the drawSectionSlotTexel helper in lands.mjs
 * (done) the drawSectionSlotTexel should call this new utils render helper
+* (done) use the new helper to draw the mana delta arcs
+* () 
 
-* () use the new helper to draw the mana delta arcs
 
 ## ( done 05/11/2023 ) - r92 - supernova progress bar
 * (done) have a super nove progress bar

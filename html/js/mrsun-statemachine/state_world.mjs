@@ -50,13 +50,31 @@ const render_section_text = (ctx, section) => {
     ctx.fillText(section.temp, section.position.x, section.position.y);
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
+
+const render_slot_location = (ctx, section, slotX, slotY, fillStyle) => {
+    const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
+    const v2 = new Vector2(
+       Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 
+       Math.sin(radian) * constant.LAND_RADIUS_TOCENTER);
+    v2.add(section.position);
+    const rad_center = Math.PI * 2 / constant.LAND_OBJECT_COUNT * section.i;
+    const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH;
+    const radius_texel_delta = constant.SLOT_RADIUS_DELTA;
+    const texelX = 0;
+    const texelY = 0;
+    utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+};
+
 // render the mana delta % arc for a given section
-const render_section_manadelta = (ctx, section) => {
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(section.position.x, section.position.y, 30, section.a - Math.PI * 0.5, section.a + Math.PI * 0.5);
-    ctx.stroke();
+const render_section_manadelta = (ctx, section, game) => {
+
+    const alpha = section.mana_delta.div(game.mana_per_tick).toNumber();
+    let x = Math.round(constant.SLOT_GRID_WIDTH * alpha / 2);
+    while(x--){
+        render_slot_location(ctx, section, 5 + x, -1, '#ff0000');
+        render_slot_location(ctx, section, 4 - x, -1, '#ff0000');
+    }
+
 };
 // RENDER DETAIL
 const render_detail = (sm, ctx, canvas, data) => {
@@ -66,8 +84,11 @@ const render_detail = (sm, ctx, canvas, data) => {
     sm.game.lands.sections.forEach((section, i) => {
         //section.sprite_world.update();
         utils.drawSprite(section.sprite_world, ctx, canvas);
-        render_section_manadelta(ctx, section);
+
         render_section_text(ctx, section);
+
+        render_section_manadelta(ctx, section, sm.game);
+
     });
     render_display(sm, ctx, canvas, data)
 };
