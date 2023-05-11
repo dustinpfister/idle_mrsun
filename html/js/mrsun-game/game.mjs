@@ -256,6 +256,22 @@ gameMod.setSunPos = (game, pos) => {
     game.sun.setPosByVector2(pos);
     GAME_EVENTS.dispatchEvent({ type: 'autosave_delay', game: game });
 };
+// set the sun position
+gameMod.stepSunPos = (game, mode = 'length', index_delta = 0, grain = 10) => {
+    if(mode === 'length'){
+        game.sun.stepLengthByIndex(index_delta, grain);
+    }
+    if(mode === 'dir'){
+        game.sun.stepDirByIndex(index_delta, grain);
+    }
+    GAME_EVENTS.dispatchEvent({ type: 'autosave_delay', game: game });
+};
+
+gameMod.centerSun = (game) => {
+    game.sun.centerPos();
+    GAME_EVENTS.dispatchEvent({ type: 'autosave_delay', game: game });
+};
+
 // get land object by x, y pos or false if nothing there
 gameMod.getSectionByPos = (game, pos) => {
     let i = 0;

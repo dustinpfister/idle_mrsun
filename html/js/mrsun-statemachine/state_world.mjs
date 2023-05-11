@@ -84,7 +84,6 @@ const state_world = {
         render_detail(sm, ctx, canvas, data);
     },
     events: {
-
         pointerdown : (sm, pos, e, data) => {
             const sun = sm.game.sun;
             const d = pos.distanceTo(sun.center);
@@ -110,19 +109,19 @@ const state_world = {
             if(down){
                 const a_lencurrent = sun.getLengthAlpha();
                 if(key ==='ArrowRight'){
-                    sun.stepDirByIndex(1, 1);
+                    gameMod.stepSunPos(sm.game, 'dir', 1, 1);
                 }
                 if(key ==='ArrowLeft'){
-                    sun.stepDirByIndex(-1, 1);
+                    gameMod.stepSunPos(sm.game, 'dir', -1, 1);
                 }
                 if(key ==='ArrowUp'){
-                    sun.stepLengthByIndex(1, 10);
+                    gameMod.stepSunPos(sm.game, 'length', 1, 10);
                 }
                 if(key ==='ArrowDown'){
-                    sun.stepLengthByIndex(-1, 10);
+                    gameMod.stepSunPos(sm.game, 'length', -1, 10);
                 }
                 if(key.toLowerCase() ==='c'){
-                    sun.centerPos();
+                    gameMod.centerSun(sm.game);
                 }
             }
         },

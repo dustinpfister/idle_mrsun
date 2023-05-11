@@ -155,7 +155,7 @@ class Sun extends Sprite {
         this.position.copy(this.center).add(v);
         this.zeroLengthCheck();
     }
-    stepLengthByIndex(index_delta, range){
+    stepLengthByIndex(index_delta, range = 10){
         const a_lencurrent = this.getLengthAlpha();
         let len_index = Math.round( a_lencurrent * range );
         len_index = len_index + index_delta;
