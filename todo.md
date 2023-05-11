@@ -5,6 +5,11 @@
 ## () - rx - Using lzString for image data
 * () I should start to make use of the built in draw feature that uses lzString to compess image data
 
+## () - r93 - Land Sections Climate Index Values
+* () I would like to start to have Climate Index Values for Land Section Objects
+* () have a constant.CLIMATE object that will contain data that can be used to fine how many index values there are and so forth
+* () have a points system that will be used to find what the alpha range will be for each climate type
+
 ## () - r92 - supernova progress bar
 * (done) have a super nove progress bar
 * (done) I would like to have it so that supernove cost needs to be zero to do a super nova

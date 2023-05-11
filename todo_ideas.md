@@ -6,6 +6,8 @@
  MRSUN-GAME - game.mjs, lands.mjs, sun.mjs
 ---------- ---------->
 
+## () - rx - 
+
 ## () - rx - total game ticks
 * () have a grand total game ticks count that will not reset with a super nova event
 * () this will have to be part of the save
