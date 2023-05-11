@@ -5,6 +5,9 @@ import { Vector2 }  from "../vector2/vector2.mjs"
 // CONSTANT OBJECT
 //-------- ----------
 const constant = {};
+//-------- ----------
+// GAME - general game constants used in game.mjs, lands.mjs, sun.mjs, and any addtional assets that need them
+//-------- ----------
 constant.SUN_RADIUS = 40;
 constant.LAND_RADIUS = 40;
 constant.SUNAREA_RADIUS = 150;
@@ -25,9 +28,6 @@ constant.SLOT_RADIUS_DELTA = 68 / constant.SLOT_GRID_HEIGHT;
 constant.SLOT_RADIAN_DELTA = Math.PI / 180 * 15;
 constant.BLOCK_LAND_MAX = Math.round(constant.SLOT_GRID_LEN); //!!! might do away with this
 constant.LANDS_START_SECTION_DATA = [];
-constant.SUNSPOTS_WORLDVALUE_BASE_MAX = 10;
-constant.SUNSPOTS_WORLDVALUE_BASE_MIN = 1.0005;
-constant.SUNSPOTS_WORLDVALUE_MAXMANA = Math.pow(10, 10);
 constant.DEFAULT_CREATE_OPTIONS = {
     mana: constant.MANA_START,
     mana_spent: '0',
@@ -36,17 +36,23 @@ constant.DEFAULT_CREATE_OPTIONS = {
     sunspots: '0', 
     sectionData: constant.LANDS_START_SECTION_DATA
 };
+//-------- ----------
+// DECIMAL.JS - options
+//-------- ----------
 constant.DECIMAL_OPTIONS = { 
     precision: 40,
     maxE: 100,
     minE: -100
 };
 //-------- ----------
-// SUPERNOVA
+// SUPERNOVA / SUNSPOTS
 //-------- ----------
-constant.SUPERNOVA_STARTCOST_BASE = 2;
-constant.SUPERNOVA_STARTCOST_MAXPOW = 40;
+constant.SUPERNOVA_STARTCOST_BASE = 2;       // 10000 * Math.pow(2, 115) = 4.15...e+38
+constant.SUPERNOVA_STARTCOST_MAXPOW = 115;
 constant.SUPERNOVA_STARTCOST_NUM = 10000;
+constant.SUNSPOTS_WORLDVALUE_BASE_MAX = 10;
+constant.SUNSPOTS_WORLDVALUE_BASE_MIN = 1.0005;
+constant.SUNSPOTS_WORLDVALUE_MAXMANA = Math.pow(10, 10);
 //-------- ----------
 // BLOCK TYPES
 //-------- ----------

@@ -9,8 +9,10 @@
 * (done) have a super nove progress bar
 * (done) I would like to have it so that supernove cost needs to be zero to do a super nova
 * (done) no longer open dev tools by default
+* (done) new format date method in utils
+* (done) display game start date in supernova state
+* (done) bumped up SUPERNOVA\_STARTCOST\_MAXPOW from 40 to 115
 
-* () display game start date in supernova state
 * () auto save should happen when using keyboard events to set sun position
 * () have a utils.renderBackground method and use that in all states
 
