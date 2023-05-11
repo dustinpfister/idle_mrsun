@@ -55,7 +55,6 @@ const drawLandSection = (sm, ctx, canvas, section, opt ) => {
     const sx = opt.grid_w / 2 * -1;
     const sy = opt.grid_h / 2 * -1;
     let i = 0;
-
     while(i < constant.SLOT_GRID_LEN){
         const bx = i % constant.SLOT_GRID_WIDTH;
         const by = Math.floor(i / constant.SLOT_GRID_WIDTH);
@@ -67,9 +66,7 @@ const drawLandSection = (sm, ctx, canvas, section, opt ) => {
         // render a block
         drawBlockOutline(ctx, x, y, opt);
         drawBlockLevelText(ctx, x, y, block, opt);
-
         drawBlockLevelUpInfo(ctx, x, y, slot, section, sm, opt);
-
         i += 1;
     }
     ctx.restore();
@@ -132,10 +129,13 @@ const state_land = {
         ctx.lineWidth = 1;
         const sun = sm.game.sun;
         const section = sm.game.lands.sections[sm.landIndex];
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0,0, canvas.width, canvas.height);
-        // the sprite object for land state
 
+
+        //ctx.fillStyle = 'black';
+        //ctx.fillRect(0,0, canvas.width, canvas.height);
+        utils.render_background(sm, ctx, canvas, data);
+
+        // the sprite object for land state
         section.sprite_land.update();
         utils.drawSprite(section.sprite_land, ctx, canvas);
         drawLandSection(sm, ctx, canvas, section, data);

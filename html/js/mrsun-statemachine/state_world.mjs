@@ -7,12 +7,14 @@ import { constant } from "../mrsun-constant/constant.mjs"
 // RENDER FUNCTIONS 
 //-------- ----------
 // render the background
+/*
 const render_background = (sm, ctx, canvas, data) => {
     ctx.lineWidth = 1;
     ctx.font = '15px arial';
     ctx.fillStyle = '#000000';
     ctx.fillRect(0,0, canvas.width, canvas.height);
 };
+*/
 // render the sunarea
 const render_sunarea = (sm, ctx, canvas, data) => {
     const sun = sm.game.sun;
@@ -48,6 +50,7 @@ const render_display = (sm, ctx, canvas, data) => {
 };
 // render just the text for the given land section object
 const render_section_text = (ctx, section) => {
+    ctx.lineWidth = 1;
     ctx.font = 'bold 30px arial';
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
@@ -57,16 +60,18 @@ const render_section_text = (ctx, section) => {
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
 // RENDER BASIC AND DETAIL
+/*
 const render_basic = (sm, ctx, canvas, data) => {
-    render_background(sm, ctx, canvas, data);
+    //render_background(sm, ctx, canvas, data);
     render_sunarea(sm, ctx, canvas, data);
     sm.game.lands.sections.forEach((section, i) => {
         render_section_text(ctx, section);
     });
     render_display(sm, ctx, canvas, data)
 };
+*/
 const render_detail = (sm, ctx, canvas, data) => {
-    render_background(sm, ctx, canvas, data);
+    utils.render_background(sm, ctx, canvas, data);
     render_sunarea(sm, ctx, canvas, data);
     utils.drawSprite(sm.game.sun, ctx, canvas);
     sm.game.lands.sections.forEach((section, i) => {

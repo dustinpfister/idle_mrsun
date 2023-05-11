@@ -7,12 +7,14 @@ import { constant } from "../mrsun-constant/constant.mjs"
 // RENDER FUNCTIONS 
 //-------- ----------
 // render the background
+/*
 const render_background = (sm, ctx, canvas, data) => {
     ctx.lineWidth = 1;
     ctx.font = '15px arial';
     ctx.fillStyle = '#000000';
     ctx.fillRect(0,0, canvas.width, canvas.height);
 };
+*/
 //-------- ----------
 // STATE OBJECT FOR SUPERNOVA
 //-------- ----------
@@ -37,16 +39,18 @@ const state_supernova = {
         // super nova cost object
         const snc = gameMod.getSupernovaCost(sm.game);
         // background
-        render_background(sm, ctx, canvas, data);
+        utils.render_background(sm, ctx, canvas);
         // back and new game buttons
         utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_newgame, sm.ctx, sm.canvas);
         // disp
         utils.drawCommonDisp(sm, ctx, canvas);
-        const sx = 10, sy = 100, yd = 25;
+        const sx = 25, sy = 100, yd = 20;
+        ctx.lineWidth = 1;
+        ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'top';
-        ctx.font = '20px monospace';
+        ctx.font = '15px monospace';
         ctx.fillText('current sunspots     : ' + utils.formatDecimal(sm.game.sunspots, 4), sx, sy + yd * 0);
         ctx.fillText('sunspots delta       : ' + utils.formatDecimal(sm.game.sunspots_delta, 4), sx, sy + yd * 1);
         const dec = sm.game.sunspots.add( sm.game.sunspots_delta );

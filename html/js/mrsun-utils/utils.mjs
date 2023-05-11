@@ -46,9 +46,7 @@ utils.button_check_blockmode = (data, new_block_mode, pos) => {
 // DATES
 //-------- ----------
 utils.formatDate = (date) => {
-
     date = typeof date === 'string' ? new Date(date) : date;
-
     const month_str = new Intl.DateTimeFormat('en-US', { month: "long" }).format(date);
     const date_str = date.getDate();
     const year_str = date.getFullYear();
@@ -111,6 +109,11 @@ utils.addPows = (base, exp_start, exp_end) => {
 //-------- ----------
 // RENDER UTILIES
 //-------- ----------
+// render the common background
+utils.render_background = (sm, ctx, canvas) => {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+};
 // draw a button
 utils.drawButton = ( sm, button, ctx, canvas ) => {
     ctx.fillStyle = button.active ? '#004400' : '#444444';
