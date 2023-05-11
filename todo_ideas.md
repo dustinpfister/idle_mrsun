@@ -68,6 +68,9 @@
  RENDERING / GRAPHICS
 ---------- ---------->
 
+## () - rx - Using lzString for image data
+* () I should start to make use of the built in draw feature that uses lzString to compess image data
+
 ## () - rx - Slot by slot real time rendering in world state
 * () I would like to see about slot by slot, or maybe a few slots at a time, rendering in world state
 * () Have a whole other canvas element for rendering the slots

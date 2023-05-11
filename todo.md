@@ -2,15 +2,23 @@
 
 <!-- FINAL GAME -->
 
-## () - rx - Using lzString for image data
-* () I should start to make use of the built in draw feature that uses lzString to compess image data
+## () - r95 - Climate Types Mana Bonus
+* () I would like mana delta bouns multiplyers for each land section object
+* () these multiplyers should be effected by climate type
 
-## () - r93 - Land Sections Climate Index Values
+## () - r94 - Land Sections Climate Index Values started
 * () I would like to start to have Climate Index Values for Land Section Objects
 * () have a constant.CLIMATE object that will contain data that can be used to fine how many index values there are and so forth
 * () have a points system that will be used to find what the alpha range will be for each climate type
+* () have simple color ovarlays for now in world state
+* () display what climate type is in effect in land state
 
-## () - r92 - supernova progress bar
+## () - r93 - Land Section mana delta values
+* () have section.mana\_delta prop values and update them in gameMod.updateByTickDelta
+* () display what these deltas are in land state
+* () see about displaying white arcs along with each section in world state
+
+## ( done 05/11/2023 ) - r92 - supernova progress bar
 * (done) have a super nove progress bar
 * (done) I would like to have it so that supernove cost needs to be zero to do a super nova
 * (done) no longer open dev tools by default
