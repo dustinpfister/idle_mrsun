@@ -129,17 +129,12 @@ const state_land = {
         ctx.lineWidth = 1;
         const sun = sm.game.sun;
         const section = sm.game.lands.sections[sm.landIndex];
-
-
-        //ctx.fillStyle = 'black';
-        //ctx.fillRect(0,0, canvas.width, canvas.height);
+        // render the common background
         utils.render_background(sm, ctx, canvas, data);
-
         // the sprite object for land state
         section.sprite_land.update();
         utils.drawSprite(section.sprite_land, ctx, canvas);
         drawLandSection(sm, ctx, canvas, section, data);
-
         // buttons
         utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_next, sm.ctx, sm.canvas);

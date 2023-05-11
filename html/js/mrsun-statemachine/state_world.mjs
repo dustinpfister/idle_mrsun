@@ -6,15 +6,6 @@ import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------
 // RENDER FUNCTIONS 
 //-------- ----------
-// render the background
-/*
-const render_background = (sm, ctx, canvas, data) => {
-    ctx.lineWidth = 1;
-    ctx.font = '15px arial';
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0,0, canvas.width, canvas.height);
-};
-*/
 // render the sunarea
 const render_sunarea = (sm, ctx, canvas, data) => {
     const sun = sm.game.sun;
@@ -59,17 +50,7 @@ const render_section_text = (ctx, section) => {
     ctx.fillText(section.temp, section.position.x, section.position.y);
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
-// RENDER BASIC AND DETAIL
-/*
-const render_basic = (sm, ctx, canvas, data) => {
-    //render_background(sm, ctx, canvas, data);
-    render_sunarea(sm, ctx, canvas, data);
-    sm.game.lands.sections.forEach((section, i) => {
-        render_section_text(ctx, section);
-    });
-    render_display(sm, ctx, canvas, data)
-};
-*/
+// RENDER DETAIL
 const render_detail = (sm, ctx, canvas, data) => {
     utils.render_background(sm, ctx, canvas, data);
     render_sunarea(sm, ctx, canvas, data);

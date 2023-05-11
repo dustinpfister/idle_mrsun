@@ -12,9 +12,9 @@
 * (done) new format date method in utils
 * (done) display game start date in supernova state
 * (done) bumped up SUPERNOVA\_STARTCOST\_MAXPOW from 40 to 115
+* (done) have a utils.renderBackground method and use that in all states
 
 * () auto save should happen when using keyboard events to set sun position
-* () have a utils.renderBackground method and use that in all states
 
 ## ( done 05/10/2023 ) - r91 - Displaying upgrade Costs
 * (done) logic in gameMod.upgradeBlock needs to be pulled into a getBlockUpgradeInfo helper

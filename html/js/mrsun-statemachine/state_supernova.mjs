@@ -6,15 +6,29 @@ import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------
 // RENDER FUNCTIONS 
 //-------- ----------
-// render the background
-/*
-const render_background = (sm, ctx, canvas, data) => {
+const render_info = (sm, ctx, canvas) => {
+    // super nova cost object
+    const snc = gameMod.getSupernovaCost(sm.game);
+    const sx = 25, sy = 100, yd = 20;
     ctx.lineWidth = 1;
-    ctx.font = '15px arial';
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0,0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.font = '15px monospace';
+    ctx.fillText('current sunspots     : ' + utils.formatDecimal(sm.game.sunspots, 4), sx, sy + yd * 0);
+    ctx.fillText('sunspots delta       : ' + utils.formatDecimal(sm.game.sunspots_delta, 4), sx, sy + yd * 1);
+    const dec = sm.game.sunspots.add( sm.game.sunspots_delta );
+    const m = gameMod.getSunSpotMulti( dec.toNumber() );
+    ctx.fillText('new sunspots         : ' + utils.formatDecimal(dec, 4), sx, sy + yd * 2 );
+    ctx.fillText('new multiplier       : ' + m.toFixed(4) + 'x', sx, sy + yd * 3 );
+    const ts = utils.formatDecimal(sm.game.mana_spent, 2)
+    ctx.fillText('total mana spent     : ' + ts, sx, sy + yd * 4 );
+    ctx.fillText('supernova count      : ' + sm.game.supernova_count, sx, sy + yd * 5 );
+    ctx.fillText('supernova start cost : ' + utils.formatDecimal(snc.startcost_dec, 2), sx, sy + yd * 6 );
+    ctx.fillText('supernova cost       : ' + utils.formatDecimal(snc.cost_dec, 2), sx, sy + yd * 7 );
+    // game start date
+    ctx.fillText('game start date      : ' + utils.formatDate(sm.game.start_date), sx, sy + yd * 8 );
 };
-*/
 //-------- ----------
 // STATE OBJECT FOR SUPERNOVA
 //-------- ----------
@@ -36,8 +50,7 @@ const state_supernova = {
        }
     },
     render: (sm, ctx, canvas, data) => {
-        // super nova cost object
-        const snc = gameMod.getSupernovaCost(sm.game);
+
         // background
         utils.render_background(sm, ctx, canvas);
         // back and new game buttons
@@ -45,25 +58,10 @@ const state_supernova = {
         utils.drawButton(sm, data.button_newgame, sm.ctx, sm.canvas);
         // disp
         utils.drawCommonDisp(sm, ctx, canvas);
-        const sx = 25, sy = 100, yd = 20;
-        ctx.lineWidth = 1;
-        ctx.fillStyle = '#ffffff';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
-        ctx.font = '15px monospace';
-        ctx.fillText('current sunspots     : ' + utils.formatDecimal(sm.game.sunspots, 4), sx, sy + yd * 0);
-        ctx.fillText('sunspots delta       : ' + utils.formatDecimal(sm.game.sunspots_delta, 4), sx, sy + yd * 1);
-        const dec = sm.game.sunspots.add( sm.game.sunspots_delta );
-        const m = gameMod.getSunSpotMulti( dec.toNumber() );
-        ctx.fillText('new sunspots         : ' + utils.formatDecimal(dec, 4), sx, sy + yd * 2 );
-        ctx.fillText('new multiplier       : ' + m.toFixed(4) + 'x', sx, sy + yd * 3 );
-        const ts = utils.formatDecimal(sm.game.mana_spent, 2)
-        ctx.fillText('total mana spent     : ' + ts, sx, sy + yd * 4 );
-        ctx.fillText('supernova count      : ' + sm.game.supernova_count, sx, sy + yd * 5 );
-        ctx.fillText('supernova start cost : ' + utils.formatDecimal(snc.startcost_dec, 2), sx, sy + yd * 6 );
-        ctx.fillText('supernova cost       : ' + utils.formatDecimal(snc.cost_dec, 2), sx, sy + yd * 7 );
-        // game start date
-        ctx.fillText('game start date      : ' + utils.formatDate(sm.game.start_date), sx, sy + yd * 8 );
+
+        render_info(sm, ctx, canvas );
+
+
     },
     events: {
         pointerdown : (sm, pos, e, data) => {
