@@ -67,12 +67,12 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle) => {
 
 // render the mana delta % arc for a given section
 const render_section_manadelta = (ctx, section, game) => {
-
+    const fillStyle = '#afafaf';
     const alpha = section.mana_delta.div(game.mana_per_tick).toNumber();
     let x = Math.round(constant.SLOT_GRID_WIDTH * alpha / 2);
     while(x--){
-        render_slot_location(ctx, section, 5 + x, -1, '#ff0000');
-        render_slot_location(ctx, section, 4 - x, -1, '#ff0000');
+        render_slot_location(ctx, section, 5 + x, -1, fillStyle);
+        render_slot_location(ctx, section, 4 - x, -1, fillStyle);
     }
 
 };
@@ -84,11 +84,8 @@ const render_detail = (sm, ctx, canvas, data) => {
     sm.game.lands.sections.forEach((section, i) => {
         //section.sprite_world.update();
         utils.drawSprite(section.sprite_world, ctx, canvas);
-
         render_section_text(ctx, section);
-
         render_section_manadelta(ctx, section, sm.game);
-
     });
     render_display(sm, ctx, canvas, data)
 };
