@@ -144,7 +144,7 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
     game.tick = Math.floor(game.tick_frac);
     const tick_delta = game.tick - game.tick_last;
     if(tick_delta >= 1 || force){
-        game.mana_per_tick = new Decimal(0);
+        //game.mana_per_tick = new Decimal(0);
         // update temp, block data, mana per tick, credit mana,
         game.lands.forEachSection( (section) => {
             const d_sun = section.position.distanceTo(game.sun.position);
@@ -153,14 +153,16 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
             section.temp = constant.TEMP_MAX * section.d_alpha;
             section.temp = game.sun.getLengthAlpha() < 0.1 ? Math.ceil(section.temp): Math.round(section.temp);
             let mana_total = new Decimal(0);
+            section.mana_delta = new Decimal(0);
             section.forEachSlot( (slot ) => {
                 const a_temp = section.temp / constant.TEMP_MAX;
                 const block = slot.block;
                 if(!slot.locked && block.type != 'blank'){
                     // update block here
                     block.setManaStats(game.sunspot_multi);
-                    const mana_delta = Math.round(block.mana_base + block.mana_temp * a_temp);
-                    game.mana_per_tick = game.mana_per_tick.add( mana_delta );
+                    const block_mana_delta = new Decimal( Math.round(block.mana_base + block.mana_temp * a_temp) );
+                    section.mana_delta = section.mana_delta.add(block_mana_delta);
+                    //game.mana_per_tick = game.mana_per_tick.add( block_mana_delta );
                     mana_total = mana_total.add( block.mana_value.valueOf() );
                 }
             });
@@ -168,7 +170,9 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
         });
         // lands mana total
         let mtl = new Decimal(0);
+        game.mana_per_tick = new Decimal(0);
         game.lands.forEachSection( (section) => {
+            game.mana_per_tick = game.mana_per_tick.add( section.mana_delta );
             mtl =  mtl.add(section.mana_total);
         });
         game.lands.mana_total = mtl;

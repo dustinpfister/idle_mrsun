@@ -14,7 +14,7 @@
 * () display what climate type is in effect in land state
 
 ## () - r93 - Land Section mana delta values
-* () have section.mana\_delta prop values and update them in gameMod.updateByTickDelta
+* (done) have section.mana\_delta prop values and update them in gameMod.updateByTickDelta
 * () display what these deltas are in land state
 * () see about displaying white arcs along with each section in world state
 

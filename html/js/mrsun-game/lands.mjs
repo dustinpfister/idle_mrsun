@@ -265,6 +265,8 @@ class LandSection {
         this.sprite_land.position.set(320, 240);
         // total mana value
         this.mana_total = new Decimal(0);
+        // mana delta for this section
+        this.mana_delta = new Decimal(0);
     }
     // apply section data
     applySectionData(sectionData){
