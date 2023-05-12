@@ -13,7 +13,7 @@
 * () have simple color ovarlays for now in world state
 * () display what climate type is in effect in land state
 
-## () - r93 - Land Section mana delta values
+## ( done 05/12/2023 ) - r93 - Land Section mana delta values
 * (done) have section.mana\_delta prop values and update them in gameMod.updateByTickDelta
 * (done) display what these deltas are in land state
 * (done) see about displaying white arcs along with each section in world state
@@ -21,7 +21,7 @@
 * (done) see about making a new utils render method that works like the drawSectionSlotTexel helper in lands.mjs
 * (done) the drawSectionSlotTexel should call this new utils render helper
 * (done) use the new helper to draw the mana delta arcs
-* () make use of the texelX argument of utils.drawSectionArc to get a more fine grain mana delta bar
+* (done) make use of the texelX argument of utils.drawSectionArc to get a more fine grain mana delta bar
 
 
 ## ( done 05/11/2023 ) - r92 - supernova progress bar

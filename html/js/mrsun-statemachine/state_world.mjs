@@ -51,7 +51,7 @@ const render_section_text = (ctx, section) => {
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
 
-const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth ) => {
+const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a_imgwidth, invert ) => {
     const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
     const v2 = new Vector2(
        Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 
@@ -60,9 +60,28 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth ) 
     const rad_center = Math.PI * 2 / constant.LAND_OBJECT_COUNT * section.i;
     const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH / imgWidth;
     const radius_texel_delta = constant.SLOT_RADIUS_DELTA;
-    const texelX = 0;
+    // img width is 1
+    let texelX = 0;
     const texelY = 0;
-    utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+    if(imgWidth === 1){
+       utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+       return;
+    }
+    // img width is > 1
+    if(!invert){
+        texelX = 0;
+        while(texelX < Math.ceil( imgWidth * a_imgwidth) ){
+            utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+            texelX += 1;
+        }
+    }
+    if(invert){
+        texelX = imgWidth - 1;
+        while(texelX >= imgWidth - Math.ceil( imgWidth * a_imgwidth ) ){
+            utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+            texelX -= 1;
+        }
+    }
 };
 
 // render the mana delta % arc for a given section
@@ -73,15 +92,16 @@ const render_section_manadelta = (ctx, section, game) => {
     let x = constant.SLOT_GRID_WIDTH * alpha / 2;
     let x_intstart = Math.round( x );
     let x_int = x_intstart;
+    let a_imgwidth = x % 1;
     while(x_int >= 0){
         fillStyle = '#afafaf';
         imgWidth = 1;
         if(x_int === x_intstart){
            fillStyle = 'red';
-           imgWidth = 4;
+           imgWidth = 8;
         }
-        render_slot_location(ctx, section, 5 + x_int, -1, fillStyle, imgWidth);
-        render_slot_location(ctx, section, 4 - x_int, -1, fillStyle, imgWidth);
+        render_slot_location(ctx, section, 5 + x_int, -1, fillStyle, imgWidth, a_imgwidth, false);
+        render_slot_location(ctx, section, 4 - x_int, -1, fillStyle, imgWidth, a_imgwidth, true);
         x_int -= 1;
     }
 
