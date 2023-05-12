@@ -51,14 +51,14 @@ const render_section_text = (ctx, section) => {
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
 
-const render_slot_location = (ctx, section, slotX, slotY, fillStyle) => {
+const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth ) => {
     const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
     const v2 = new Vector2(
        Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 
        Math.sin(radian) * constant.LAND_RADIUS_TOCENTER);
     v2.add(section.position);
     const rad_center = Math.PI * 2 / constant.LAND_OBJECT_COUNT * section.i;
-    const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH;
+    const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH / imgWidth;
     const radius_texel_delta = constant.SLOT_RADIUS_DELTA;
     const texelX = 0;
     const texelY = 0;
@@ -67,12 +67,22 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle) => {
 
 // render the mana delta % arc for a given section
 const render_section_manadelta = (ctx, section, game) => {
-    const fillStyle = '#afafaf';
+    let fillStyle = '#afafaf';
+    let imgWidth = 1;
     const alpha = section.mana_delta.div(game.mana_per_tick).toNumber();
-    let x = Math.ceil(constant.SLOT_GRID_WIDTH * alpha / 2);
-    while(x--){
-        render_slot_location(ctx, section, 5 + x, -1, fillStyle);
-        render_slot_location(ctx, section, 4 - x, -1, fillStyle);
+    let x = constant.SLOT_GRID_WIDTH * alpha / 2;
+    let x_intstart = Math.round( x );
+    let x_int = x_intstart;
+    while(x_int >= 0){
+        fillStyle = '#afafaf';
+        imgWidth = 1;
+        if(x_int === x_intstart){
+           fillStyle = 'red';
+           imgWidth = 4;
+        }
+        render_slot_location(ctx, section, 5 + x_int, -1, fillStyle, imgWidth);
+        render_slot_location(ctx, section, 4 - x_int, -1, fillStyle, imgWidth);
+        x_int -= 1;
     }
 
 };
