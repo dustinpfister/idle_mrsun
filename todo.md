@@ -2,11 +2,17 @@
 
 <!-- FINAL GAME -->
 
-## () - r95 - Climate Types Mana Bonus
+## () - rx - Abiogenesis Events
+* () there will need to be a set of conditions for 'abiogenesis' events
+
+## () - rx - Water level, water block type
+* () can set a water level such as 1 block so that any column that is 0 rocks will have a water block
+
+## () - rx - Climate Types Mana Bonus
 * () I would like mana delta bouns multiplyers for each land section object
 * () these multiplyers should be effected by climate type
 
-## () - r94 - Land Sections Climate Index Values started
+## ( done 05/13/2023 ) - r94 - Land Sections Climate Index Values started
 * (done) have a constant.CLIMATE_ZONES array
 * (done) I am starting with just simple temp alpha range arrays for now in the ZONES objects
 * (done) have a climate\_zone\_index propery for land section objects

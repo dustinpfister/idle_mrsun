@@ -18,8 +18,6 @@
 * () have an event that will fire each time a level up happens
 * () in the event that the player jumps up a whole bunch of levels at once the event should fire for each level
 
-## () - rx - Water level, water block type
-* () can set a water level such as 1 block so that any column that is 0 rocks will have a water block
 
 ## () - rx - Slot Class, Disabled Slot feature 
 * () a slot object will have a disabled property which means that it can not be used at all
