@@ -157,6 +157,7 @@ const state_land = {
 
         ctx.fillText('sunspots delta world value: ' + sm.game.sunspots_delta_world_value, 170, 45);
         ctx.fillText('section mana delta: ' + utils.formatDecimal(section.mana_delta, 4), 170, 55);
+        ctx.fillText('climate: ' + constant.CLIMATE_ZONES[section.climate_zone_index].desc, 170, 65);
 
         // current land index
         ctx.font = '50px arial';

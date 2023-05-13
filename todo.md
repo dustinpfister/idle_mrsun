@@ -10,9 +10,9 @@
 * (done) have a constant.CLIMATE_ZONES array
 * (done) I am starting with just simple temp alpha range arrays for now in the ZONES objects
 * (done) have a climate\_zone\_index propery for land section objects
-
-* () display current zone index and desc in land state
 * (done) color code overlays in world state
+* (done) display current zone index and desc in land state
+
 
 * () setting the zone index will need to be part of a lange section update process
 
