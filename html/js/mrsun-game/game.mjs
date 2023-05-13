@@ -144,7 +144,6 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
     game.tick = Math.floor(game.tick_frac);
     const tick_delta = game.tick - game.tick_last;
     if(tick_delta >= 1 || force){
-        //game.mana_per_tick = new Decimal(0);
         // update temp, block data, mana per tick, credit mana,
         game.lands.forEachSection( (section) => {
             const d_sun = section.position.distanceTo(game.sun.position);
@@ -152,8 +151,12 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
             section.d_alpha = 1 - d_adjusted / constant.SUN_DMAX;
             section.temp = constant.TEMP_MAX * section.d_alpha;
             section.temp = game.sun.getLengthAlpha() < 0.1 ? Math.ceil(section.temp): Math.round(section.temp);
+            // can set climate index here
+            section.setClimateIndex(section.d_alpha);
+            // mana
             let mana_total = new Decimal(0);
             section.mana_delta = new Decimal(0);
+            // loop slots
             section.forEachSlot( (slot ) => {
                 const a_temp = section.temp / constant.TEMP_MAX;
                 const block = slot.block;
@@ -167,8 +170,6 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
                 }
             });
             section.mana_total = mana_total;
-            // can set climate index here
-            
         });
         // lands mana total
         let mtl = new Decimal(0);

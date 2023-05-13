@@ -239,6 +239,7 @@ class LandSection {
         this.d_alpha = 0;
         this.temp = 0;
         this.climate_zone_index = 0;
+        this.setClimateIndex(0);
         this.createSlotGrid();
         // starting unlock slots
         this.applySectionData(sectionData)
@@ -347,6 +348,21 @@ class LandSection {
             const slot = this.slots[i_slot];
             func.call(this, slot, i_slot, this);
             i_slot += 1;
+        }
+    }
+    // set climate index by given temp alpha value
+    setClimateIndex( a_temp ) {
+        const zone_array = constant.CLIMATE_ZONES;
+        const len = zone_array.length;
+        let i = 0;
+        this.climate_zone_index = 0; // default is whatever index 0 is
+        while(i < len){
+            const zone = zone_array[i];
+            if( a_temp > zone.temp_alphas[0] && a_temp <= zone.temp_alphas[1]){
+                this.climate_zone_index = i;
+                break;
+            }
+            i += 1;
         }
     }
     // set block type counts

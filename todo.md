@@ -12,12 +12,8 @@
 * (done) have a climate\_zone\_index propery for land section objects
 * (done) color code overlays in world state
 * (done) display current zone index and desc in land state
-
-
-* () setting the zone index will need to be part of a lange section update process
-
-* () have simple color ovarlays for now in world state
-* () display what climate type is in effect in land state
+* (done) I would like a LandSection.setClimate method that takes a temp alpha as an argument
+* (done) setting the zone index will need to be part of a lange section update process
 
 ## ( done 05/12/2023 ) - r93 - Land Section mana delta values
 * (done) have section.mana\_delta prop values and update them in gameMod.updateByTickDelta
