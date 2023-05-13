@@ -114,6 +114,14 @@ const render_detail = (sm, ctx, canvas, data) => {
     sm.game.lands.sections.forEach((section, i) => {
         //section.sprite_world.update();
         utils.drawSprite(section.sprite_world, ctx, canvas);
+        // climate color overlay
+        const zone = constant.CLIMATE_ZONES[section.climate_zone_index];
+        ctx.fillStyle = zone.color;
+        ctx.globalAlpha = 0.3;
+        ctx.beginPath();
+        ctx.arc(section.position.x, section.position.y, section.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
         render_section_text(ctx, section);
         render_section_manadelta(ctx, section, sm.game);
     });

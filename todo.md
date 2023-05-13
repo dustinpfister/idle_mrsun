@@ -12,7 +12,7 @@
 * (done) have a climate\_zone\_index propery for land section objects
 
 * () display current zone index and desc in land state
-* () color code overlays in world state
+* (done) color code overlays in world state
 
 * () setting the zone index will need to be part of a lange section update process
 

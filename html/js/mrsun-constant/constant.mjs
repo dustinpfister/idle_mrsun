@@ -43,7 +43,7 @@ constant.CLIMATE_ZONES = [
     {
         desc: 'Tundra',
         i: 0,
-        color: '#ffffff',
+        color: '#dfdfdf',
         temp_alphas: [0, 0.3]
     },
     {
