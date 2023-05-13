@@ -12,24 +12,6 @@ Decimal.set(constant.DECIMAL_OPTIONS);
 //-------- ----------
 // SpriteLandSectonWorld Class ( for world state )
 //-------- ----------
-/*
-const drawSectionArc = (ctx, slotX, slotY, pos_center, rad_center, rad_delta_texel, radius_texel_delta, texelX, texelY, fillStyle) => {
-    const rad_edge = rad_center - constant.SLOT_RADIAN_DELTA;
-    const rad_slot_start = rad_edge + Math.PI / 180 * ( 30 / 10 * slotX );
-    const rad_start = rad_slot_start + rad_delta_texel * texelX;
-    const rad_end = rad_start + rad_delta_texel;
-    const radius_slot_low = constant.LAND_RADIUS_TOCENTER - constant.LAND_RADIUS + constant.SLOT_RADIUS_DELTA  * slotY;
-    const radius_low = radius_slot_low + radius_texel_delta * texelY;
-    const radius_high = radius_low + radius_texel_delta;
-    // draw arcs
-    ctx.beginPath();
-    ctx.arc(pos_center.x, pos_center.y, radius_low, rad_start, rad_end  );
-    ctx.arc(pos_center.x, pos_center.y, radius_high, rad_end, rad_start, true  );
-    ctx.closePath();
-    ctx.fillStyle = fillStyle
-    ctx.fill();
-};
-*/
 // draw a single texel for a single slot ( in world state )
 const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
     const block = slot.block;
@@ -42,33 +24,6 @@ const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
     const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
     const radius_texel_delta = constant.SLOT_RADIUS_DELTA  / img.h;
     utils.drawSectionArc(ctx, slot.x, slot.y, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
-
-/*
-    // get block and image
-    const block = slot.block;
-    let img = constant.IMG.locked;
-    if(!slot.locked){
-        img = constant.IMG[block.type];
-    }
-    const rad_edge = rad_center - constant.SLOT_RADIAN_DELTA;
-    const rad_slot_start = rad_edge + Math.PI / 180 * ( 30 / 10 * slot.x );
-    const rad_delta_texel = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
-    const rad_start = rad_slot_start + rad_delta_texel * texelX;
-    const rad_end = rad_start + rad_delta_texel;
-    const radius_slot_low = constant.LAND_RADIUS_TOCENTER - constant.LAND_RADIUS + constant.SLOT_RADIUS_DELTA  * slot.y;
-    const radius_texel_delta = constant.SLOT_RADIUS_DELTA  / img.h;
-    const radius_low = radius_slot_low + radius_texel_delta * texelY;
-    const radius_high = radius_low + radius_texel_delta;
-    // draw arcs
-    ctx.beginPath();
-    ctx.arc(v2.x, v2.y, radius_low, rad_start, rad_end  );
-    ctx.arc(v2.x, v2.y, radius_high, rad_end, rad_start, true  );
-    ctx.closePath();
-    // get fill style, and fill
-    const i_ci = texelY * img.w + texelX;
-    ctx.fillStyle = img.palette[ img.color_indices[ i_ci ] ];
-    ctx.fill();
-*/
 };
 // create a render sheet for the given section object
 const createSectionRenderSheet = (section, drawSectionSlot) => {
@@ -283,6 +238,7 @@ class LandSection {
         // temp
         this.d_alpha = 0;
         this.temp = 0;
+        this.climate_zone_index = 0;
         this.createSlotGrid();
         // starting unlock slots
         this.applySectionData(sectionData)

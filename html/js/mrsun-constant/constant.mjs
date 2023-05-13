@@ -37,6 +37,29 @@ constant.DEFAULT_CREATE_OPTIONS = {
     sectionData: constant.LANDS_START_SECTION_DATA
 };
 //-------- ----------
+// CLIMATE - 
+//-------- ----------
+constant.CLIMATE_ZONES = [
+    {
+        desc: 'Tundra',
+        i: 0,
+        color: '#ffffff',
+        temp_alphas: [0, 0.3]
+    },
+    {
+        desc: 'Deciduous',
+        i: 1,
+        color: '#00ff00',
+        temp_alphas: [0.3, 0.7]
+    },
+    {
+        desc: 'Desert',
+        i: 2,
+        color: '#ffff00',
+        temp_alphas: [0.7, 1]
+    }
+];
+//-------- ----------
 // DECIMAL.JS - options
 //-------- ----------
 constant.DECIMAL_OPTIONS = { 

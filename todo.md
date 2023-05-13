@@ -7,9 +7,15 @@
 * () these multiplyers should be effected by climate type
 
 ## () - r94 - Land Sections Climate Index Values started
-* () I would like to start to have Climate Index Values for Land Section Objects
-* () have a constant.CLIMATE object that will contain data that can be used to fine how many index values there are and so forth
-* () have a points system that will be used to find what the alpha range will be for each climate type
+* (done) have a constant.CLIMATE_ZONES array
+* (done) I am starting with just simple temp alpha range arrays for now in the ZONES objects
+* (done) have a climate\_zone\_index propery for land section objects
+
+* () display current zone index and desc in land state
+* () color code overlays in world state
+
+* () setting the zone index will need to be part of a lange section update process
+
 * () have simple color ovarlays for now in world state
 * () display what climate type is in effect in land state
 
@@ -22,7 +28,6 @@
 * (done) the drawSectionSlotTexel should call this new utils render helper
 * (done) use the new helper to draw the mana delta arcs
 * (done) make use of the texelX argument of utils.drawSectionArc to get a more fine grain mana delta bar
-
 
 ## ( done 05/11/2023 ) - r92 - supernova progress bar
 * (done) have a super nove progress bar
@@ -64,7 +69,6 @@
 * (done) start a new index.html that will be for the browser version
 * (done) start a node/server folder as I would like to work on making a 'browser' version of the game
 * (done) README file for node/server
-
 
 <!-- PROTOTYPE -->
 

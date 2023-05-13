@@ -167,6 +167,8 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
                 }
             });
             section.mana_total = mana_total;
+            // can set climate index here
+            
         });
         // lands mana total
         let mtl = new Decimal(0);
