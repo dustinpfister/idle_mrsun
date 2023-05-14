@@ -18,6 +18,7 @@
 * (done) mana multi props for climate zone objects in constant.mjs
 * (done) for now there is just having fixed multipyers for each climate
 * (done) use these multi values to figure mana delta values to figure
+* (done) fixed a bug where zones do not set to hellscape type when the sun is right on top of it.
 
 ## ( done 05/13/2023 ) - r94 - Land Sections Climate Index Values started
 * (done) have a constant.CLIMATE_ZONES array

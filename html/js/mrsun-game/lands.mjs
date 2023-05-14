@@ -356,6 +356,13 @@ class LandSection {
         const len = zone_array.length;
         let i = 0;
         this.climate_zone_index = 0; // default is whatever index 0 is
+        if(a_temp <= 0){
+            return;
+        }
+        if(a_temp >= 1){
+            this.climate_zone_index = len - 1;
+            return;
+        }
         while(i < len){
             const zone = zone_array[i];
             if( a_temp > zone.temp_alphas[0] && a_temp <= zone.temp_alphas[1]){
