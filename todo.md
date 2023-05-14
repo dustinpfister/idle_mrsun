@@ -8,9 +8,17 @@
 ## () - rx - Water level, water block type
 * () can set a water level such as 1 block so that any column that is 0 rocks will have a water block
 
-## () - rx - Climate Types Mana Bonus
+## () - r96 - State switcher UI
+* () I would like to have a state switcher UI
+* () I could have a main button in every state that will show or hide the state switcher UI
+* () The state switcher UI will have a button for world and land state.
+* () have a button for supernova state
+
+## () - r95 - Climate Types Mana Bonus
+* (done) mana multi props for climate zone objects in constant.mjs
 * () I would like mana delta bouns multiplyers for each land section object
 * () these multiplyers should be effected by climate type
+* () for now there is just having fixed multipyers for each climate
 
 ## ( done 05/13/2023 ) - r94 - Land Sections Climate Index Values started
 * (done) have a constant.CLIMATE_ZONES array

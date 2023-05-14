@@ -39,11 +39,6 @@
 * () start a sunspot upgrades menu
 * () the first upgrade can be something that lowers the base use to figure sunspots delta world value
 
-## () - rx - State switcher UI
-* () I would like to have a state switcher UI
-* () I could have a main button that will show or hide the state switcher UI
-* () The state switcher UI will have a button for world and land state.
-
 ## () - rx - Max Create button
 * () have an option to do a max create when cretaing blocks
 

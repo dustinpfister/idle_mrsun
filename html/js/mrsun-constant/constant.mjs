@@ -44,25 +44,29 @@ constant.CLIMATE_ZONES = [
         desc: 'Tundra',
         i: 0,
         color: '#dfdfdf',
-        temp_alphas: [0, 0.4]
+        temp_alphas: [0, 0.4],
+        mana_multi: 1
     },
     {
         desc: 'Deciduous',
         i: 1,
         color: '#00ff00',
-        temp_alphas: [0.4, 0.6]
+        temp_alphas: [0.4, 0.6],
+        mana_multi: 1.25
     },
     {
         desc: 'Desert',
         i: 2,
         color: '#ffff00',
-        temp_alphas: [0.6, 0.85]
+        temp_alphas: [0.6, 0.85],
+        mana_multi: 1.5
     },
     {
         desc: 'Hellscape',
         i: 3,
         color: '#ff0000',
-        temp_alphas: [0.85, 1]
+        temp_alphas: [0.85, 1],
+        mana_multi: 2.75
     }
 ];
 //-------- ----------
