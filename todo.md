@@ -14,11 +14,10 @@
 * () The state switcher UI will have a button for world and land state.
 * () have a button for supernova state
 
-## () - r95 - Climate Types Mana Bonus
+## ( done 05/14/2023 ) - r95 - Climate Types Mana Bonus
 * (done) mana multi props for climate zone objects in constant.mjs
-* () I would like mana delta bouns multiplyers for each land section object
-* () these multiplyers should be effected by climate type
-* () for now there is just having fixed multipyers for each climate
+* (done) for now there is just having fixed multipyers for each climate
+* (done) use these multi values to figure mana delta values to figure
 
 ## ( done 05/13/2023 ) - r94 - Land Sections Climate Index Values started
 * (done) have a constant.CLIMATE_ZONES array

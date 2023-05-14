@@ -175,7 +175,9 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
         let mtl = new Decimal(0);
         game.mana_per_tick = new Decimal(0);
         game.lands.forEachSection( (section) => {
-            game.mana_per_tick = game.mana_per_tick.add( section.mana_delta );
+            // applying the climate multiplyer
+            const zone = constant.CLIMATE_ZONES[section.climate_zone_index];
+            game.mana_per_tick = game.mana_per_tick.add( section.mana_delta.times(zone.mana_multi) );
             mtl =  mtl.add(section.mana_total);
         });
         game.lands.mana_total = mtl;
