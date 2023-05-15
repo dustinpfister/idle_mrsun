@@ -82,6 +82,12 @@ const state_supernova = {
                     console.log('cost is over 0');
                 }
             });
+        },
+        onkeyfirst: (sm, key, down, e, data) => {
+            const sun = sm.game.sun;
+            if(down){
+                sm.commonNumKey(key);
+            }
         }
     }
 };

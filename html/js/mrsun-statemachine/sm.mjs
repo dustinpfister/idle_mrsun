@@ -148,7 +148,15 @@ StateMachine.create = (opt_create) => {
         const state = sm.currentState = sm.states[sm.currentStateKey];
         state.start(sm, opt, state.data);
     };
-    
+    sm.commonNumKey = (key) => {
+        const num = parseInt(key);
+        if( String(num) != 'NaN' ){
+            const stateKey = 'world,land,supernova'.split(',')[ num - 1 ];
+            if(stateKey){
+                sm.setState(stateKey, {})
+            }
+        }
+    };
     sm.clear = () => {
         if(!sm.game){
             console.log( 'no game object to clear' );

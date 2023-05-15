@@ -14,7 +14,7 @@
 * (done) utils.button\_state\_switcher method started
 * (done) make changes to get new button switcher to work with world, land, and supernova states
 * (done) do away with back buttons in each state
-
+* (done) common num key method keyboard buttons for state changes as well in sm.mjs, and used in state mjs files
 
 ## ( done 05/14/2023 ) - r95 - Climate Types Mana Bonus
 * (done) mana multi props for climate zone objects in constant.mjs

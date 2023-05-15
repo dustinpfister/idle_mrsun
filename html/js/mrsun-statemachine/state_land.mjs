@@ -239,6 +239,12 @@ const state_land = {
                     }
                 }
             }
+        },
+        onkeyfirst: (sm, key, down, e, data) => {
+            const sun = sm.game.sun;
+            if(down){
+                sm.commonNumKey(key);
+            }
         }
     }
 };

@@ -188,6 +188,7 @@ const state_world = {
                 if(key.toLowerCase() ==='c'){
                     gameMod.centerSun(sm.game);
                 }
+                sm.commonNumKey(key);
             }
         },
         onkeyrepeat: (sm, key, down, e, data) => {}
