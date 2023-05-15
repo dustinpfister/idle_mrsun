@@ -133,15 +133,8 @@ const render_detail = (sm, ctx, canvas, data) => {
 //-------- ----------
 const state_world = {
     data: {
-        //button_supernova : {  desc: 'Supernova', position: new Vector2(580, 420), r: 40 },
     },
-    init: (sm, data) => {
-
-        //sm.state_switcher.options['world'] = {
-             
-        //};
-
-    },
+    init: (sm, data) => {},
     start: (sm, opt) => {
         const sun = sm.game.sun;
         // as long as I do not have to update on a tick by tick basis
@@ -168,28 +161,12 @@ const state_world = {
             // clicked land object?
             const land = gameMod.getSectionByPos(sm.game, pos);
             if(land){
-
                 sm.landIndex = land.i;
                 sm.setState('land', {});
                 return;
-
             }
-
             // state switcher UI
             utils.button_state_switcher(sm, pos);
-
-
-            // was supernova button clicked?
-
-            //utils.button_check(data, 'button_supernova', pos, () => {
-            //    sm.setState('supernova', {});
-            //});
-
-
-            //utils.button_check(sm.state_switcher, 'button_menu', pos, () => {
-            //    console.log('button menu');
-            //});
-
         },
         onkey: (sm, key, down, e, data) => {},
         onkeyfirst: (sm, key, down, e, data) => {

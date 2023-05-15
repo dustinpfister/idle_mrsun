@@ -13,8 +13,7 @@
 * (done) have a common show state menu button in place of the back button that is used in several states
 * (done) utils.button\_state\_switcher method started
 * (done) make changes to get new button switcher to work with world, land, and supernova states
-
-* () do away with back buttons in each state
+* (done) do away with back buttons in each state
 
 
 ## ( done 05/14/2023 ) - r95 - Climate Types Mana Bonus

@@ -34,7 +34,6 @@ const render_info = (sm, ctx, canvas) => {
 //-------- ----------
 const state_supernova = {
     data: {
-        //button_back : {  desc: 'Back', position: new Vector2(600, 38), r: 32 },
         button_newgame : {  desc: 'New Game', progress: 0.75, position: new Vector2(60, 420), r: 40 }
     },
     start: (sm, opt) => {},
@@ -50,32 +49,18 @@ const state_supernova = {
        }
     },
     render: (sm, ctx, canvas, data) => {
-
         // background
         utils.render_background(sm, ctx, canvas);
-
-        // back and new game buttons
-        //utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
+        // new game button
         utils.drawButton(sm, data.button_newgame, sm.ctx, sm.canvas);
         // disp
         utils.drawCommonDisp(sm, ctx, canvas);
-
         render_info(sm, ctx, canvas );
-
-
     },
     events: {
         pointerdown : (sm, pos, e, data) => {
-
-
-
             // state switcher UI
             utils.button_state_switcher(sm, pos);
-
-            // was the back button clicked?
-            //utils.button_check(data, 'button_back', pos, () => {
-            //    sm.setState('world', {});
-            //});
             // was supernova button clicked?
             utils.button_check(data, 'button_newgame', pos, (button, data, key, pos) => {
                 const snc = gameMod.getSupernovaCost(sm.game);
