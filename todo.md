@@ -8,13 +8,14 @@
 ## () - rx - Water level, water block type
 * () can set a water level such as 1 block so that any column that is 0 rocks will have a water block
 
-## () - r96 - State switcher UI
+## ( done 05/15/2023 ) - r96 - State switcher UI
 * (done) I will then want to have a main state switcher object in the main sm.mjs file
 * (done) have a common show state menu button in place of the back button that is used in several states
 * (done) utils.button\_state\_switcher method started
 * (done) make changes to get new button switcher to work with world, land, and supernova states
 * (done) do away with back buttons in each state
 * (done) common num key method keyboard buttons for state changes as well in sm.mjs, and used in state mjs files
+* (done) keyboard shortcuts for next and last land sections in state\_land.mjs
 
 ## ( done 05/14/2023 ) - r95 - Climate Types Mana Bonus
 * (done) mana multi props for climate zone objects in constant.mjs

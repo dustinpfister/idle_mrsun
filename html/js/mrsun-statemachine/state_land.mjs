@@ -72,6 +72,19 @@ const drawLandSection = (sm, ctx, canvas, section, opt ) => {
     ctx.restore();
 };
 //-------- ----------
+// NEXT AND LAST LAND SECTIONS
+//-------- ----------
+const next_section = (sm, next) => {
+    if(next){
+        sm.landIndex = (sm.landIndex + 1) % 12;
+    }
+    if(!next){
+        let n = sm.landIndex - 1;
+        n = n < 0 ? 11 : n;
+        sm.landIndex = n;
+    }
+};
+//-------- ----------
 // STATE OBJECT FOR LAND
 //-------- ----------
 const state_land = {
@@ -189,12 +202,16 @@ const state_land = {
                 utils.button_state_switcher(sm, pos);
                 // next and last buttons
                 utils.button_check(data, 'button_next', pos, () => {
-                    sm.landIndex = (sm.landIndex + 1) % 12;
+                    //sm.landIndex = (sm.landIndex + 1) % 12;
+next_section(sm, true);
                 });
                 utils.button_check(data, 'button_last', pos, () => {
-                    let n = sm.landIndex - 1;
-                    n = n < 0 ? 11 : n;
-                    sm.landIndex = n;
+
+next_section(sm, false);
+
+                    //let n = sm.landIndex - 1;
+                    //n = n < 0 ? 11 : n;
+                    //sm.landIndex = n;
                 });
                 utils.button_check_blockmode(data, 'unlock', pos);
                 utils.button_check_blockmode(data, 'create', pos);
@@ -242,6 +259,16 @@ const state_land = {
         },
         onkeyfirst: (sm, key, down, e, data) => {
             const sun = sm.game.sun;
+
+                if(key ==='ArrowRight'){
+                    next_section(sm, true);
+                }
+
+                if(key ==='ArrowLeft'){
+                    next_section(sm, false);
+                }
+
+
             if(down){
                 sm.commonNumKey(key);
             }
