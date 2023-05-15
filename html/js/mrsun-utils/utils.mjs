@@ -17,9 +17,35 @@ utils.button_set = (data, mode) => {
     data.block_mode = mode;
 };
 utils.button_check = (data, key, pos, onClick) => {
-    const button = data[key];
+    let button = key;
+    if(typeof key === 'string'){
+        button = data[key];
+    }
     if( button.position.distanceTo( pos ) <= button.r ){
         onClick(button, data, key, pos);
+    }
+};
+utils.button_state_switcher = (sm, pos ) => {
+
+    // was the main button clicked?
+    utils.button_check(sm, 'button_switcher', pos, (button) => {
+        console.log('menu button was clicked');
+        button.active = !button.active;
+    });
+
+    const button_switcher = sm.button_switcher;
+    if(button_switcher.active){
+        let i = 0;
+        const len = button_switcher.children.length;
+        while(i < len){
+            const button_child = button_switcher.children[i];
+            utils.button_check(sm, button_child, pos, (button) => {
+
+console.log(button_child);
+
+            });
+            i += 1;
+        }
     }
 };
 utils.button_check_blockmode = (data, new_block_mode, pos) => {
@@ -146,6 +172,12 @@ utils.drawButton = ( sm, button, ctx, canvas ) => {
         const str = button.options[button.i_option];
         ctx.fillText(str, button.position.x, button.position.y + 14);
     }
+    // if button is active and has children
+    if(button.children && button.active){
+        button.children.forEach( (button_child) => {
+            utils.drawButton( sm, button_child, ctx, canvas );
+        });
+    }
 };
 utils.drawSprite = (sprite, ctx, canvas) => {
     ctx.strokeStyle = '#00ff00';
@@ -192,7 +224,7 @@ utils.drawCommonDisp = (sm, ctx, canvas) => {
     ctx.fillText('tick: ' + sm.game.tick, 10, 25);
 
 
-    //utils.drawButton(sm, sm.state_switcher.button_menu, sm.ctx, sm.canvas);
+    utils.drawButton(sm, sm.button_switcher, sm.ctx, sm.canvas);
 
 };
 // draw a section arc

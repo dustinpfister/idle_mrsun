@@ -10,9 +10,9 @@
 
 ## () - r96 - State switcher UI
 * (done) I will then want to have a main state switcher object in the main sm.mjs file
-
 * (done) have a common show state menu button in place of the back button that is used in several states
-* () set up the buttons in the init hooks of each game play state
+* (done) utils.button\_state\_switcher method started
+
 * () do away with back buttons in each state
 
 

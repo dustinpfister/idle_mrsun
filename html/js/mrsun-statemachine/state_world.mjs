@@ -37,7 +37,8 @@ const render_display = (sm, ctx, canvas, data) => {
     ctx.fillText('ss mana  : ' + sm.game.sunspots_delta_mana_level, sx, sy + yd * 4);
     ctx.fillText('ss value : ' + sm.game.sunspots_delta_world_value, sx, sy + yd * 5);
     ctx.fillText('ss delta : ' + sm.game.sunspots_delta, sx, sy + yd * 6);
-    utils.drawButton(sm, data.button_supernova, sm.ctx, sm.canvas);
+
+    //utils.drawButton(sm, data.button_supernova, sm.ctx, sm.canvas);
 };
 // render just the text for the given land section object
 const render_section_text = (ctx, section) => {
@@ -132,12 +133,12 @@ const render_detail = (sm, ctx, canvas, data) => {
 //-------- ----------
 const state_world = {
     data: {
-        button_supernova : {  desc: 'Supernova', position: new Vector2(580, 420), r: 40 },
+        //button_supernova : {  desc: 'Supernova', position: new Vector2(580, 420), r: 40 },
     },
     init: (sm, data) => {
 
         //sm.state_switcher.options['world'] = {
-        //    button: 
+             
         //};
 
     },
@@ -173,16 +174,21 @@ const state_world = {
                 return;
 
             }
+
+            // state switcher UI
+            utils.button_state_switcher(sm, pos);
+
+
             // was supernova button clicked?
 
-            utils.button_check(data, 'button_supernova', pos, () => {
-                sm.setState('supernova', {});
-            });
+            //utils.button_check(data, 'button_supernova', pos, () => {
+            //    sm.setState('supernova', {});
+            //});
 
 
-            utils.button_check(sm.state_switcher, 'button_menu', pos, () => {
-                console.log('button menu');
-            });
+            //utils.button_check(sm.state_switcher, 'button_menu', pos, () => {
+            //    console.log('button menu');
+            //});
 
         },
         onkey: (sm, key, down, e, data) => {},

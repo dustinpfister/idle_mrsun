@@ -94,10 +94,16 @@ StateMachine.create = (opt_create) => {
     canvas.height = 480;
     const sm = {
 
-        state_switcher : {
-            active: false,
-            button_menu: {  desc: 'Menu', position: new Vector2(600, 38), r: 32 },
-            options: {}
+        button_switcher : {  
+            desc: 'Menu', 
+            active: false, 
+            position: new Vector2(600, 40), 
+            r: 32,
+            children: [
+                {  desc: 'World', stateKey: 'world', active: false, position: new Vector2(600, 120), r: 32 },
+                {  desc: 'Land', stateKey: 'land', active: false, position: new Vector2(600, 200), r: 32 },
+                {  desc: 'Nova', stateKey: 'supernova', active: false, position: new Vector2(600, 280), r: 32 },
+            ]
         },
 
 
