@@ -9,10 +9,12 @@
 * () can set a water level such as 1 block so that any column that is 0 rocks will have a water block
 
 ## () - r96 - State switcher UI
-* () I would like to have a state switcher UI
-* () I could have a main button in every state that will show or hide the state switcher UI
-* () The state switcher UI will have a button for world and land state.
-* () have a button for supernova state
+* (done) I will then want to have a main state switcher object in the main sm.mjs file
+
+* (done) have a common show state menu button in place of the back button that is used in several states
+* () set up the buttons in the init hooks of each game play state
+* () do away with back buttons in each state
+
 
 ## ( done 05/14/2023 ) - r95 - Climate Types Mana Bonus
 * (done) mana multi props for climate zone objects in constant.mjs

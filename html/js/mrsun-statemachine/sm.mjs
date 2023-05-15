@@ -93,6 +93,14 @@ StateMachine.create = (opt_create) => {
     canvas.width = 640;
     canvas.height = 480;
     const sm = {
+
+        state_switcher : {
+            active: false,
+            button_menu: {  desc: 'Menu', position: new Vector2(600, 38), r: 32 },
+            options: {}
+        },
+
+
         platform: opt_create.PLATFORM || PLATFORM_NOOP,
         canvas: canvas,
         ctx: ctx,
@@ -114,6 +122,10 @@ StateMachine.create = (opt_create) => {
     sm.setState = function(key, opt) {
         opt = opt || {};
         sm.currentStateKey = key;
+
+        // update state switcher
+        
+
         const state = sm.currentState = sm.states[sm.currentStateKey];
         state.start(sm, opt, state.data);
     };

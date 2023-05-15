@@ -190,6 +190,10 @@ utils.drawCommonDisp = (sm, ctx, canvas) => {
     ctx.fillText('sunspots: ' + utils.formatDecimal( sm.game.sunspots, 2 ) + ' (' + sm.game.sunspot_multi.toFixed(2) + 'X)', 275, 5);
     // tick count
     ctx.fillText('tick: ' + sm.game.tick, 10, 25);
+
+
+    //utils.drawButton(sm, sm.state_switcher.button_menu, sm.ctx, sm.canvas);
+
 };
 // draw a section arc
 utils.drawSectionArc = (ctx, slotX, slotY, v2, rad_center, rad_delta_texel, radius_texel_delta, texelX, texelY, fillStyle) => {
