@@ -97,8 +97,9 @@ StateMachine.create = (opt_create) => {
         button_switcher : {  
             desc: 'Menu', 
             active: false, 
-            position: new Vector2(600, 40), 
+            position: new Vector2(600, 40),
             r: 32,
+            current_child: 0,
             children: [
                 {  desc: 'World', stateKey: 'world', active: false, position: new Vector2(600, 120), r: 32 },
                 {  desc: 'Land', stateKey: 'land', active: false, position: new Vector2(600, 200), r: 32 },
@@ -130,7 +131,19 @@ StateMachine.create = (opt_create) => {
         sm.currentStateKey = key;
 
         // update state switcher
-        
+        let i = 0;
+        const len = sm.button_switcher.children.length;
+        while(i < len){
+            const button_child = sm.button_switcher.children[i];
+            if(button_child.stateKey === sm.currentStateKey){
+                const i_old = sm.button_switcher.current_child;
+                sm.button_switcher.children[i_old].active = false;
+                // set this one active
+                sm.button_switcher.current_child = i;
+                sm.button_switcher.children[i].active = true;
+            }
+            i += 1;
+        }
 
         const state = sm.currentState = sm.states[sm.currentStateKey];
         state.start(sm, opt, state.data);

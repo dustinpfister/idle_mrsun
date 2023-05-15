@@ -12,6 +12,7 @@
 * (done) I will then want to have a main state switcher object in the main sm.mjs file
 * (done) have a common show state menu button in place of the back button that is used in several states
 * (done) utils.button\_state\_switcher method started
+* (done) make changes to get new button switcher to work with world, land, and supernova states
 
 * () do away with back buttons in each state
 

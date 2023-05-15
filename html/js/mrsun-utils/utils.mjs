@@ -40,8 +40,15 @@ utils.button_state_switcher = (sm, pos ) => {
         while(i < len){
             const button_child = button_switcher.children[i];
             utils.button_check(sm, button_child, pos, (button) => {
+                // set current current child active boolen to false
+                //const i_old = button_switcher.current_child;
+                //button_switcher.children[i_old].active = false;
 
-console.log(button_child);
+                // set this one active
+               // button_switcher.current_child = i;
+               // button_switcher.children[i].active = true;
+
+sm.setState(button_child.stateKey, {});
 
             });
             i += 1;

@@ -79,7 +79,7 @@ const state_land = {
         block_mode: 'unlock',    // 'unlock', 'create', 'absorb', 'upgrade', and 'info' modes
         block_info_disp: false,  // display block info or not?
         block: null,
-        button_back : {  desc: 'Back', position: new Vector2(600, 38), r: 32 },
+        //button_back : {  desc: 'Back', position: new Vector2(600, 38), r: 32 },
         button_next : {  desc: 'Next', position: new Vector2(640 - 60, 430), r: 30 },
         button_last : {  desc: 'Last', position: new Vector2(60, 430), r: 30 },
         // 'Block Mode' buttons
@@ -136,7 +136,7 @@ const state_land = {
         utils.drawSprite(section.sprite_land, ctx, canvas);
         drawLandSection(sm, ctx, canvas, section, data);
         // buttons
-        utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
+        //utils.drawButton(sm, data.button_back, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_next, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_last, sm.ctx, sm.canvas);
         utils.drawButton(sm, data.button_bm_unlock, sm.ctx, sm.canvas);
@@ -188,9 +188,14 @@ const state_land = {
                 data.block_info_disp = false;
             }else{
                 // check buttons
-                utils.button_check(data, 'button_back', pos, () => {
-                    sm.setState('world', {});
-                });
+                //utils.button_check(data, 'button_back', pos, () => {
+                //    sm.setState('world', {});
+                //});
+
+            // state switcher UI
+            utils.button_state_switcher(sm, pos);
+
+
                 utils.button_check(data, 'button_next', pos, () => {
                     sm.landIndex = (sm.landIndex + 1) % 12;
                 });
