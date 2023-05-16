@@ -36,6 +36,7 @@ constant.DEFAULT_CREATE_OPTIONS = {
     sunspots: '0', 
     sectionData: constant.LANDS_START_SECTION_DATA
 };
+constant.WATER_LEVEL = 1;
 //-------- ----------
 // CLIMATE - 
 //-------- ----------
@@ -92,6 +93,11 @@ constant.SUNSPOTS_WORLDVALUE_MAXMANA = Math.pow(10, 10);
 constant.BLOCKS = {};
 constant.BLOCKS.blank = {
     type: 'blank',
+    mana_base: 0,
+    mana_temp: 0
+};
+constant.BLOCKS.water = {
+    type: 'water',
     mana_base: 0,
     mana_temp: 0
 };

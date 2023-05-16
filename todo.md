@@ -5,8 +5,13 @@
 ## () - rx - Abiogenesis Events
 * () there will need to be a set of conditions for 'abiogenesis' events
 
-## () - rx - Water level, water block type
-* () can set a water level such as 1 block so that any column that is 0 rocks will have a water block
+## () - r97 - Water level, water block type
+* (done) have a water level const in constant.mjs that is the number of rows that will be water blocks
+* () add a BLOCKS.water object in constant.mjs as well
+* () I will need to update conditions in methods like gameMod.absorbBlock
+* () start a helper method in game.mjs that will set unlocked blank blocks to water types
+* () in the event that a slot is unlocked, the block type is blank, and the row is at or below water level the block should be set to water
+
 
 ## ( done 05/15/2023 ) - r96 - State switcher UI
 * (done) I will then want to have a main state switcher object in the main sm.mjs file
