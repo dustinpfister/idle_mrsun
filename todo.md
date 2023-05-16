@@ -11,9 +11,11 @@
 * (done) start a autoSetBlock slot class method
 * (done) in the event that a slot is unlocked and NOT rock type, an auto set type of block can be set
 * (done) update getSectionData method of landSection class to store water block types
-
+* (done) water auto block type should only be set when the y value is at or below water level
+* (done) this auto block type process will then need to be part of the main update by tick method in game.mjs
 
 * () I will need to update conditions in methods like gameMod.absorbBlock
+
 
 
 

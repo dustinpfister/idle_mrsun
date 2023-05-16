@@ -160,8 +160,10 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
             section.forEachSlot( (slot ) => {
                 const a_temp = section.temp / constant.TEMP_MAX;
                 const block = slot.block;
+                // do an autoset for the slot
+                slot.autoSetBlockType();
+                // add to mana delta and mana total value
                 if(!slot.locked && block.type != 'blank'){
-                    // update block here
                     block.setManaStats(game.sunspot_multi);
                     const block_mana_delta = new Decimal( Math.round(block.mana_base + block.mana_temp * a_temp) );
                     section.mana_delta = section.mana_delta.add(block_mana_delta);

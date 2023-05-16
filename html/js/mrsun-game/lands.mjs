@@ -223,9 +223,13 @@ class Slot {
         // if the slot is NOT locked, and the type is NOT Locked
         // then it is possible for the block to end up being auto set
         if( !this.locked && this.block.type != 'rock'){
+            // by default the block will be blank
+            this.block.setLevel(1, 'blank', 1);
 
-            this.block.setLevel(1, 'water', 1)
-
+            const yMin = constant.SLOT_GRID_HEIGHT - constant.WATER_LEVEL;
+            if(this.y >= yMin){
+                this.block.setLevel(1, 'water', 1)
+            }
         }
         // if slot is locked, make sure block type is blank
         if(this.locked){

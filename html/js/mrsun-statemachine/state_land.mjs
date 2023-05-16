@@ -247,7 +247,11 @@ const state_land = {
                         data.block_info_disp = true;
                         data.block = block;
                         gameMod.saveGame(sm.game);
-                        console.log(slot);
+
+
+                        //slot.autoSetBlockType();
+
+                        console.log(slot.block);
                     }
                 }
             }

@@ -123,6 +123,11 @@ IMG.blank = {
     w: 1, h: 1,
     color_indices: [0]
 };
+IMG.water = {
+    palette: ['#00aaff'],
+    w: 1, h: 1,
+    color_indices: [0]
+};
 // 2 by 2 rock
 IMG.rock = {
     palette: [
