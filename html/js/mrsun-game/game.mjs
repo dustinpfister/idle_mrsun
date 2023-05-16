@@ -8,7 +8,7 @@ import { canvasMod } from '../canvas/canvas.mjs'
 import { Sprite, SpriteSheet } from '../object2d-sprite/sprite.mjs'
 import { utils }  from '../mrsun-utils/utils.mjs'
 import { constant } from '../mrsun-constant/constant.mjs'
-import { Lands } from './lands.mjs'
+import { Lands } from '../mrsun-lands/lands.mjs'
 import { Sun } from './sun.mjs'
 //-------- ----------
 // Decimal

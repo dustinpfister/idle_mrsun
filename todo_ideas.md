@@ -1,26 +1,23 @@
-# electionjs-example-mrsun todo list for 'mrsun-idle' stand alone project
+# idle_mrsun todo list
 
-<!-- Plans for 'MrSun idle' -->
 
 <!-------- ----------
  MRSUN-GAME - game.mjs, lands.mjs, sun.mjs
 ---------- ---------->
 
-## () - rx - 
+## () - rx - level up game event
+* () have an event that will fire each time a level up happens
+* () in the event that the player jumps up a whole bunch of levels at once the event should fire for each level
+
+## () - rx - Slot Class, Disabled Slot feature 
+* () a slot object will have a disabled property which means that it can not be used at all
+
+<!-- Total game ticks / time spent playing -->
 
 ## () - rx - total game ticks
 * () have a grand total game ticks count that will not reset with a super nova event
 * () this will have to be part of the save
 * () display this total in supernova state
-* () display game start time in supernova state
-
-## () - rx - level up game event
-* () have an event that will fire each time a level up happens
-* () in the event that the player jumps up a whole bunch of levels at once the event should fire for each level
-
-
-## () - rx - Slot Class, Disabled Slot feature 
-* () a slot object will have a disabled property which means that it can not be used at all
 
 <!-------- ----------
  MRSUN-UTILS - utils.mjs
@@ -103,5 +100,6 @@
 ---------- ---------->
 
 ## () - rx - See about fixing init state stuck bug
-    With electionjs there seems to be a bug where I can end up getting stuck in init state. In windows I can trigger this by reloading a whole bunch of times real fast.
+    With electionjs there seems to be a bug where I can end up getting stuck in init state. 
+    In windows I can trigger this by reloading a whole bunch of times real fast.
 
