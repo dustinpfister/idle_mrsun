@@ -217,6 +217,21 @@ class Slot {
         this.block = new Block({ type: 'blank'});
         this.locked = true;
     }
+    // set auto block type such as 'water' block type
+    autoSetBlockType () {
+       
+        // if the slot is NOT locked, and the type is NOT Locked
+        // then it is possible for the block to end up being auto set
+        if( !this.locked && this.block.type != 'rock'){
+
+            this.block.setLevel(1, 'water', 1)
+
+        }
+        // if slot is locked, make sure block type is blank
+        if(this.locked){
+            this.block.setLevel(1, 'blank', 1);
+        }
+    }
 };
 //-------- ----------
 // Land Section
@@ -282,6 +297,9 @@ class LandSection {
                         if(arr[0] === 'r'){
                             slot.block.setLevel(arr[1], 'rock', 1);
                         }
+                        if(arr[0] === 'w'){
+                            slot.block.setLevel(arr[1], 'water', 1);
+                        }
                     }
                     y -= 1;
                     ct -= 1;
@@ -310,6 +328,9 @@ class LandSection {
                    }
                    if(slot.block.type === 'blank'){
                        bd_str += 'b,1;'
+                   }
+                   if(slot.block.type === 'water'){
+                       bd_str += 'w,1;'
                    }
                 }
                 y -= 1;

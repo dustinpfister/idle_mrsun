@@ -202,16 +202,10 @@ const state_land = {
                 utils.button_state_switcher(sm, pos);
                 // next and last buttons
                 utils.button_check(data, 'button_next', pos, () => {
-                    //sm.landIndex = (sm.landIndex + 1) % 12;
-next_section(sm, true);
+                    next_section(sm, true);
                 });
                 utils.button_check(data, 'button_last', pos, () => {
-
-next_section(sm, false);
-
-                    //let n = sm.landIndex - 1;
-                    //n = n < 0 ? 11 : n;
-                    //sm.landIndex = n;
+                    next_section(sm, false);
                 });
                 utils.button_check_blockmode(data, 'unlock', pos);
                 utils.button_check_blockmode(data, 'create', pos);
@@ -253,6 +247,7 @@ next_section(sm, false);
                         data.block_info_disp = true;
                         data.block = block;
                         gameMod.saveGame(sm.game);
+                        console.log(slot);
                     }
                 }
             }

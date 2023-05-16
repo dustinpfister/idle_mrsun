@@ -5,12 +5,16 @@
 ## () - rx - Abiogenesis Events
 * () there will need to be a set of conditions for 'abiogenesis' events
 
-## () - r97 - Water level, water block type
+## () - r97 - Water level, water block type, auto block types
 * (done) have a water level const in constant.mjs that is the number of rows that will be water blocks
-* () add a BLOCKS.water object in constant.mjs as well
+* (done) add a BLOCKS.water object in constant.mjs as well
+* (done) start a autoSetBlock slot class method
+* (done) in the event that a slot is unlocked and NOT rock type, an auto set type of block can be set
+* (done) update getSectionData method of landSection class to store water block types
+
+
 * () I will need to update conditions in methods like gameMod.absorbBlock
-* () start a helper method in game.mjs that will set unlocked blank blocks to water types
-* () in the event that a slot is unlocked, the block type is blank, and the row is at or below water level the block should be set to water
+
 
 
 ## ( done 05/15/2023 ) - r96 - State switcher UI
