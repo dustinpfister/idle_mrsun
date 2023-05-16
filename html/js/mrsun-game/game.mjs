@@ -400,7 +400,10 @@ gameMod.upgradeBlock = (game, i_section, i_slot, level_delta) => {
         ug_info.block.setLevel(ug_info.level_target, 'rock', 1);
         GAME_EVENTS.dispatchEvent({ type: 'autosave_delay', game: game });
     }
-    if( !ug_info.afford ){
+    if( !ug_info.can_upgrade ){
+        console.log('The block Can not be upgraded');
+    }
+    if( ug_info.can_upgrade && !ug_info.afford ){
         console.log( 'Not Enough mana to upgrade.' );
         console.log( 'mana: ' + game.mana.toNumber() );
         console.log(ug_info.afford);

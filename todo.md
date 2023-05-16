@@ -5,7 +5,7 @@
 ## () - rx - Abiogenesis Events
 * () there will need to be a set of conditions for 'abiogenesis' events
 
-## () - r97 - Water level, water block type, auto block types
+## ( done 05/16/2023 ) - r97 - Water level, water block type, auto block types
 * (done) have a water level const in constant.mjs that is the number of rows that will be water blocks
 * (done) add a BLOCKS.water object in constant.mjs as well
 * (done) start a autoSetBlock slot class method
@@ -14,6 +14,7 @@
 * (done) water auto block type should only be set when the y value is at or below water level
 * (done) this auto block type process will then need to be part of the main update by tick method in game.mjs
 * (done) update the gameMod.createBlock method to create over any unlocked block that is not rock
+* (done) block can not be upgraed message when trying to upgrade water
 
 ## ( done 05/15/2023 ) - r96 - State switcher UI
 * (done) I will then want to have a main state switcher object in the main sm.mjs file

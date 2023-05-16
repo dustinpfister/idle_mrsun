@@ -165,11 +165,9 @@ const state_land = {
         ctx.fillText('rocks: ' + section.bt_counts.rock, 15, 55);
         ctx.fillText('slot unlock cost: ' + utils.formatDecimal(sm.game.lands.slot_unlock_cost, 4), 15, 65);
         ctx.fillText('section mana value: ' +  utils.formatDecimal(section.mana_total), 15, 75);
-
         ctx.fillText('sunspots delta world value: ' + sm.game.sunspots_delta_world_value, 170, 45);
         ctx.fillText('section mana delta: ' + utils.formatDecimal(section.mana_delta, 4), 170, 55);
         ctx.fillText('climate: ' + constant.CLIMATE_ZONES[section.climate_zone_index].desc, 170, 65);
-
         // current land index
         ctx.font = '50px arial';
         ctx.textAlign = 'center';
@@ -247,27 +245,18 @@ const state_land = {
                         data.block_info_disp = true;
                         data.block = block;
                         gameMod.saveGame(sm.game);
-
-
-                        //slot.autoSetBlockType();
-
-                        console.log(slot.block);
                     }
                 }
             }
         },
         onkeyfirst: (sm, key, down, e, data) => {
             const sun = sm.game.sun;
-
                 if(key ==='ArrowRight'){
                     next_section(sm, true);
                 }
-
                 if(key ==='ArrowLeft'){
                     next_section(sm, false);
                 }
-
-
             if(down){
                 sm.commonNumKey(key);
             }
