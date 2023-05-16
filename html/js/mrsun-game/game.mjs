@@ -9,7 +9,7 @@ import { Sprite, SpriteSheet } from '../object2d-sprite/sprite.mjs'
 import { utils }  from '../mrsun-utils/utils.mjs'
 import { constant } from '../mrsun-constant/constant.mjs'
 import { Lands } from '../mrsun-lands/lands.mjs'
-import { Sun } from './sun.mjs'
+import { Sun } from '../mrsun-sun/sun.mjs'
 //-------- ----------
 // Decimal
 //-------- ----------

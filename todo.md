@@ -4,7 +4,7 @@
 
 ## () - rx - Biology started with Abiogenesis Events
 * (done) moved lands.mjs to its own folder
-* () move sun.mjs to its own folder
+* (done) move sun.mjs to its own folder
 * () start a mrsun-biology js folder that will contain all files for life in mrsun
 * () there will need to be a set of conditions for 'abiogenesis' events
 
