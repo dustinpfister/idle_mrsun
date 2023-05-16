@@ -13,11 +13,7 @@
 * (done) update getSectionData method of landSection class to store water block types
 * (done) water auto block type should only be set when the y value is at or below water level
 * (done) this auto block type process will then need to be part of the main update by tick method in game.mjs
-
-* () I will need to update conditions in methods like gameMod.absorbBlock
-
-
-
+* (done) update the gameMod.createBlock method to create over any unlocked block that is not rock
 
 ## ( done 05/15/2023 ) - r96 - State switcher UI
 * (done) I will then want to have a main state switcher object in the main sm.mjs file

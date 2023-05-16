@@ -325,7 +325,8 @@ gameMod.createBlock = (game, i_section, i_slot, level) => {
     while(y--){
         const slot = section.getSlot(x, y);
         // check if the unlocked slot is blank
-        if(!slot.locked && slot.block.type === 'blank'){
+        //if(!slot.locked && slot.block.type === 'blank'){
+        if(!slot.locked && slot.block.type != 'rock'){
             const block = slot.block;
             const blockCost = 1;
             gameMod.updateByTickDelta(game, 0, true);
