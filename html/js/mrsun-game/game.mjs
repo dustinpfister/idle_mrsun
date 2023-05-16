@@ -1,4 +1,4 @@
-// game.mjs - for electionjs-example-mrsun
+// game.mjs - for idle_mrsun
 // create and update a game state object
 import { Decimal }  from '../decimal/10.4.3/decimal.mjs'
 import { LZString }  from '../lz-string/1.4.4/lz-string.mjs'

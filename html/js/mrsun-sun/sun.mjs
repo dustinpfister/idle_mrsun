@@ -1,12 +1,8 @@
-// sun.mjs - for electionjs-example-mrsun
+// sun.mjs - for idle_mrsun
 import { Vector2 } from '../vector2/vector2.mjs'
 import { canvasMod } from '../canvas/canvas.mjs'
 import { Sprite, SpriteSheet } from '../object2d-sprite/sprite.mjs'
 import { constant } from '../mrsun-constant/constant.mjs'
-//-------- ----------
-// Decimal
-//-------- ----------
-//Decimal.set(constant.DECIMAL_OPTIONS);
 //-------- ----------
 // Canvas Objects for Sun Class
 //-------- ----------

@@ -1,4 +1,4 @@
-// state_init.mjs - for electionjs-example-mrsun
+// state_init.mjs - for idle_mrsun
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------

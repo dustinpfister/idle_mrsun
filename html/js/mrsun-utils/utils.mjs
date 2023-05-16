@@ -1,4 +1,4 @@
-// utils.js - for electionjs-example-mrsun
+// utils.js - for idle_mrsun
 import { Decimal }  from "../decimal/10.4.3/decimal.mjs"
 import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------

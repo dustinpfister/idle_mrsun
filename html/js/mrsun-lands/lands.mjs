@@ -1,4 +1,4 @@
-// lands.mjs - for electionjs-example-mrsun
+// lands.mjs - for idle_mrsun
 import { Decimal }  from "../decimal/10.4.3/decimal.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
 import { canvasMod } from '../canvas/canvas.mjs'

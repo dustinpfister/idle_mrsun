@@ -1,4 +1,4 @@
-// state_world.mjs - for electionjs-example-mrsun
+// state_world.mjs - for idle_mrsun
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'

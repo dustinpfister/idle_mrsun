@@ -1,4 +1,4 @@
-// sm.mjs - for electionjs-example-mrsun - The main state machine module
+// sm.mjs - for idle_mrsun - The main state machine module
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
