@@ -47,10 +47,13 @@ Biology.update = (game) => {
         if(len > 0){
             const i = indices[ Math.floor( len * Math.random() ) ];
             const slot = getWaterSlot(game, i);
+            const section = game.lands.sections[i];
             console.log('Abiogenesis:');
             console.log('section index: ' + i);
+            console.log(section.bt_counts)
             if(slot){
-                //slot.block.setLevel(1, 'water_life', 1);
+                slot.block.setLevel(1, 'water_life', 1);
+                section.setBlockTypeCounts();
             }
         }
     }
