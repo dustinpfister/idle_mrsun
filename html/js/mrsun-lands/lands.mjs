@@ -328,13 +328,16 @@ class LandSection {
                 unlock_ct = slot.locked ? unlock_ct : unlock_ct + 1;
                 if(!slot.locked){
                    if(slot.block.type === 'rock'){
-                       bd_str += 'r,' + slot.block.level + ';'
+                       bd_str += 'r,' + slot.block.level + ';';
                    }
                    if(slot.block.type === 'blank'){
-                       bd_str += 'b,1;'
+                       bd_str += 'b,1;';
                    }
                    if(slot.block.type === 'water'){
-                       bd_str += 'w,1;'
+                       bd_str += 'w,1;';
+                   }
+                   if(slot.block.type === 'water_life'){
+                       bd_str += 'w,1;';
                    }
                 }
                 y -= 1;

@@ -112,6 +112,7 @@ canvasMod.create = function (opt) {
     opt.dataParse = opt.dataParse || 'string'; // parse data strings into arrays 
     canvas.width = opt.size;
     canvas.height = opt.size;
+    ctx.translate(0.5, 0.5);
     // create canvas object
     const canObj = {
         texture: null,

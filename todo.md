@@ -8,7 +8,7 @@
 
 ## () - r99 - save life type blocks
 
-## () - r98 - Biology started, Abiogenesis Events
+## ( done 05/17/2023 ) - r98 - Biology started, Abiogenesis Events
 * (done) moved lands.mjs to its own folder
 * (done) move sun.mjs to its own folder
 * (done) start a mrsun-biology js folder that will contain all files for life in mrsun
@@ -21,11 +21,8 @@
 * (done) I will need at least one 'life' type block then such as a life-water type
 * (done) getLandsLifeStatus helper function to find out if we are dealing with a dead world or not
 * (done) have a getWaterSectionIndices helper that will give me indices of all sections that have at least one water block
-
-* () get a random section and set a water slot to life_water
-
-* () there will need to be a set of conditions for and 'abiogenesis'
-
+* (done) there will need to be a set of conditions for and 'abiogenesis'
+* (done) get a random section and set a water slot to life_water
 
 ## ( done 05/16/2023 ) - r97 - Water level, water block type, auto block types
 * (done) have a water level const in constant.mjs that is the number of rows that will be water blocks
