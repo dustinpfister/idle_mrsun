@@ -129,17 +129,26 @@ const render_detail = (sm, ctx, canvas, data) => {
 //-------- ----------
 const state_world = {
     data: {
+        render_world_lt: 0,  // last game tick that rendering was done
+        render_world_si: 0   // current section index to render
     },
     init: (sm, data) => {},
     start: (sm, opt) => {
         const sun = sm.game.sun;
-        // as long as I do not have to update on a tick by tick basis
-        // I can call the sprite_world update method here in the start hook
+        // I might still want to do a full render of all land sections once on each start
         sm.game.lands.sections.forEach((section, i) => {
             section.sprite_world.update();
         });
     },
-    update: (sm, secs) => {
+    update: (sm, secs, data) => {
+       // real time update of land sections, but on a section by section basis once per tick
+       if( sm.game.tick > data.render_world_lt ){
+           data.render_world_lt = sm.game.tick;
+           const section = sm.game.lands.sections[data.render_world_si];
+           section.sprite_world.update();
+           data.render_world_si += 1;
+           data.render_world_si %= 12;
+       }
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
     },
     render: (sm, ctx, canvas, data) => {

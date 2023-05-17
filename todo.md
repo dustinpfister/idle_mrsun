@@ -12,9 +12,8 @@
 * (done) move sun.mjs to its own folder
 * (done) start a mrsun-biology js folder that will contain all files for life in mrsun
 * (done) displaying break down of sunspot deltas in supernova state now
-
-* () call section.sprite\_world update method again
-* () add a data value that will help make it so that this method is only called once per tick
+* (done) call section.sprite\_world update method again in update method of world state
+* (done) add a data values that will help make it so that this method is only called once per tick
 
 * () there will need to be a set of conditions for 'abiogenesis' events
 
