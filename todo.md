@@ -2,11 +2,22 @@
 
 <!-- FINAL GAME -->
 
-## () - rx - Biology started with Abiogenesis Events
+## () - r100 -
+
+## () - r99 - slot render range for Sprite World Update
+* () have state object values to set what the start and end slot indices are
+
+## () - r98 - Biology started with Abiogenesis Events
 * (done) moved lands.mjs to its own folder
 * (done) move sun.mjs to its own folder
-* () start a mrsun-biology js folder that will contain all files for life in mrsun
+* (done) start a mrsun-biology js folder that will contain all files for life in mrsun
+* (done) displaying break down of sunspot deltas in supernova state now
+
+* () call section.sprite\_world update method again
+* () add a data value that will help make it so that this method is only called once per tick
+
 * () there will need to be a set of conditions for 'abiogenesis' events
+
 
 ## ( done 05/16/2023 ) - r97 - Water level, water block type, auto block types
 * (done) have a water level const in constant.mjs that is the number of rows that will be water blocks
