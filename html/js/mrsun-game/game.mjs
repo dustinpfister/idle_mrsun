@@ -10,6 +10,7 @@ import { utils }  from '../mrsun-utils/utils.mjs'
 import { constant } from '../mrsun-constant/constant.mjs'
 import { Lands } from '../mrsun-lands/lands.mjs'
 import { Sun } from '../mrsun-sun/sun.mjs'
+import { Biology } from '../mrsun-biology/biology.mjs'
 //-------- ----------
 // Decimal
 //-------- ----------
@@ -142,8 +143,8 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
     game.tick_last = game.tick;
     game.tick_frac += tickDelta;
     game.tick = Math.floor(game.tick_frac);
-    const tick_delta = game.tick - game.tick_last;
-    if(tick_delta >= 1 || force){
+    game.tick_delta = game.tick - game.tick_last;
+    if(game.tick_delta >= 1 || force){
         // update temp, block data, mana per tick, credit mana,
         game.lands.forEachSection( (section) => {
             const d_sun = section.position.distanceTo(game.sun.position);
@@ -173,6 +174,8 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
             });
             section.mana_total = mana_total;
         });
+        // update life state
+        Biology.update(game);
         // lands mana total
         let mtl = new Decimal(0);
         game.mana_per_tick = new Decimal(0);
@@ -184,11 +187,11 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
         });
         game.lands.mana_total = mtl;
         // credit current mana per tick
-        const mana_delta = Decimal.mul(game.mana_per_tick, tick_delta);
+        const mana_delta = Decimal.mul(game.mana_per_tick, game.tick_delta);
         manaCredit(game, mana_delta);
         // auto save check
         if(game.autosave_ticks > 0){
-            game.autosave_ticks -= tick_delta;
+            game.autosave_ticks -= game.tick_delta;
             game.autosave_ticks = game.autosave_ticks < 0 ? 0 : game.autosave_ticks;
             if(game.autosave_ticks === 0){
                 gameMod.saveGame(game);
@@ -236,6 +239,7 @@ gameMod.create = (opt) => {
        tick_frac: opt.tick_frac === undefined ? 0 : opt.tick_frac,
        tick: 0,           // game should update by a main tick count
        tick_last: 0,      // last tick can be subtracted from tick to get a tick delta
+       tick_delta: 0,
        last_update: opt.last_update || new Date(),
        autosave: true,   // autosave feature on or off
        autosave_ticks: 0 // 1 or more ticks is the number of ticks to the next game save

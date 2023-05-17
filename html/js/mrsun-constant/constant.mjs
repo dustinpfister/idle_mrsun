@@ -101,6 +101,11 @@ constant.BLOCKS.water = {
     mana_base: 0,
     mana_temp: 0
 };
+constant.BLOCKS.water_life = {
+    type: 'water_life',
+    mana_base: 2,
+    mana_temp: 1.5
+};
 constant.BLOCKS.rock = {
     type: 'rock',
     mana_base: 1.00,
@@ -126,7 +131,19 @@ IMG.blank = {
 IMG.water = {
     palette: ['#00aaff'],
     w: 1, h: 1,
-    color_indices: [0]
+    color_indices: [
+        0
+    ]
+};
+IMG.water_life = {
+    palette: ['#00aaff', '#00ff00'],
+    w: 4, h: 4,
+    color_indices: [
+        0,0,0,0,
+        0,1,1,0,
+        0,1,1,0,
+        0,0,0,0
+    ]
 };
 // 2 by 2 rock
 IMG.rock = {

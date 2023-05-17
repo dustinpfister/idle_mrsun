@@ -165,7 +165,7 @@ const state_land = {
         ctx.fillText('rocks: ' + section.bt_counts.rock, 15, 55);
         ctx.fillText('slot unlock cost: ' + utils.formatDecimal(sm.game.lands.slot_unlock_cost, 4), 15, 65);
         ctx.fillText('section mana value: ' +  utils.formatDecimal(section.mana_total), 15, 75);
-        ctx.fillText('sunspots delta world value: ' + sm.game.sunspots_delta_world_value, 170, 45);
+        ctx.fillText('sunspots delta world value: ' + utils.formatDecimal(sm.game.sunspots_delta_world_value, 4), 170, 45);
         ctx.fillText('section mana delta: ' + utils.formatDecimal(section.mana_delta, 4), 170, 55);
         ctx.fillText('climate: ' + constant.CLIMATE_ZONES[section.climate_zone_index].desc, 170, 65);
         // current land index

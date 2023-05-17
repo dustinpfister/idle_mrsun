@@ -227,8 +227,8 @@ class Slot {
             this.block.setLevel(1, 'blank', 1);
 
             const yMin = constant.SLOT_GRID_HEIGHT - constant.WATER_LEVEL;
-            if(this.y >= yMin){
-                this.block.setLevel(1, 'water', 1)
+            if(this.y >= yMin && this.block.type != 'water_life'){
+                this.block.setLevel(1, 'water', 1);
             }
         }
         // if slot is locked, make sure block type is blank

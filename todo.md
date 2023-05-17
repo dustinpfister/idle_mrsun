@@ -2,20 +2,29 @@
 
 <!-- FINAL GAME -->
 
-## () - r100 -
 
-## () - r99 - slot render range for Sprite World Update
+## () - r100 - slot render range for Sprite World Update
 * () have state object values to set what the start and end slot indices are
 
-## () - r98 - Biology started with Abiogenesis Events
+## () - r99 - save life type blocks
+
+## () - r98 - Biology started, Abiogenesis Events
 * (done) moved lands.mjs to its own folder
 * (done) move sun.mjs to its own folder
 * (done) start a mrsun-biology js folder that will contain all files for life in mrsun
 * (done) displaying break down of sunspot deltas in supernova state now
 * (done) call section.sprite\_world update method again in update method of world state
 * (done) add a data values that will help make it so that this method is only called once per tick
+* (done) game.tick\_delta prop
+* (done) I will need to have a main Bilogy.update method
+* (done) this main bilogy update method will then need to be called in game mod update by tick delta at some rate
+* (done) I will need at least one 'life' type block then such as a life-water type
+* (done) getLandsLifeStatus helper function to find out if we are dealing with a dead world or not
+* (done) have a getWaterSectionIndices helper that will give me indices of all sections that have at least one water block
 
-* () there will need to be a set of conditions for 'abiogenesis' events
+* () get a random section and set a water slot to life_water
+
+* () there will need to be a set of conditions for and 'abiogenesis'
 
 
 ## ( done 05/16/2023 ) - r97 - Water level, water block type, auto block types
