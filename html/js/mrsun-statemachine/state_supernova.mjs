@@ -16,8 +16,8 @@ const render_info = (sm, ctx, canvas) => {
     ctx.textBaseline = 'top';
     ctx.font = '15px monospace';
     ctx.fillText('current sunspots     : ' + utils.formatDecimal(sm.game.sunspots, 4), sx, sy + yd * 0);
-    ctx.fillText('sunspots delta       : ' + utils.formatDecimal(sm.game.sunspots_delta_mana_level, 4), sx, sy + yd * 1);
-    ctx.fillText('sunspots delta       : ' + utils.formatDecimal(sm.game.sunspots_delta_world_value, 4), sx, sy + yd * 2);
+    ctx.fillText('sunspots mana level  : ' + utils.formatDecimal(sm.game.sunspots_delta_mana_level, 4), sx, sy + yd * 1);
+    ctx.fillText('sunspots world value : ' + utils.formatDecimal(sm.game.sunspots_delta_world_value, 4), sx, sy + yd * 2);
     ctx.fillText('sunspots delta       : ' + utils.formatDecimal(sm.game.sunspots_delta, 4), sx, sy + yd * 3);
     const dec = sm.game.sunspots.add( sm.game.sunspots_delta );
     const m = gameMod.getSunSpotMulti( dec.toNumber() );
