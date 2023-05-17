@@ -21,23 +21,38 @@ const getWaterSectionIndices = (game) => {
    const indices = [];
    while(i--){
       const section = game.lands.sections[i];
-
       if(section.bt_counts.water >= 1){
           indices.push(i);
       }
    }
    return indices;
 };
-
-
+// get water slot
+const getWaterSlot = (game, i_section) => {
+    const section = game.lands.sections[i_section];
+    const slots_water = section.slots.filter( (slot) => {
+        return slot.block.type === 'water';
+    });
+    const len = slots_water.length;
+    return slots_water[ Math.floor( len * Math.random() )  ];
+};
 // main public update method for Biology
 Biology.update = (game) => {
     const live_world = getLandsLifeStatus(game);
 
     // if dead world there should be a way for an abiogenesis
     if( game.tick_delta > 0 && !live_world){
-        const indices = getWaterSectionIndices(game)
-        console.log(indices);
+        const indices = getWaterSectionIndices(game);
+        const len = indices.length;
+        if(len > 0){
+            const i = indices[ Math.floor( len * Math.random() ) ];
+            const slot = getWaterSlot(game, i);
+            console.log('Abiogenesis:');
+            console.log('section index: ' + i);
+            if(slot){
+                //slot.block.setLevel(1, 'water_life', 1);
+            }
+        }
     }
 
 };
