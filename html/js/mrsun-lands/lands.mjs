@@ -277,7 +277,7 @@ class LandSection {
     }
     isHabitable () {
         const climate = constant.CLIMATE_ZONES[this.climate_zone_index];
-        return this.bt_counts.water > 0 && climate.habitability;
+        return this.bt_counts.water > 0 && !!climate.habitability;
     }
     // apply section data
     applySectionData(sectionData){

@@ -34,12 +34,12 @@ const getWaterHabitableIndices = (game) => {
    return game.lands.sections.filter( (section) => {
        return section.isHabitable();
    }).map( (section, i) => {
-       return i;
+       return section.i;
    });
 };
 // get water slot
-const getWaterSlot = (game, i_section) => {
-    const section = game.lands.sections[i_section];
+const getWaterSlot = (game, section) => {
+    //const section = game.lands.sections[i_section];
     const slots_water = section.slots.filter( (slot) => {
         return slot.block.type === 'water';
     });
@@ -47,24 +47,22 @@ const getWaterSlot = (game, i_section) => {
     return slots_water[ Math.floor( len * Math.random() )  ];
 };
 // The abiogenesis process
-const abiogenesis = (game) => {
-    const live_world = getLandsLifeStatus(game);
+const abiogenesis = (game, live_world) => {
     // if dead world there should be a way for an abiogenesis
     if( game.tick_delta > 0 && !live_world){
         //const indices = getWaterSectionIndices(game);
         const indices = getWaterHabitableIndices(game);
         const len = indices.length;
-
         if( len === 0 ){
             console.log('Abiogenesis:');
             console.log('There are no sections that are Habitable.');
         }
-
         if( len > 0 ){
             const i = indices[ Math.floor( len * Math.random() ) ];
-            const slot = getWaterSlot(game, i);
             const section = game.lands.sections[i];
+            const slot = getWaterSlot(game, section);
             console.log('Abiogenesis:');
+            console.log(indices);
             console.log('section index: ' + i);
             console.log(section.bt_counts)
             if(slot){
@@ -72,12 +70,49 @@ const abiogenesis = (game) => {
                 section.setBlockTypeCounts();
             }
         }
+    }
+};
+// check the current habitability of a section
+// if a section is no longer habitable then all life must die
+const habitability = (game, section) => {
+    const habitable = section.isHabitable();
+
+    // if the section is NOT habitable, and there is life on it, then all that life will die
+    if(!habitable && section.bt_counts.water_life > 0){
+        console.log('life on a section that is not habitable');
+        const slots = section.slots.filter( (slot) => {
+            return slot.block.type === 'water_life';
+        });
+        slots.forEach( (slot) => {
+            slot.block.setLevel(1, 'water', 1);
+            section.setBlockTypeCounts();
+        });
+    }
+
+    // if the section is habitable
+    if(habitable){
 
     }
+
 };
 // main public update method for Biology
 Biology.update = (game) => {
-    abiogenesis(game);
+    const live_world = getLandsLifeStatus(game);
+
+    abiogenesis(game, live_world);
+
+    if(live_world){
+
+        let i = 0;
+        const len = game.lands.sections.length;
+        while(i < len){
+            const section = game.lands.sections[i];
+            habitability(game, section);
+            i += 1;
+        }
+
+    }
+
 };
 //-------- ----------
 // EXPORT

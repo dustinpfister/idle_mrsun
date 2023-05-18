@@ -206,8 +206,6 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
     const sunspot_world_value_base = getSunspotWorldValueBase(game.lands.mana_total.add(1));
     //game.sunspots_delta_world_value = Decimal.log(game.lands.mana_total.add(1), sunspot_world_value_base).toFixed(4);
     game.sunspots_delta_world_value = Decimal.log(game.lands.mana_total.add(1), sunspot_world_value_base).ceil();
-
-
     const spd = new Decimal(0);
     game.sunspots_delta = spd.add(game.sunspots_delta_mana_level).add(game.sunspots_delta_world_value).round();
     // set last update prop used for away production
