@@ -275,6 +275,10 @@ class LandSection {
         // mana delta for this section
         this.mana_delta = new Decimal(0);
     }
+    isHabitable () {
+        const climate = constant.CLIMATE_ZONES[this.climate_zone_index];
+        return this.bt_counts.water > 0 && climate.habitability;
+    }
     // apply section data
     applySectionData(sectionData){
         const unlock = sectionData.cols_unlock_slots;
