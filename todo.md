@@ -2,9 +2,9 @@
 
 <!-- FINAL GAME -->
 
-## () - r111 - Biology State
+## () - rx - Biology State
 
-## () - r110 - Mana State
+## () - rx - Mana State
 * () start a mana level state
 * () clicking the mana bar in any state should swicth to this mana state
 * () display current mana level
@@ -12,33 +12,34 @@
 * () display mana delta from life blocks
 * () I would like a bar that shows the ratio of mana from rocks to that of life
 
-## () - r109 - slot render range for Sprite World Update
-* () have state object values to set what the start and end slot indices are
-
-## () - r108 - save life type blocks to save states
+## () - rx - save life type blocks to save states
 * () life blocks should be saved as part of the game save state
 
-## () - r107 - Biology: Life Blocks level up
+## () - rx - Biology: Life Blocks level up
 * () have it so that Life blocks will slowly level up over time
 
-## () - r106 - Biology: Habitabilty
+## () - rx - Biology: Habitabilty
 
-## () - r105 - Biology: Evolution
+## () - rx - Biology: Evolution
 
-## () - r104 - Biology: Resperation, Air Blocks
+## () - rx - Biology: Resperation, Air Blocks
 
-## () - r103 - Biology: Migration
+## () - rx - Biology: Migration
 
-## () - r102 - Biology: Reproduction
+## () - rx - Biology: Reproduction
 
-## () - r101 - game.bio
+## () - rx - game.bio
 * () I am going to want to start a game.bio object to park current data about life in the world
 
-## () - r100 - Block Subtypes
-* () work out a new system for blocks where there is more that one 'type'
-* () a block can have a type of 'water' and a subtype value of 'amoeba'
-* () rendering of a block will then need to be a two layer process
-* () save state data will then need to store this subtype value \( 'w,a,1;' over just that of 'w,1;' \)
+## () - rx- Block Layers
+    The goal here is to have some kind of replacement for the water\_life block. That is that there should
+    Just be a water block type, but a water block type can have addtional contents.
+* () there is then having a block.contents object
+* () block.contents.plant prop can contain a plant life form
+* () block.contents.animal can contain an animal life form
+
+## () - r100 - slot render range for Sprite World Update
+* () have state object values to set what the start and end slot indices are
 
 ## ( done 05/18/2023 ) - r99 - Climate Checks, Death
 * (done) ceil the game.sunspots\_delta\_world\_value value
