@@ -168,7 +168,6 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
                     block.setManaStats(game.sunspot_multi);
                     const block_mana_delta = new Decimal( Math.round(block.mana_base + block.mana_temp * a_temp) );
                     section.mana_delta = section.mana_delta.add(block_mana_delta);
-                    //game.mana_per_tick = game.mana_per_tick.add( block_mana_delta );
                     mana_total = mana_total.add( block.mana_value.valueOf() );
                 }
             });
@@ -206,7 +205,9 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
     //const sunspot_world_value_base = 10;
     const sunspot_world_value_base = getSunspotWorldValueBase(game.lands.mana_total.add(1));
     //game.sunspots_delta_world_value = Decimal.log(game.lands.mana_total.add(1), sunspot_world_value_base).toFixed(4);
-    game.sunspots_delta_world_value = Decimal.log(game.lands.mana_total.add(1), sunspot_world_value_base);
+    game.sunspots_delta_world_value = Decimal.log(game.lands.mana_total.add(1), sunspot_world_value_base).ceil();
+
+
     const spd = new Decimal(0);
     game.sunspots_delta = spd.add(game.sunspots_delta_mana_level).add(game.sunspots_delta_world_value).round();
     // set last update prop used for away production

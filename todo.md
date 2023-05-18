@@ -30,6 +30,7 @@
 * () start a grass type block that will be set on to blank blocks that are on top of rocks.
 
 ## () - r99 - Climate Checks, Death, Reproduction, game.bio object
+* (done) ceil the game.sunspots\_delta\_world\_value value
 * () check of climate should be done for Abiogenesis as life should only start in Deciduous climates
 * () I am going to want to start a game.bio object to park current data about life in the world
 * () life should only survive in certain climates as well, else all life in the section will die
