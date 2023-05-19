@@ -43,9 +43,7 @@
 * (done) updated utils.drawSectionArc2 that takes an options object
 * (done) change code in lands.mjs, and state\_world.mjs to use utils.drawSectionArc with just two argumnets now
 * (done) utils.drawSectionArc should have both fill and stroke style options
-
-
-* () have state object values to set what the start and end slot indices are
+* (done) have state object values to set what the start and end slot indices are
 
 * () I would like to have a yellow outline for each slot that is being rendered
 * () I would like to have a red outline for ever section that is being rendered

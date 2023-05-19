@@ -151,7 +151,8 @@ const can_section_outline = canvasMod.create({
 const state_world = {
     data: {
         render_world_lt: 0,  // last game tick that rendering was done
-        render_world_si: 0   // current section index to render
+        render_world_si: 0,   // current section index to render
+        render_world_y: 0 // current y value to render for each section
     },
     init: (sm, data) => {},
     start: (sm, opt) => {
@@ -165,10 +166,19 @@ const state_world = {
        // real time update of land sections, but on a section by section basis once per tick
        if( sm.game.tick > data.render_world_lt ){
            data.render_world_lt = sm.game.tick;
-           const section = sm.game.lands.sections[data.render_world_si];
-           section.sprite_world.update();
-           data.render_world_si += 1;
-           data.render_world_si %= 12;
+
+           //const section = sm.game.lands.sections[data.render_world_si];
+           //section.sprite_world.update();
+
+           //data.render_world_si += 1;
+           //data.render_world_si %= 12;
+
+            sm.game.lands.sections.forEach((section, i) => {
+                const i_start = data.render_world_y * 10;
+                section.sprite_world.update(i_start, i_start + 10, false);
+            });
+            data.render_world_y += 1;
+            data.render_world_y %= 8;
        }
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
     },

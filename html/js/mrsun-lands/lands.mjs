@@ -23,39 +23,40 @@ const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
     const fillStyle = img.palette[ img.color_indices[ i_ci ] ];
     const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
     const radius_texel_delta = constant.SLOT_RADIUS_DELTA  / img.h;
-
-//    utils.drawSectionArc(ctx, slot.x, slot.y, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
-
-   utils.drawSectionArc2(ctx, {
-       slotX: slot.x,
-       slotY: slot.y,
-       v2: v2,
-       rad_center: rad_center,
-       rad_delta_texel: rad_texel_delta,
-       radius_texel_delta: radius_texel_delta,
-       texelX: texelX, texelY: texelY,
-       fillStyle: fillStyle
-   });
-
+    utils.drawSectionArc2(ctx, {
+        slotX: slot.x,
+        slotY: slot.y,
+        v2: v2,
+        rad_center: rad_center,
+        rad_delta_texel: rad_texel_delta,
+        radius_texel_delta: radius_texel_delta,
+        texelX: texelX, texelY: texelY,
+        fillStyle: fillStyle
+    });
 };
 // create a render sheet for the given section object
 const createSectionRenderSheet = (section, drawSectionSlot) => {
     const can = canvasMod.create({
-        size: 1024,
+        size: 128,
         state: {
-            section: section
+            clear: false,
+            section: section,
+            i_slot_start: 0,
+            i_slot_end: constant.SLOT_GRID_LEN
         },
         draw: (canObj, ctx, canvas, state) => {
-            ctx.clearRect(0,0, canvas.width, canvas.height);
+            if(state.clear){
+                ctx.clearRect(0,0, canvas.width, canvas.height);
+            }
             const section = state.section;
             const sprite = section.sprite_world;
-            let i = 0;
-            while(i < constant.SLOT_GRID_LEN){
+            let i = state.i_slot_start;
+            while(i < state.i_slot_end){
                 const bx = i % constant.SLOT_GRID_WIDTH;
                 const by = Math.floor(i / constant.SLOT_GRID_WIDTH);
                 const i_slot = by * constant.SLOT_GRID_WIDTH + bx;
                 const slot = section.slots[i_slot];
-                drawSectionSlot(ctx, section, slot)
+                drawSectionSlot(ctx, section, slot);
                 i += 1;
             }
         }
@@ -99,8 +100,12 @@ class SpriteLandSectionWorld extends Sprite {
             i_texel += 1;
         }
     }
-    update(){
-        canvasMod.update(this.sheets[0].can);
+    update(i_slot_start = 0, i_slot_end = constant.SLOT_GRID_LEN, clear = true ){
+        const can = this.sheets[0].can;
+        can.state.i_slot_start = i_slot_start;
+        can.state.i_slot_end = i_slot_end;
+        can.state.clear = clear;
+        canvasMod.update( can );
     }
 };
 //-------- ----------
