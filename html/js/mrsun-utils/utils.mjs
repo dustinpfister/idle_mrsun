@@ -26,13 +26,11 @@ utils.button_check = (data, key, pos, onClick) => {
     }
 };
 utils.button_state_switcher = (sm, pos ) => {
-
     // was the main button clicked?
     utils.button_check(sm, 'button_switcher', pos, (button) => {
         console.log('menu button was clicked');
         button.active = !button.active;
     });
-
     const button_switcher = sm.button_switcher;
     if(button_switcher.active){
         let i = 0;
@@ -40,16 +38,7 @@ utils.button_state_switcher = (sm, pos ) => {
         while(i < len){
             const button_child = button_switcher.children[i];
             utils.button_check(sm, button_child, pos, (button) => {
-                // set current current child active boolen to false
-                //const i_old = button_switcher.current_child;
-                //button_switcher.children[i_old].active = false;
-
-                // set this one active
-               // button_switcher.current_child = i;
-               // button_switcher.children[i].active = true;
-
-sm.setState(button_child.stateKey, {});
-
+                sm.setState(button_child.stateKey, {});
             });
             i += 1;
         }
@@ -229,10 +218,7 @@ utils.drawCommonDisp = (sm, ctx, canvas) => {
     ctx.fillText('sunspots: ' + utils.formatDecimal( sm.game.sunspots, 2 ) + ' (' + sm.game.sunspot_multi.toFixed(2) + 'X)', 275, 5);
     // tick count
     ctx.fillText('tick: ' + sm.game.tick, 10, 25);
-
-
     utils.drawButton(sm, sm.button_switcher, sm.ctx, sm.canvas);
-
 };
 // draw a section arc
 utils.drawSectionArc = (ctx, slotX, slotY, v2, rad_center, rad_delta_texel, radius_texel_delta, texelX, texelY, fillStyle) => {

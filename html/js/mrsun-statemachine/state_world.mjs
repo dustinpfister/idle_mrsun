@@ -3,6 +3,7 @@ import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
 import { constant } from "../mrsun-constant/constant.mjs"
+import { canvasMod } from '../canvas/canvas.mjs'
 //-------- ----------
 // RENDER FUNCTIONS 
 //-------- ----------
@@ -33,8 +34,6 @@ const render_display = (sm, ctx, canvas, data) => {
     ctx.fillText('rocks: ' + sm.game.lands.bt_counts.rock, sx, sy);
     ctx.fillText('slots unlocked: ' + sm.game.lands.slot_unlock_count + '/' + sm.game.lands.slot_total,sx, sy + yd * 1);
     ctx.fillText('mana level: ' + sm.game.mana_level, sx, sy + yd * 2);
-
-
 };
 // render just the text for the given land section object
 const render_section_text = (ctx, section) => {
@@ -80,7 +79,6 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a
         }
     }
 };
-
 // render the mana delta % arc for a given section
 const render_section_manadelta = (ctx, section, game) => {
     let fillStyle = '#afafaf';
@@ -101,7 +99,6 @@ const render_section_manadelta = (ctx, section, game) => {
         render_slot_location(ctx, section, 4 - x_int, -1, fillStyle, imgWidth, a_imgwidth, true);
         x_int -= 1;
     }
-
 };
 // RENDER DETAIL
 const render_detail = (sm, ctx, canvas, data) => {
@@ -124,6 +121,27 @@ const render_detail = (sm, ctx, canvas, data) => {
     });
     render_display(sm, ctx, canvas, data)
 };
+//-------- ----------
+// section and slot outline canvas
+//-------- ----------
+const can_section_outline = canvasMod.create({
+    size: 640,
+    state: {
+        game: {},
+        sections: [
+            {
+               i_section: 0,       // the current section index
+               i_slot: [0, 1, 2]   // slot indices to draw overlays for
+            }
+        ]
+    },
+    draw: (canObj, ctx, canvas, state) => {
+        const game = state.game;
+        if(!game.lands){
+            return;
+        }
+    }
+});
 //-------- ----------
 // STATE OBJECT FOR WORLD 
 //-------- ----------
