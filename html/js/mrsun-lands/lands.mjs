@@ -23,7 +23,20 @@ const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
     const fillStyle = img.palette[ img.color_indices[ i_ci ] ];
     const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
     const radius_texel_delta = constant.SLOT_RADIUS_DELTA  / img.h;
-    utils.drawSectionArc(ctx, slot.x, slot.y, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+
+//    utils.drawSectionArc(ctx, slot.x, slot.y, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+
+   utils.drawSectionArc2(ctx, {
+       slotX: slot.x,
+       slotY: slot.y,
+       v2: v2,
+       rad_center: rad_center,
+       rad_delta_texel: rad_texel_delta,
+       radius_texel_delta: radius_texel_delta,
+       texelX: texelX, texelY: texelY,
+       fillStyle: fillStyle
+   });
+
 };
 // create a render sheet for the given section object
 const createSectionRenderSheet = (section, drawSectionSlot) => {

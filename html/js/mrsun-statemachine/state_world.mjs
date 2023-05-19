@@ -57,31 +57,45 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a
     const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH / imgWidth;
     const radius_texel_delta = constant.SLOT_RADIUS_DELTA;
     // img width is 1
-    let texelX = 0;
-    const texelY = 0;
+    //let texelX = 0;
+    //const texelY = 0;
+
+    const opt = {
+        slotX: slotX, slotY: slotY, 
+        v2: v2, 
+        rad_center: rad_center, rad_delta_texel: rad_texel_delta, 
+        radius_texel_delta : radius_texel_delta,
+        texelX:0, texelY:0,
+        fillStyle: fillStyle,
+        strokeStyle: null
+    }
+
     if(imgWidth === 1){
-       utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+       utils.drawSectionArc2(ctx, opt);
+       //utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
        return;
     }
     // img width is > 1
     if(!invert){
-        texelX = 0;
-        while(texelX < Math.ceil( imgWidth * a_imgwidth) ){
-            utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
-            texelX += 1;
+        opt.texelX = 0;
+        while(opt.texelX < Math.ceil( imgWidth * a_imgwidth) ){
+            utils.drawSectionArc2(ctx, opt);
+            //utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+            opt.texelX += 1;
         }
     }
     if(invert){
-        texelX = imgWidth - 1;
-        while(texelX >= imgWidth - Math.ceil( imgWidth * a_imgwidth ) ){
-            utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
-            texelX -= 1;
+        opt.texelX = imgWidth - 1;
+        while(opt.texelX >= imgWidth - Math.ceil( imgWidth * a_imgwidth ) ){
+            utils.drawSectionArc2(ctx, opt);
+            //utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
+            opt.texelX -= 1;
         }
     }
 };
 // render the mana delta % arc for a given section
 const render_section_manadelta = (ctx, section, game) => {
-    let fillStyle = '#afafaf';
+    let fillStyle = '#ffffff';
     let imgWidth = 1;
     const alpha = section.mana_delta.div(game.mana_per_tick).toNumber();
     let x = constant.SLOT_GRID_WIDTH * alpha / 2;
@@ -89,10 +103,10 @@ const render_section_manadelta = (ctx, section, game) => {
     let x_int = x_intstart;
     let a_imgwidth = x % 1;
     while(x_int >= 0){
-        fillStyle = '#afafaf';
+        //fillStyle = '#afafaf';
         imgWidth = 1;
         if(x_int === x_intstart){
-           fillStyle = 'red';
+        //   fillStyle = 'red';
            imgWidth = 8;
         }
         render_slot_location(ctx, section, 5 + x_int, -1, fillStyle, imgWidth, a_imgwidth, false);

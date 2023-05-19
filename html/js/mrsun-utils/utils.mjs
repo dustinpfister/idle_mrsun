@@ -1,5 +1,6 @@
 // utils.js - for idle_mrsun
 import { Decimal }  from "../decimal/10.4.3/decimal.mjs"
+import { Vector2 } from '../vector2/vector2.mjs'
 import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------
 // MAIN UTILS PUBLIC OBJECT
@@ -221,6 +222,38 @@ utils.drawCommonDisp = (sm, ctx, canvas) => {
     utils.drawButton(sm, sm.button_switcher, sm.ctx, sm.canvas);
 };
 // draw a section arc
+const DRAW_SECTION_ARC_DEFAULTS = {
+    slotX: 0, slotY:0, 
+    v2: new Vector2(0,0), 
+    rad_center: 0, rad_delta_texel:0, 
+    radius_texel_delta : 0,
+    texelX:0, texelY:0,
+    fillStyle: '#ffffff'
+};
+utils.drawSectionArc2 = (ctx, opt) => {
+    opt = Object.assign({}, DRAW_SECTION_ARC_DEFAULTS, opt || {});
+    const rad_edge = opt.rad_center - constant.SLOT_RADIAN_DELTA;
+    const rad_slot_start = rad_edge + Math.PI / 180 * ( 30 / 10 * opt.slotX );
+    const rad_start = rad_slot_start + opt.rad_delta_texel * opt.texelX;
+    const rad_end = rad_start + opt.rad_delta_texel;
+    const radius_slot_low = constant.LAND_RADIUS_TOCENTER - constant.LAND_RADIUS + constant.SLOT_RADIUS_DELTA  * opt.slotY;
+    const radius_low = radius_slot_low + opt.radius_texel_delta * opt.texelY;
+    const radius_high = radius_low + opt.radius_texel_delta;
+    // draw arcs
+    ctx.beginPath();
+    ctx.arc(opt.v2.x, opt.v2.y, radius_low, rad_start, rad_end  );
+    ctx.arc(opt.v2.x, opt.v2.y, radius_high, rad_end, rad_start, true  );
+    ctx.closePath();
+    if(opt.fillStyle){
+        ctx.fillStyle = opt.fillStyle;
+        ctx.fill();
+    }
+    if(opt.strokeStyle){
+        ctx.strokeStyle = opt.strokeStyle;
+        ctx.stroke();
+    }
+};
+/*
 utils.drawSectionArc = (ctx, slotX, slotY, v2, rad_center, rad_delta_texel, radius_texel_delta, texelX, texelY, fillStyle) => {
     const rad_edge = rad_center - constant.SLOT_RADIAN_DELTA;
     const rad_slot_start = rad_edge + Math.PI / 180 * ( 30 / 10 * slotX );
@@ -237,6 +270,7 @@ utils.drawSectionArc = (ctx, slotX, slotY, v2, rad_center, rad_delta_texel, radi
     ctx.fillStyle = fillStyle
     ctx.fill();
 };
+*/
 //-------- ----------
 // FORMAT DECIMAL TEST
 //-------- ----------

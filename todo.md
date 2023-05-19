@@ -40,9 +40,8 @@
 
 ## () - r100 - slot render range for Sprite World Update
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer
-
-* () update utils.drawSectionArc to take an options object
-* () change code in lands.mjs, and state\_world.mjs to use utils.drawSectionArc with just two argumnets now
+* (done) updated utils.drawSectionArc2 that takes an options object
+* (done) change code in lands.mjs, and state\_world.mjs to use utils.drawSectionArc with just two argumnets now
 * () utils.drawSectionArc should have both fill and stroke style options
 
 
