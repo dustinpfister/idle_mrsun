@@ -126,7 +126,6 @@ const can_section_outline = canvasMod.create({
             return;
         }
         ctx.clearRect(0,0, canvas.width, canvas.height);
-                ctx.save();
         state.sections.forEach( (section_data) => {
             //const section_data = state.sections[ 0 ];
             const section = game.lands.sections[ section_data.i_section ];
@@ -134,9 +133,9 @@ const can_section_outline = canvasMod.create({
             const len = section_data.i_slot_end;
             while(i < len){
                 const slot = section.slots[ i ];
-                //ctx.lineWidth = 0.25 + 1 * (i / len);
-                ctx.globalAlpha = 0.1;
-                render_slot_location(ctx, section, slot.x, slot.y, 'rgba(255,255,0,1)', null, 1, 1, false);
+                ctx.globalAlpha = 0.5;
+                ctx.lineWidth = 2;
+                render_slot_location(ctx, section, slot.x, slot.y, null, '#ffff00', 1, 1, false);
                 i += 1;
             }
         });
@@ -150,9 +149,6 @@ const render_detail = (sm, ctx, canvas, data) => {
     sm.game.lands.sections.forEach((section, i) => {
         //section.sprite_world.update();
         utils.drawSprite(section.sprite_world, ctx, canvas);
-        // slot render overlay
-        ctx.globalAlpha = 1;
-        ctx.drawImage(can_section_outline.canvas, 0, 0);
         // climate color overlay
         const zone = constant.CLIMATE_ZONES[section.climate_zone_index];
         ctx.fillStyle = zone.color;
@@ -165,6 +161,8 @@ const render_detail = (sm, ctx, canvas, data) => {
         render_section_text(ctx, section);
         render_section_manadelta(ctx, section, sm.game);
     });
+    // slot render overlay
+    ctx.drawImage(can_section_outline.canvas, 0, 0);
     render_display(sm, ctx, canvas, data)
 };
 //-------- ----------
@@ -189,25 +187,35 @@ const state_world = {
        // real time update of land sections, but on a section by section basis once per tick
        if( sm.game.tick > data.render_world_lt ){
            data.render_world_lt = sm.game.tick;
-
            can_section_outline.state.sections = [];
 
-           sm.game.lands.sections.forEach((section, i) => {
+           //sm.game.lands.sections.forEach((section, i) => {
+
+                const si = data.render_world_si;
+                const section = sm.game.lands.sections[si];
+
                 const i_slot_start = data.render_world_y * 10;
                 const i_slot_end = i_slot_start + 10;
                 section.sprite_world.update(i_slot_start, i_slot_end , false);
                 can_section_outline.state.sections.push({
-                    i_section: i,
+                    i_section: si,
                     i_slot_start: i_slot_start,
                     i_slot_end: i_slot_end
                 });
-           });
+           //});
+
+
+data.render_world_si += 1;
+if(data.render_world_si === 12){
+data.render_world_si = 0;
            data.render_world_y += 1;
            data.render_world_y %= 8;
+}
+
+           //data.render_world_y += 1;
+           //data.render_world_y %= 8;
        }
-
        canvasMod.update(can_section_outline);
-
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
     },
     render: (sm, ctx, canvas, data) => {

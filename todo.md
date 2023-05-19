@@ -38,15 +38,13 @@
 * () block.contents.plant prop can contain a plant life form
 * () block.contents.animal can contain an animal life form
 
-## () - r100 - slot render range for Sprite World Update
+## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer
 * (done) updated utils.drawSectionArc2 that takes an options object
 * (done) change code in lands.mjs, and state\_world.mjs to use utils.drawSectionArc with just two argumnets now
 * (done) utils.drawSectionArc should have both fill and stroke style options
 * (done) have state object values to set what the start and end slot indices are
-
-* () I would like to have a yellow outline for each slot that is being rendered
-* () I would like to have a red outline for ever section that is being rendered
+* (done) I would like to have a yellow outline for each slot that is being rendered
 
 ## ( done 05/18/2023 ) - r99 - Climate Checks, Death
 * (done) ceil the game.sunspots\_delta\_world\_value value
