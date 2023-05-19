@@ -92,6 +92,7 @@ StateMachine.create = (opt_create) => {
     container.appendChild(canvas);
     canvas.width = 640;
     canvas.height = 480;
+    ctx.translate(0.5, 0.5);
     const sm = {
 
         button_switcher : {  

@@ -47,12 +47,12 @@ const render_section_text = (ctx, section) => {
     ctx.strokeText(section.temp, section.position.x, section.position.y);
 };
 
-const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a_imgwidth, invert ) => {
+const render_slot_location = (ctx, section, slotX, slotY, fillStyle, strokeStyle, imgWidth, a_imgwidth, invert ) => {
     const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
     const opt = {
         slotX: slotX, slotY: slotY, 
-        fillStyle: fillStyle,
-        strokeStyle: null,
+        fillStyle: fillStyle || null,
+        strokeStyle: strokeStyle || null,
         v2: new Vector2(
             Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 
             Math.sin(radian) * constant.LAND_RADIUS_TOCENTER).add(section.position),
@@ -98,31 +98,10 @@ const render_section_manadelta = (ctx, section, game) => {
         //   fillStyle = 'red';
            imgWidth = 8;
         }
-        render_slot_location(ctx, section, 5 + x_int, -1, fillStyle, imgWidth, a_imgwidth, false);
-        render_slot_location(ctx, section, 4 - x_int, -1, fillStyle, imgWidth, a_imgwidth, true);
+        render_slot_location(ctx, section, 5 + x_int, -1, fillStyle, null, imgWidth, a_imgwidth, false);
+        render_slot_location(ctx, section, 4 - x_int, -1, fillStyle, null, imgWidth, a_imgwidth, true);
         x_int -= 1;
     }
-};
-// RENDER DETAIL
-const render_detail = (sm, ctx, canvas, data) => {
-    utils.render_background(sm, ctx, canvas, data);
-    render_sunarea(sm, ctx, canvas, data);
-    utils.drawSprite(sm.game.sun, ctx, canvas);
-    sm.game.lands.sections.forEach((section, i) => {
-        //section.sprite_world.update();
-        utils.drawSprite(section.sprite_world, ctx, canvas);
-        // climate color overlay
-        const zone = constant.CLIMATE_ZONES[section.climate_zone_index];
-        ctx.fillStyle = zone.color;
-        ctx.globalAlpha = 0.3;
-        ctx.beginPath();
-        ctx.arc(section.position.x, section.position.y, section.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-        render_section_text(ctx, section);
-        render_section_manadelta(ctx, section, sm.game);
-    });
-    render_display(sm, ctx, canvas, data)
 };
 //-------- ----------
 // section and slot outline canvas
@@ -132,10 +111,13 @@ const can_section_outline = canvasMod.create({
     state: {
         game: {},
         sections: [
+/*
             {
-               i_section: 0,       // the current section index
-               i_slot: [0, 1, 2]   // slot indices to draw overlays for
+               i_section: 0,     // the current section index
+               i_slot_start: 0,  // slot indices to draw overlays for
+               i_slot_end: 10
             }
+*/
         ]
     },
     draw: (canObj, ctx, canvas, state) => {
@@ -143,8 +125,48 @@ const can_section_outline = canvasMod.create({
         if(!game.lands){
             return;
         }
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+                ctx.save();
+        state.sections.forEach( (section_data) => {
+            //const section_data = state.sections[ 0 ];
+            const section = game.lands.sections[ section_data.i_section ];
+            let i = section_data.i_slot_start;
+            const len = section_data.i_slot_end;
+            while(i < len){
+                const slot = section.slots[ i ];
+                //ctx.lineWidth = 0.25 + 1 * (i / len);
+                ctx.globalAlpha = 0.1;
+                render_slot_location(ctx, section, slot.x, slot.y, 'rgba(255,255,0,1)', null, 1, 1, false);
+                i += 1;
+            }
+        });
     }
 });
+// RENDER DETAIL
+const render_detail = (sm, ctx, canvas, data) => {
+    utils.render_background(sm, ctx, canvas, data);
+    render_sunarea(sm, ctx, canvas, data);
+    utils.drawSprite(sm.game.sun, ctx, canvas);
+    sm.game.lands.sections.forEach((section, i) => {
+        //section.sprite_world.update();
+        utils.drawSprite(section.sprite_world, ctx, canvas);
+        // slot render overlay
+        ctx.globalAlpha = 1;
+        ctx.drawImage(can_section_outline.canvas, 0, 0);
+        // climate color overlay
+        const zone = constant.CLIMATE_ZONES[section.climate_zone_index];
+        ctx.fillStyle = zone.color;
+        ctx.globalAlpha = 0.3;
+        ctx.beginPath();
+        ctx.arc(section.position.x, section.position.y, section.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        // text and mana delta bars
+        render_section_text(ctx, section);
+        render_section_manadelta(ctx, section, sm.game);
+    });
+    render_display(sm, ctx, canvas, data)
+};
 //-------- ----------
 // STATE OBJECT FOR WORLD 
 //-------- ----------
@@ -157,6 +179,7 @@ const state_world = {
     init: (sm, data) => {},
     start: (sm, opt) => {
         const sun = sm.game.sun;
+        can_section_outline.state.game = sm.game;
         // I might still want to do a full render of all land sections once on each start
         sm.game.lands.sections.forEach((section, i) => {
             section.sprite_world.update();
@@ -167,19 +190,24 @@ const state_world = {
        if( sm.game.tick > data.render_world_lt ){
            data.render_world_lt = sm.game.tick;
 
-           //const section = sm.game.lands.sections[data.render_world_si];
-           //section.sprite_world.update();
+           can_section_outline.state.sections = [];
 
-           //data.render_world_si += 1;
-           //data.render_world_si %= 12;
-
-            sm.game.lands.sections.forEach((section, i) => {
-                const i_start = data.render_world_y * 10;
-                section.sprite_world.update(i_start, i_start + 10, false);
-            });
-            data.render_world_y += 1;
-            data.render_world_y %= 8;
+           sm.game.lands.sections.forEach((section, i) => {
+                const i_slot_start = data.render_world_y * 10;
+                const i_slot_end = i_slot_start + 10;
+                section.sprite_world.update(i_slot_start, i_slot_end , false);
+                can_section_outline.state.sections.push({
+                    i_section: i,
+                    i_slot_start: i_slot_start,
+                    i_slot_end: i_slot_end
+                });
+           });
+           data.render_world_y += 1;
+           data.render_world_y %= 8;
        }
+
+       canvasMod.update(can_section_outline);
+
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
     },
     render: (sm, ctx, canvas, data) => {

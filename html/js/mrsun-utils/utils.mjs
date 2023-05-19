@@ -252,6 +252,8 @@ utils.drawSectionArc2 = (ctx, opt) => {
         ctx.strokeStyle = opt.strokeStyle;
         ctx.stroke();
     }
+
+
 };
 /*
 utils.drawSectionArc = (ctx, slotX, slotY, v2, rad_center, rad_delta_texel, radius_texel_delta, texelX, texelY, fillStyle) => {
