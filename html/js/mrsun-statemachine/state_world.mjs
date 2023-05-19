@@ -49,30 +49,21 @@ const render_section_text = (ctx, section) => {
 
 const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a_imgwidth, invert ) => {
     const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
-    const v2 = new Vector2(
-       Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 
-       Math.sin(radian) * constant.LAND_RADIUS_TOCENTER);
-    v2.add(section.position);
-    const rad_center = Math.PI * 2 / constant.LAND_OBJECT_COUNT * section.i;
-    const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH / imgWidth;
-    const radius_texel_delta = constant.SLOT_RADIUS_DELTA;
-    // img width is 1
-    //let texelX = 0;
-    //const texelY = 0;
-
     const opt = {
         slotX: slotX, slotY: slotY, 
-        v2: v2, 
-        rad_center: rad_center, rad_delta_texel: rad_texel_delta, 
-        radius_texel_delta : radius_texel_delta,
-        texelX:0, texelY:0,
         fillStyle: fillStyle,
-        strokeStyle: null
+        strokeStyle: null,
+        v2: new Vector2(
+            Math.cos(radian) * constant.LAND_RADIUS_TOCENTER, 
+            Math.sin(radian) * constant.LAND_RADIUS_TOCENTER).add(section.position),
+        rad_center: Math.PI * 2 / constant.LAND_OBJECT_COUNT * section.i,
+        rad_delta_texel: constant.SLOT_RADIAN_DELTA * 2 / constant.SLOT_GRID_WIDTH / imgWidth, 
+        radius_texel_delta : constant.SLOT_RADIUS_DELTA,
+        texelX:0, texelY:0
     }
-
+    // ime with is 1
     if(imgWidth === 1){
        utils.drawSectionArc2(ctx, opt);
-       //utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
        return;
     }
     // img width is > 1
@@ -80,7 +71,6 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a
         opt.texelX = 0;
         while(opt.texelX < Math.ceil( imgWidth * a_imgwidth) ){
             utils.drawSectionArc2(ctx, opt);
-            //utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
             opt.texelX += 1;
         }
     }
@@ -88,7 +78,6 @@ const render_slot_location = (ctx, section, slotX, slotY, fillStyle, imgWidth, a
         opt.texelX = imgWidth - 1;
         while(opt.texelX >= imgWidth - Math.ceil( imgWidth * a_imgwidth ) ){
             utils.drawSectionArc2(ctx, opt);
-            //utils.drawSectionArc(ctx, slotX, slotY, v2, rad_center, rad_texel_delta, radius_texel_delta, texelX, texelY, fillStyle);
             opt.texelX -= 1;
         }
     }

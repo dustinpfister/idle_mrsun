@@ -42,7 +42,7 @@
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer
 * (done) updated utils.drawSectionArc2 that takes an options object
 * (done) change code in lands.mjs, and state\_world.mjs to use utils.drawSectionArc with just two argumnets now
-* () utils.drawSectionArc should have both fill and stroke style options
+* (done) utils.drawSectionArc should have both fill and stroke style options
 
 
 * () have state object values to set what the start and end slot indices are
