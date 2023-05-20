@@ -71,8 +71,10 @@ const abiogenesis = (game, live_world) => {
 // if a section is no longer habitable then all life must die
 const habitability = (game, section) => {
     const habitable = section.isHabitable();
+
     // if the section is NOT habitable, and there is life on it, then all that life will die
     if(!habitable && section.bt_counts.water_life > 0){
+
         console.log('life on a section that is not habitable');
         const slots = section.slots.filter( (slot) => {
             return slot.block.type === 'water_life';

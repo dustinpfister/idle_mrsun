@@ -42,8 +42,7 @@
 
 ## () - rx - r101 - Get Slot Image utils method
 * (done) have a utils.getSlotIMG helper funciton that will return an image for the current slot
-
-
+* (done) all slots unlocked for now
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer

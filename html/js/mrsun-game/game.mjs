@@ -171,6 +171,7 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
                     mana_total = mana_total.add( block.mana_value.valueOf() );
                 }
             });
+            section.setBlockTypeCounts();
             section.mana_total = mana_total;
         });
         // update life state
