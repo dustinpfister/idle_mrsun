@@ -5,14 +5,17 @@
  MRSUN-GAME - game.mjs, lands.mjs, sun.mjs
 ---------- ---------->
 
+## () - rx - Mass Vector
+   One major concern that I have when it comes to game play strategy is that there will be one single strategy that will prove to be the best course of action to maximize mana per tick at the fastest possible rate. The main thing about this concern is not so much that such a  strategy may exists, but the nature of game play that constitutes this strategy. For example if it just so happens that the strategy is creating and upgrading all the slots in just one land section, and having the sun positioned over it, that kind of game play is kind of boring, and does not showcase or involve other elements of the over all game.
+
+The solution then might be some kind of feature that will detect if the player is in fact playing the game this way, and if so introduce some kind of or buff or not. In any case it is an element of content to have some kind of MASS VECTOR of sorts to know what the current state of this is. What I mean by this is that the act of placing all of the blocks in one land section will set the direction of the mass Vector there. In addition the magnate of the Vector will also be at the max as well.
+
 ## () - rx - level up game event
 * () have an event that will fire each time a level up happens
 * () in the event that the player jumps up a whole bunch of levels at once the event should fire for each level
 
 ## () - rx - Slot Class, Disabled Slot feature 
 * () a slot object will have a disabled property which means that it can not be used at all
-
-<!-- Total game ticks / time spent playing -->
 
 ## () - rx - total game ticks
 * () have a grand total game ticks count that will not reset with a super nova event
