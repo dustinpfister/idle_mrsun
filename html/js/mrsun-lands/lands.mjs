@@ -14,11 +14,7 @@ Decimal.set(constant.DECIMAL_OPTIONS);
 //-------- ----------
 // draw a single texel for a single slot ( in world state )
 const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
-    const block = slot.block;
-    let img = constant.IMG.locked;
-    if(!slot.locked){
-        img = constant.IMG[block.type];
-    }
+    const img = utils.getSlotIMG(slot);
     const i_ci = texelY * img.w + texelX;
     const fillStyle = img.palette[ img.color_indices[ i_ci ] ];
     const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
@@ -77,11 +73,7 @@ class SpriteLandSectionWorld extends Sprite {
     }
     // draw a section arc for a single slot object to be used in world state
     drawSectionSlot (ctx, section, slot) {
-        const block = slot.block;
-        let img = constant.IMG.locked;
-        if(!slot.locked){
-            img = constant.IMG[block.type];
-        }
+        const img = utils.getSlotIMG(slot);
         const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
         // get a vector2 that is on the edge of the sun area
         //const v1 = new Vector2(64 + Math.cos(radian) * constant.radius_land, 64 + Math.sin(radian) * constant.radius_land );
@@ -122,11 +114,7 @@ class SpriteLandSectionLand extends Sprite {
     }
     // draw a single slot for the section object
     drawSectionSlot(ctx, section, slot){
-        const block = slot.block;
-        let img = constant.IMG.locked;
-        if(!slot.locked){
-            img = constant.IMG[block.type];
-        }
+        const img = utils.getSlotIMG(slot);
         // draw texels
         const len = img.w * img.h;
         const block_width = 128 / 10;

@@ -130,7 +130,18 @@ utils.addPows = (base, exp_start, exp_end) => {
     return n;
 };
 //-------- ----------
-// RENDER UTILIES
+// IMG OBJECTS
+//-------- ----------
+utils.getSlotIMG = ( slot ) => {
+    const block = slot.block;
+    let img = constant.IMG.locked;
+    if(!slot.locked){
+        img = constant.IMG[block.type];
+    }
+    return img;
+};
+//-------- ----------
+// RENDER HELPERS
 //-------- ----------
 // render the common background
 utils.render_background = (sm, ctx, canvas) => {

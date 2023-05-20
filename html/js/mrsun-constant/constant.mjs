@@ -119,6 +119,7 @@ constant.BLOCKS.rock = {
 // IMG DATA OBJECTS ( used to render slots / blocks )
 //-------- ----------
 const IMG = constant.IMG = {};
+// locked slot
 IMG.locked = {
     palette: ['blue', 'cyan'],
     w: 2, h: 2,
@@ -127,6 +128,7 @@ IMG.locked = {
         1, 0
     ]
 };
+// base block types
 IMG.blank = {
     palette: ['black'],
     w: 1, h: 1,
@@ -139,6 +141,20 @@ IMG.water = {
         0
     ]
 };
+IMG.rock = {
+    palette: [
+        '#2a2a2a', 
+        '#664400', '#442200', 
+    ],
+    w: 4, h: 4,
+    color_indices: [
+        0, 1, 0, 1,
+        0, 0, 1, 1,
+        1, 2, 1, 2,
+        2, 1, 2, 1
+   ]
+};
+// life
 IMG.water_life = {
     palette: ['#00aaff', '#00ff00'],
     w: 8, h: 8,
@@ -153,20 +169,7 @@ IMG.water_life = {
         0,0,0,0,0,0,0,0,
     ]
 };
-// 2 by 2 rock
-IMG.rock = {
-    palette: [
-        '#2a2a2a', 
-        '#664400', '#442200', 
-    ],
-    w: 4, h: 4,
-    color_indices: [
-        0, 1, 0, 1,
-        0, 0, 1, 1,
-        1, 2, 1, 2,
-        2, 1, 2, 1
-   ]
-};
+
 //-------- ----------
 // HARD CODED SAVE? - add lz-string compessed save, or set as empty string
 //-------- ----------

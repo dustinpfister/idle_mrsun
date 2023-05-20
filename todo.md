@@ -31,12 +31,19 @@
 ## () - rx - game.bio
 * () I am going to want to start a game.bio object to park current data about life in the world
 
-## () - r101- Block Layers
+## () - rx- Block Layers
     The goal here is to have some kind of replacement for the water\_life block. That is that there should
     Just be a water block type, but a water block type can have addtional contents.
 * () there is then having a block.contents object
 * () block.contents.plant prop can contain a plant life form
 * () block.contents.animal can contain an animal life form
+
+## () - rx - r102 - 
+
+## () - rx - r101 - Get Slot Image utils method
+* (done) have a utils.getSlotIMG helper funciton that will return an image for the current slot
+
+
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer
