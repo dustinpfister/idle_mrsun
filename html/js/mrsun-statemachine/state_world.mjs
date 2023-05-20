@@ -184,37 +184,30 @@ const state_world = {
         });
     },
     update: (sm, secs, data) => {
-       // real time update of land sections, but on a section by section basis once per tick
-       if( sm.game.tick > data.render_world_lt ){
-           data.render_world_lt = sm.game.tick;
-           can_section_outline.state.sections = [];
+        // real time update of land sections, but on a section by section basis once per tick
+        //if( sm.game.tick > data.render_world_lt ){
+            data.render_world_lt = sm.game.tick;
+            can_section_outline.state.sections = [];
 
-           //sm.game.lands.sections.forEach((section, i) => {
+            const si = data.render_world_si;
+            const section = sm.game.lands.sections[si];
 
-                const si = data.render_world_si;
-                const section = sm.game.lands.sections[si];
+            const i_slot_start = data.render_world_y * 10;
+            const i_slot_end = i_slot_start + 10;
+            section.sprite_world.update(i_slot_start, i_slot_end , false);
+            can_section_outline.state.sections.push({
+                i_section: si,
+                i_slot_start: i_slot_start,
+                i_slot_end: i_slot_end
+            });
 
-                const i_slot_start = data.render_world_y * 10;
-                const i_slot_end = i_slot_start + 10;
-                section.sprite_world.update(i_slot_start, i_slot_end , false);
-                can_section_outline.state.sections.push({
-                    i_section: si,
-                    i_slot_start: i_slot_start,
-                    i_slot_end: i_slot_end
-                });
-           //});
-
-
-data.render_world_si += 1;
-if(data.render_world_si === 12){
-data.render_world_si = 0;
-           data.render_world_y += 1;
-           data.render_world_y %= 8;
-}
-
-           //data.render_world_y += 1;
-           //data.render_world_y %= 8;
-       }
+           data.render_world_si += 1;
+           if(data.render_world_si === 12){
+               data.render_world_si = 0;
+               data.render_world_y += 1;
+               data.render_world_y %= 8;
+           }
+       //}
        canvasMod.update(can_section_outline);
        gameMod.updateByTickDelta(sm.game, sm.ticksPerSec * secs, false);
     },

@@ -221,17 +221,16 @@ class Slot {
         this.x = opt.x === undefined ? 0 : opt.x;
         this.y = opt.y === undefined ? 0 : opt.y;
         this.block = new Block({ type: 'blank'});
-        this.locked = true;
+        this.locked = false; //true;
     }
     // set auto block type such as 'water' block type
     autoSetBlockType () {
-       
-        // if the slot is NOT locked, and the type is NOT Locked
+        // if the slot is NOT locked, and the type is NOT rock
         // then it is possible for the block to end up being auto set
         if( !this.locked && this.block.type != 'rock' && this.block.type != 'water_life'){
+        //if( !this.locked && this.block.type != 'rock' ){
             // by default the block will be blank
             this.block.setLevel(1, 'blank', 1);
-
             const yMin = constant.SLOT_GRID_HEIGHT - constant.WATER_LEVEL;
             if(this.y >= yMin){
                 this.block.setLevel(1, 'water', 1);

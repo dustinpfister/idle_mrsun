@@ -19,8 +19,12 @@ constant.BLOCK_MAX_LEVEL = 99;
 constant.MANA_MAX = new Decimal('1e100');
 constant.MANA_START = '5';
 constant.TEMP_MAX = 999;
+
 constant.MAX_BLOCK_POW = Math.log(10000000) / Math.log(2);
-constant.SLOT_UNLOCK_MAXEXP = 30;
+
+
+
+constant.SLOT_UNLOCK_MAXEXP = 10; //30;
 constant.SLOT_GRID_WIDTH = 10;
 constant.SLOT_GRID_HEIGHT = 8;
 constant.SLOT_GRID_LEN = constant.SLOT_GRID_WIDTH * constant.SLOT_GRID_HEIGHT;

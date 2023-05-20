@@ -31,7 +31,7 @@
 ## () - rx - game.bio
 * () I am going to want to start a game.bio object to park current data about life in the world
 
-## () - rx- Block Layers
+## () - r103- Block Contents
     The goal here is to have some kind of replacement for the water\_life block. That is that there should
     Just be a water block type, but a water block type can have addtional contents.
 * () there is then having a block.contents object
