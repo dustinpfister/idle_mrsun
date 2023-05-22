@@ -2,6 +2,11 @@
 
 <!-- FINAL GAME -->
 
+## () - rx - Game Modes
+* () start a system in which there is more than one game mode to choose from each time a new game is started
+* () have it so that each time a supernova is done the player can choose a new mode
+* () Have the current game of having slots that must be unlocked first be the first game mode
+
 ## () - rx - Biology State
 
 ## () - rx - Mana State
@@ -31,18 +36,20 @@
 ## () - rx - game.bio
 * () I am going to want to start a game.bio object to park current data about life in the world
 
-## () - r103- Block Contents
+## () - r102- Block Contents
     The goal here is to have some kind of replacement for the water\_life block. That is that there should
     Just be a water block type, but a water block type can have addtional contents.
 * () there is then having a block.contents object
 * () block.contents.plant prop can contain a plant life form
-* () block.contents.animal can contain an animal life form
-
-## () - rx - r102 - 
+* () block.contents.animal can contain an animal life form 
 
 ## () - rx - r101 - Get Slot Image utils method
 * (done) have a utils.getSlotIMG helper funciton that will return an image for the current slot
 * (done) all slots unlocked for now
+* (done) new contant to quickly enabled or disable slot unlock feature
+* () if slot unlock feature is disabled, then I should also not have the unlock button in the ui
+* () if all slots are unlocked in a section that can also be a condition to not have the unlock button any more
+
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer

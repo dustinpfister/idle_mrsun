@@ -221,7 +221,7 @@ class Slot {
         this.x = opt.x === undefined ? 0 : opt.x;
         this.y = opt.y === undefined ? 0 : opt.y;
         this.block = new Block({ type: 'blank'});
-        this.locked = false; //true;
+        this.locked = constant.SLOT_UNLOCK_ENABLED;
     }
     // set auto block type such as 'water' block type
     autoSetBlockType () {
