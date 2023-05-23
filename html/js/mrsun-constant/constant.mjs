@@ -106,11 +106,6 @@ constant.BLOCKS.water = {
     mana_base: 0,
     mana_temp: 0
 };
-constant.BLOCKS.water_life = {
-    type: 'water_life',
-    mana_base: 2,
-    mana_temp: 1.5
-};
 constant.BLOCKS.rock = {
     type: 'rock',
     mana_base: 1.00,
