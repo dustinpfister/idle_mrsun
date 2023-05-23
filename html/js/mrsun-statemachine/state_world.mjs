@@ -182,6 +182,11 @@ const state_world = {
         sm.game.lands.sections.forEach((section, i) => {
             section.sprite_world.update();
         });
+
+
+console.log('world state start:');
+console.log( utils.getSlotIMG2( sm.game.lands.sections[0].slots[0] ) )
+
     },
     update: (sm, secs, data) => {
         // real time update of land sections, but on a section by section basis once per tick

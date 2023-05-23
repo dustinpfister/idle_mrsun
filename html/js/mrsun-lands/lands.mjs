@@ -147,9 +147,8 @@ class Block {
         this.type = opt.type || 'blank';
         this.contents = {
             plant: null,
-            animal: null,
-            air: null,     // 'air'
-            object: null   // generic 'object' contents
+            object: 'circle',   // generic 'object' contents
+            animal: null
         };
         this.mana_base = 0;
         this.mana_temp = 0;

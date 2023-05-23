@@ -111,6 +111,7 @@ constant.BLOCKS.rock = {
     mana_base: 1.00,
     mana_temp: 0.75
 };
+
 //-------- ----------
 // IMG DATA OBJECTS ( used to render slots / blocks )
 //-------- ----------
@@ -150,9 +151,9 @@ IMG.rock = {
         2, 1, 2, 1
    ]
 };
-// amoeba life form image
-IMG.amoeba = {
-    palette: ['#00aaff', '#00ff00'],
+// circle object
+IMG.object_circle = {
+    palette: ['', '#00ff00'],
     w: 8, h: 8,
     color_indices: [
         0,0,0,0,0,0,0,0,

@@ -134,12 +134,39 @@ utils.addPows = (base, exp_start, exp_end) => {
 //-------- ----------
 utils.getSlotIMG = ( slot ) => {
     const block = slot.block;
-    let img = constant.IMG.locked;
-    if(!slot.locked){
-        img = constant.IMG[block.type];
+
+    // if the slot is locked, just return the locked image
+    if(slot.locked){
+        return constant.IMG.locked;
     }
-    return img;
+
+    return constant.IMG[block.type];
 };
+
+
+utils.getSlotIMG2 = ( slot ) => {
+    const block = slot.block;
+    // if the slot is locked, just return the locked image
+    if(slot.locked){
+        return constant.IMG.locked;
+    }
+
+    const img_array = [ constant.IMG[block.type] ];
+
+    const keys = Object.keys( block.contents );
+
+    let i = keys.length;
+    while(i--){
+          const kind = keys[i];
+          const order = block.contents[ kind ];
+          if( order){
+              img_array.push( constant.IMG[ kind + '_' + order ] );
+          }
+    }
+
+    return img_array;
+};
+
 //-------- ----------
 // RENDER HELPERS
 //-------- ----------
