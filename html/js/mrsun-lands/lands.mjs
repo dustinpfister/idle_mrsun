@@ -145,6 +145,12 @@ class Block {
     constructor(opt) {
         opt = opt || {};
         this.type = opt.type || 'blank';
+        this.contents = {
+            plant: null,
+            animal: null,
+            air: null,     // 'air'
+            object: null   // generic 'object' contents
+        };
         this.mana_base = 0;
         this.mana_temp = 0;
         this.mana_value = null;

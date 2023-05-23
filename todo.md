@@ -20,6 +20,11 @@
 ## () - rx - save life type blocks to save states
 * () life blocks should be saved as part of the game save state
 
+## () - rx - Air Block Contents
+* () start a new block content type called 'air'
+* () the kind of air will depend on the state of water in the section
+* () the kind of air will depend on the state of life in the seciton
+
 ## () - rx - Biology: Life Blocks level up
 * () have it so that Life blocks will slowly level up over time
 
@@ -36,17 +41,20 @@
 ## () - rx - game.bio
 * () I am going to want to start a game.bio object to park current data about life in the world
 
+## () - rx - Dirt block types
+* () start a dirt block type that will be a kind of auto block type that will be placed on top of rocks
 
-
-## () - rx - r101 - Block Contents, Get Slot Image utils method
+## () - r101 - Block Contents started, Get Slot Image utils method
 * (done) have a utils.getSlotIMG helper funciton that will return an image for the current slot
 * (done) all slots unlocked for now
 * (done) new contant to quickly enabled or disable slot unlock feature
 * (done) do not use biology.mjs for now by just commenting out the call for Biology.mjs in update by game tick
+* (done) no longer checking for water\_life block type in lands.mjs
+* (done) removed water\_life block type from constants.mjs
 
-* () there is then having a block.contents object
+* () there is then having a block.contents object that will be used to define addtional features of a base block type
 * () block.contents.plant prop can contain a plant life form
-* () block.contents.animal can contain an animal life form 
+* () block.contents.animal can contain an animal life form
 
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
