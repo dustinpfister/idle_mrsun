@@ -143,15 +143,18 @@ utils.getSlotIMG = ( slot ) => {
     return constant.IMG[block.type];
 };
 
-
-utils.getSlotIMG2 = ( slot ) => {
+//!!! MIGHT NOT USE THIS
+utils.createSlotIMG = ( slot ) => {
     const block = slot.block;
     // if the slot is locked, just return the locked image
     if(slot.locked){
         return constant.IMG.locked;
     }
 
-    const img_array = [ constant.IMG[block.type] ];
+    const img_type = constant.IMG[block.type];
+    const img_array = [ img_type ];
+    let w = img_type.w;
+    let h = img_type.h;
 
     const keys = Object.keys( block.contents );
 
@@ -160,11 +163,19 @@ utils.getSlotIMG2 = ( slot ) => {
           const kind = keys[i];
           const order = block.contents[ kind ];
           if( order){
-              img_array.push( constant.IMG[ kind + '_' + order ] );
+              const img_layer = constant.IMG[ kind + '_' + order ];
+              img_array.push( img_layer );
+              w = img_layer.w > w ? img_layer.w : w;
+              h = img_layer.h > h ? img_layer.h : h;
           }
     }
 
-    return img_array;
+    const img = {
+       w: w,
+       h: h
+    };
+
+    return img;
 };
 
 //-------- ----------

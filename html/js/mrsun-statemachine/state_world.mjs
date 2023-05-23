@@ -185,7 +185,7 @@ const state_world = {
 
 
 console.log('world state start:');
-console.log( utils.getSlotIMG2( sm.game.lands.sections[0].slots[0] ) )
+console.log( utils.createSlotIMG( sm.game.lands.sections[0].slots[0] ) )
 
     },
     update: (sm, secs, data) => {

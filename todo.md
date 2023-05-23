@@ -54,8 +54,7 @@
 * (done) there is then having a block.contents object that will be used to define addtional features of a base block type
 * (done) have a block.contents.object that will be used to just place any object for testing this out
 
-* () I want a way to create image objects using block type and contents
-
+* () see about finishing utils.createSlotIMG
 
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
