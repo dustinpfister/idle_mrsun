@@ -227,8 +227,7 @@ class Slot {
     autoSetBlockType () {
         // if the slot is NOT locked, and the type is NOT rock
         // then it is possible for the block to end up being auto set
-        if( !this.locked && this.block.type != 'rock' && this.block.type != 'water_life'){
-        //if( !this.locked && this.block.type != 'rock' ){
+        if( !this.locked && this.block.type != 'rock' ){
             // by default the block will be blank
             this.block.setLevel(1, 'blank', 1);
             const yMin = constant.SLOT_GRID_HEIGHT - constant.WATER_LEVEL;
@@ -343,9 +342,6 @@ class LandSection {
                        bd_str += 'b,1;';
                    }
                    if(slot.block.type === 'water'){
-                       bd_str += 'w,1;';
-                   }
-                   if(slot.block.type === 'water_life'){
                        bd_str += 'w,1;';
                    }
                 }
