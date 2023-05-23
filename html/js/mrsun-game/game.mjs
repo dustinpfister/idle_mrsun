@@ -175,7 +175,7 @@ gameMod.updateByTickDelta = (game, tickDelta, force) => {
             section.mana_total = mana_total;
         });
         // update life state
-        Biology.update(game);
+        //Biology.update(game);
         // lands mana total
         let mtl = new Decimal(0);
         game.mana_per_tick = new Decimal(0);

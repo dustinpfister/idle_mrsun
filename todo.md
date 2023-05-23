@@ -36,19 +36,17 @@
 ## () - rx - game.bio
 * () I am going to want to start a game.bio object to park current data about life in the world
 
-## () - r102- Block Contents
-    The goal here is to have some kind of replacement for the water\_life block. That is that there should
-    Just be a water block type, but a water block type can have addtional contents.
-* () there is then having a block.contents object
-* () block.contents.plant prop can contain a plant life form
-* () block.contents.animal can contain an animal life form 
 
-## () - rx - r101 - Get Slot Image utils method
+
+## () - rx - r101 - Block Contents, Get Slot Image utils method
 * (done) have a utils.getSlotIMG helper funciton that will return an image for the current slot
 * (done) all slots unlocked for now
 * (done) new contant to quickly enabled or disable slot unlock feature
-* () if slot unlock feature is disabled, then I should also not have the unlock button in the ui
-* () if all slots are unlocked in a section that can also be a condition to not have the unlock button any more
+* (done) do not use biology.mjs for now by just commenting out the call for Biology.mjs in update by game tick
+
+* () there is then having a block.contents object
+* () block.contents.plant prop can contain a plant life form
+* () block.contents.animal can contain an animal life form 
 
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
