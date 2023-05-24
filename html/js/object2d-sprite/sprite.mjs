@@ -73,7 +73,6 @@ class Sprite extends Object2D {
                     ctx.clearRect(0,0, canvas.width, canvas.height);
                 }
                 const section = state.section;
-                const sprite = section.sprite_world;
                 let i = state.i_slot_start;
                 while(i < state.i_slot_end){
                     const bx = i % constant.SLOT_GRID_WIDTH;

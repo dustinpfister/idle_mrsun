@@ -53,8 +53,10 @@
 * (done) removed water\_life block type from constants.mjs
 * (done) there is then having a block.contents object that will be used to define addtional features of a base block type
 * (done) have a block.contents.object that will be used to just place any object for testing this out
+* (done) create section render sheet is now part of the sprite class
+* (done) drawSectionSlotTexel in lands.mjs is now part of the SpriteLandSectionWorld class
 
-* ()
+* () update utils.getSlotIMG to return an image object based on the given layer argument
 
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
