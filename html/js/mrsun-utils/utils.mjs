@@ -132,7 +132,7 @@ utils.addPows = (base, exp_start, exp_end) => {
 //-------- ----------
 // IMG OBJECTS
 //-------- ----------
-utils.getSlotIMG = ( slot, layer = 'block' ) => {
+utils.getSlotIMG = ( slot, layer = 'block') => {
     const block = slot.block;
     // if the slot is locked, just return the locked image
     if(slot.locked){
@@ -140,10 +140,20 @@ utils.getSlotIMG = ( slot, layer = 'block' ) => {
     }
 
     if(layer === 'block'){
-
         return constant.IMG[block.type];
-
     }
+
+    // try to see if there is an 'item' for the 'layer'
+    const contentKey = block.contents[layer];
+    if(contentKey){
+        // if we have the content key, check for the item
+        const img_item = constant.IMG[layer + '_' + contentKey];
+        if(img_item){
+            return img_item;
+        }
+    }
+
+    return constant.IMG.locked;
 };
 
 //!!! MIGHT NOT USE THIS

@@ -55,9 +55,8 @@
 * (done) have a block.contents.object that will be used to just place any object for testing this out
 * (done) create section render sheet is now part of the sprite class
 * (done) drawSectionSlotTexel in lands.mjs is now part of the SpriteLandSectionWorld class
-
-* () update utils.getSlotIMG to return an image object based on the given layer argument
-
+* (done) update utils.getSlotIMG to return an image object based on the given layer argument
+* (done) I now have a layer property of Sprites
 
 ## ( done 05/19/2023 ) - r100 - slot render range for Sprite World Update
 * (done) I am goint to want to start a new canvas layer that will show the current secitons and slots that are bing renderer

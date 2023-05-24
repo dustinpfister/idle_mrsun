@@ -40,6 +40,7 @@ class Sprite extends Object2D {
     constructor() {
         super();
         this.type = 'Sprite';
+        this.layer = 'object';
         // size
         const size = new Vector2();
         Object.defineProperties( this, {
@@ -60,6 +61,7 @@ class Sprite extends Object2D {
     drawSectionSlot(){ }
     // create a render sheet for a section
     createSectionRenderSheet (section) {
+        const sprite = this;
         const can = canvasMod.create({
             size: 128,
             state: {
@@ -79,7 +81,7 @@ class Sprite extends Object2D {
                     const by = Math.floor(i / constant.SLOT_GRID_WIDTH);
                     const i_slot = by * constant.SLOT_GRID_WIDTH + bx;
                     const slot = section.slots[i_slot];
-                    this.drawSectionSlot(ctx, section, slot);
+                    sprite.drawSectionSlot(ctx, section, slot);
                     i += 1;
                 }
             }

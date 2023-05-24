@@ -180,11 +180,14 @@ const state_world = {
         can_section_outline.state.game = sm.game;
         // I might still want to do a full render of all land sections once on each start
         sm.game.lands.sections.forEach((section, i) => {
-            section.sprite_world.update();
+            section.sprite_world.update(0, constant.SLOT_GRID_LEN, true, 'block');
         });
 
 
-//console.log('world state start:');
+console.log('world state start:');
+//const slot = sm.game.lands.sections[0].slots[70];
+//console.log( utils.getSlotIMG(slot, 'object') );
+
 //console.log( utils.createSlotIMG( sm.game.lands.sections[0].slots[0] ) )
 
     },
@@ -199,7 +202,8 @@ const state_world = {
 
             const i_slot_start = data.render_world_y * 10;
             const i_slot_end = i_slot_start + 10;
-            section.sprite_world.update(i_slot_start, i_slot_end , false);
+            section.sprite_world.update(i_slot_start, i_slot_end , false, 'block');
+            section.sprite_world.update(i_slot_start, i_slot_end , false, 'object');
             can_section_outline.state.sections.push({
                 i_section: si,
                 i_slot_start: i_slot_start,

@@ -12,60 +12,6 @@ Decimal.set(constant.DECIMAL_OPTIONS);
 //-------- ----------
 // SpriteLandSectonWorld Class ( for world state )
 //-------- ----------
-// draw a single texel for a single slot ( in world state )
-/*
-const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
-    const img = utils.getSlotIMG(slot);
-    const i_ci = texelY * img.w + texelX;
-    const fillStyle = img.palette[ img.color_indices[ i_ci ] ];
-    const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
-    const radius_texel_delta = constant.SLOT_RADIUS_DELTA  / img.h;
-    utils.drawSectionArc2(ctx, {
-        slotX: slot.x,
-        slotY: slot.y,
-        v2: v2,
-        rad_center: rad_center,
-        rad_delta_texel: rad_texel_delta,
-        radius_texel_delta: radius_texel_delta,
-        texelX: texelX, texelY: texelY,
-        fillStyle: fillStyle
-    });
-};
-*/
-// create a render sheet for the given section object
-/*
-const createSectionRenderSheet = (section, drawSectionSlot) => {
-    const can = canvasMod.create({
-        size: 128,
-        state: {
-            clear: false,
-            section: section,
-            i_slot_start: 0,
-            i_slot_end: constant.SLOT_GRID_LEN
-        },
-        draw: (canObj, ctx, canvas, state) => {
-            if(state.clear){
-                ctx.clearRect(0,0, canvas.width, canvas.height);
-            }
-            const section = state.section;
-            const sprite = section.sprite_world;
-            let i = state.i_slot_start;
-            while(i < state.i_slot_end){
-                const bx = i % constant.SLOT_GRID_WIDTH;
-                const by = Math.floor(i / constant.SLOT_GRID_WIDTH);
-                const i_slot = by * constant.SLOT_GRID_WIDTH + bx;
-                const slot = section.slots[i_slot];
-                drawSectionSlot(ctx, section, slot);
-                i += 1;
-            }
-        }
-    });
-    const sheet = new SpriteSheet(can.canvas);
-    sheet.setCellDataToGrid( new Vector2(128, 128) );
-    sheet.can = can;
-    return sheet;
-};
-*/
 class SpriteLandSectionWorld extends Sprite {
     constructor (section, layer) {
         super();
@@ -73,12 +19,11 @@ class SpriteLandSectionWorld extends Sprite {
         this.type = 'SpriteLandSectonWorld';
         this.layer = layer || 'block';    // 'block', or content layer such as 'plant'
         this.size.set(128, 128);
-        //this.sheets[0] = createSectionRenderSheet(this.section, this.drawSectionSlot);
         this.sheets[0] = this.createSectionRenderSheet(this.section);
         this.cellIndices[0] = 0;
     }
     drawSectionSlotTexel (ctx, slot, v2, rad_center, texelX, texelY) {
-        const img = utils.getSlotIMG(slot);
+        const img = utils.getSlotIMG(slot, this.layer);
         const i_ci = texelY * img.w + texelX;
         const fillStyle = img.palette[ img.color_indices[ i_ci ] ];
         const rad_texel_delta = constant.SLOT_RADIAN_DELTA * 2 / 10 / img.w;
@@ -96,7 +41,9 @@ class SpriteLandSectionWorld extends Sprite {
     }
     // draw a section arc for a single slot object to be used in world state
     drawSectionSlot (ctx, section, slot) {
+        //const img = constant.IMG['object_circle']; 
         const img = utils.getSlotIMG(slot, this.layer);
+
         const radian = Math.PI + Math.PI * 2 / constant.LAND_OBJECT_COUNT  * section.i;
         // get a vector2 that is on the edge of the sun area
         //const v1 = new Vector2(64 + Math.cos(radian) * constant.radius_land, 64 + Math.sin(radian) * constant.radius_land );
@@ -115,7 +62,8 @@ class SpriteLandSectionWorld extends Sprite {
             i_texel += 1;
         }
     }
-    update(i_slot_start = 0, i_slot_end = constant.SLOT_GRID_LEN, clear = true ){
+    update(i_slot_start = 0, i_slot_end = constant.SLOT_GRID_LEN, clear = true, layer = 'block' ){
+        this.layer = layer;
         const can = this.sheets[0].can;
         can.state.i_slot_start = i_slot_start;
         can.state.i_slot_end = i_slot_end;
@@ -133,7 +81,6 @@ class SpriteLandSectionLand extends Sprite {
         this.type = 'SpriteLandSectonLand';
         this.layer = layer || 'block';
         this.size.set(500, 280);
-        //this.sheets[0] = createSectionRenderSheet( this.section, this.drawSectionSlot );
         this.sheets[0] = this.createSectionRenderSheet(this.section);
         this.cellIndices[0] = 0;
     }
@@ -159,8 +106,10 @@ class SpriteLandSectionLand extends Sprite {
             i_texel += 1;
         }
     }
-    update(){
-        canvasMod.update(this.sheets[0].can);
+    update(layer){
+        this.layer = layer || 'block';
+        const can = this.sheets[0].can;
+        canvasMod.update(can);
     }
 };
 //-------- ----------
