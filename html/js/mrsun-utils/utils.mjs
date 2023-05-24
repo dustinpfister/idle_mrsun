@@ -134,12 +134,10 @@ utils.addPows = (base, exp_start, exp_end) => {
 //-------- ----------
 utils.getSlotIMG = ( slot ) => {
     const block = slot.block;
-
     // if the slot is locked, just return the locked image
     if(slot.locked){
         return constant.IMG.locked;
     }
-
     return constant.IMG[block.type];
 };
 

@@ -31,6 +31,7 @@ const drawSectionSlotTexel = (ctx, slot, v2, rad_center, texelX, texelY) => {
     });
 };
 // create a render sheet for the given section object
+/*
 const createSectionRenderSheet = (section, drawSectionSlot) => {
     const can = canvasMod.create({
         size: 128,
@@ -62,13 +63,16 @@ const createSectionRenderSheet = (section, drawSectionSlot) => {
     sheet.can = can;
     return sheet;
 };
+*/
 class SpriteLandSectionWorld extends Sprite {
-    constructor (section) {
+    constructor (section, layer) {
         super();
         this.section = section;
         this.type = 'SpriteLandSectonWorld';
+        this.layer = layer || 'block';
         this.size.set(128, 128);
-        this.sheets[0] = createSectionRenderSheet(this.section, this.drawSectionSlot);
+        //this.sheets[0] = createSectionRenderSheet(this.section, this.drawSectionSlot);
+        this.sheets[0] = this.createSectionRenderSheet(this.section);
         this.cellIndices[0] = 0;
     }
     // draw a section arc for a single slot object to be used in world state
@@ -109,7 +113,8 @@ class SpriteLandSectionLand extends Sprite {
         this.section = section;
         this.type = 'SpriteLandSectonLand';
         this.size.set(500, 280);
-        this.sheets[0] = createSectionRenderSheet( this.section, this.drawSectionSlot );
+        //this.sheets[0] = createSectionRenderSheet( this.section, this.drawSectionSlot );
+        this.sheets[0] = this.createSectionRenderSheet(this.section);
         this.cellIndices[0] = 0;
     }
     // draw a single slot for the section object
