@@ -170,9 +170,9 @@ const render_detail = (sm, ctx, canvas, data) => {
 //-------- ----------
 const state_world = {
     data: {
-        render_world_lt: 0,  // last game tick that rendering was done
-        render_world_si: 0,   // current section index to render
-        render_world_y: 0 // current y value to render for each section
+        //render_lt: 0,  // last game tick that rendering was done
+        render_si: 0,   // current section index to render
+        render_y: 0 // current y value to render for each section
     },
     init: (sm, data) => {},
     start: (sm, opt) => {
@@ -182,25 +182,18 @@ const state_world = {
         sm.game.lands.sections.forEach((section, i) => {
             section.sprite_world.update(0, constant.SLOT_GRID_LEN, true, 'block');
         });
-
-
-console.log('world state start:');
-//const slot = sm.game.lands.sections[0].slots[70];
-//console.log( utils.getSlotIMG(slot, 'object') );
-
-//console.log( utils.createSlotIMG( sm.game.lands.sections[0].slots[0] ) )
-
     },
     update: (sm, secs, data) => {
         // real time update of land sections, but on a section by section basis once per tick
-        //if( sm.game.tick > data.render_world_lt ){
-            data.render_world_lt = sm.game.tick;
+        //if( sm.game.tick_frac > data.render_lt ){
+            //data.render_lt = sm.game.tick;
             can_section_outline.state.sections = [];
 
-            const si = data.render_world_si;
+            const si = data.render_si;
+
             const section = sm.game.lands.sections[si];
 
-            const i_slot_start = data.render_world_y * 10;
+            const i_slot_start = data.render_y * 10;
             const i_slot_end = i_slot_start + 10;
             section.sprite_world.update(i_slot_start, i_slot_end , false, 'block');
             section.sprite_world.update(i_slot_start, i_slot_end , false, 'object');
@@ -210,11 +203,11 @@ console.log('world state start:');
                 i_slot_end: i_slot_end
             });
 
-           data.render_world_si += 1;
-           if(data.render_world_si === 12){
-               data.render_world_si = 0;
-               data.render_world_y += 1;
-               data.render_world_y %= 8;
+           data.render_si += 1;
+           if(data.render_si === 12){
+               data.render_si = 0;
+               data.render_y += 1;
+               data.render_y %= 8;
            }
        //}
        canvasMod.update(can_section_outline);

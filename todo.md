@@ -2,12 +2,20 @@
 
 <!-- FINAL GAME -->
 
+## () - rx - Settings State - World State rendering options
+* () I would like to change how world state renderng updates
+
+## () - rx - Settings State - start
+* () start a settings state that will be used to adjust various game settings
+* () I would like to set the target FPS in this state
+
 ## () - rx - Game Modes
 * () start a system in which there is more than one game mode to choose from each time a new game is started
 * () have it so that each time a supernova is done the player can choose a new mode
 * () Have the current game of having slots that must be unlocked first be the first game mode
 
 ## () - rx - Biology State
+* () a state in which I cna view the current state of life in the world
 
 ## () - rx - Mana State
 * () start a mana level state
@@ -44,7 +52,13 @@
 ## () - rx - Dirt block types
 * () start a dirt block type that will be a kind of auto block type that will be placed on top of rocks
 
-## () - r101 - Block Contents started, Get Slot Image utils method
+## () - r102 - Block Contents - values for content layers
+    I will want to have more info for each block layer beyond just what item it is for each layer. For example
+    the 'plant' layer might be 'grass', but then there are things like what level is the grass, how old is it,
+    and so forth.
+* () maybe some kind of string system like 'grass:l1:t:0' for grass that is level1 and is 0 ticks of age
+
+## ( done 05/25/2023 ) - r101 - Block Contents - started
 * (done) have a utils.getSlotIMG helper funciton that will return an image for the current slot
 * (done) all slots unlocked for now
 * (done) new contant to quickly enabled or disable slot unlock feature

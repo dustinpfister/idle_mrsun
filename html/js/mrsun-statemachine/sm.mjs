@@ -116,7 +116,7 @@ StateMachine.create = (opt_create) => {
         currentStateKey: '',
         currentState: null,
         states: {},
-        fps_target: 30,
+        fps_target: 12,
         now: null,
         pointer: new Vector2(0, 0),
         keydown: false,
